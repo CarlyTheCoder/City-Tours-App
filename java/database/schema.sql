@@ -2,6 +2,7 @@ BEGIN TRANSACTION;
 
 DROP TABLE IF EXISTS users;
 DROP SEQUENCE IF EXISTS seq_user_id;
+DROP TABLE IF EXISTS landmarks;
 
 CREATE SEQUENCE seq_user_id
   INCREMENT BY 1
@@ -17,6 +18,18 @@ CREATE TABLE users (
 	role varchar(50) NOT NULL,
 	CONSTRAINT PK_user PRIMARY KEY (user_id)
 );
+
+CREATE TABLE landmarks (
+	id SERIAL,
+	name varchar(100) NOT NULL,
+	category varchar(50),
+	address varchar (100),
+	coordinates point,
+	open_from int,
+	open_to int,
+	CONSTRAINT PK_landmark PRIMARY KEY (id)
+);
+
 
 INSERT INTO users (username,password_hash,role) VALUES ('user','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_USER');
 INSERT INTO users (username,password_hash,role) VALUES ('admin','$2a$08$UkVvwpULis18S19S5pZFn.YHPZt3oaqHZnDwqbCW9pft6uFtkXKDC','ROLE_ADMIN');
