@@ -1,12 +1,30 @@
 <template>
   <div class="home">
-    <h1>Home</h1>
-    <p>You must be authenticated to see this</p>
+    <search/>
+   
+    <landmark-list id="landmark-list"></landmark-list>
   </div>
 </template>
 
 <script>
+import landmarkList from '@/components/LandmarkList';
+import search from '@/components/Search';
+
+
+
 export default {
-  name: "home"
+  name: "home",
+  components: {
+    landmarkList,
+    search
+ 
+    
+  
+  }
 };
 </script>
+
+<style> 
+
+
+</style>

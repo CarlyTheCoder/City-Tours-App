@@ -19,7 +19,8 @@ if(currentToken != null) {
 export default new Vuex.Store({
   state: {
     token: currentToken || '',
-    user: currentUser || {}
+    user: currentUser || {},
+    landmarks: [{id: 1, name: 'Comerica Park'}, {id: 2, name: 'Ford Field'}, {id: 3, name: 'Little Ceasars Arena'}, {id: 4, name: 'TCF Center'}, {id: 5, name: 'GM Renaissance Center'}, {id: 6, name: 'Campus Martius'}, {id: 7, name: 'The Fist'}, {id: 8, name: 'Detroit Institute of Art'}, {id: 9, name: 'Belle Isle'},]
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -37,6 +38,9 @@ export default new Vuex.Store({
       state.token = '';
       state.user = {};
       axios.defaults.headers.common = {};
+    },
+    GET_ALL_LANDMARKS(state, data){
+      state.landmarks = data;
     }
   }
 })
