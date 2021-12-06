@@ -25,6 +25,7 @@ components: {
 <style>
 
 #app {
+  Font-family: calibri;
   display: grid;
   grid-template-columns: 250px 1fr;
   grid-template-areas: 'sidebar main';
