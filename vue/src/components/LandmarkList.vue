@@ -1,6 +1,6 @@
 <template>
   <div id="landmark-list">
-      <landmark-card v-for="landmark in this.$store.state.landmarks"
+      <landmark-card v-for="landmark in filteredLandmarks"
         v-bind:key="landmark.id" :landmark="landmark"></landmark-card>
   </div>
 </template>
@@ -13,20 +13,34 @@ export default {
     components: {
         landmarkCard
     },
- 
+   
     created() {
-    this.retrieveAllLandMarks();
+    this.retrieveAllLandmarks();
+    
+    },
+    methods: {
+    retrieveAllLandmarks() {
+        landmarkService.getAllLandmarks().then(response => {
+            this.$store.commit("GET_ALL_LANDMARKS", response.data)
+    }) 
+      }
     },
   
-    methods: {
-      retrieveAllLandMarks() {
-        landmarkService.getAllLandmarks().then(response => {
-            this.$store.commit("GET_ALL_LANDMARKS", response.data);
-        })
+    computed: {
+      filteredLandmarks() {
+        const landmarkFilter = this.$store.state.filter;
+        const landmarks = this.$store.state.landmarks;
+        
+            return landmarks.filter(landmark => {
+             return landmark.name.toLowerCase().includes(landmarkFilter.name.toLowerCase());
+             
+            })
+        }
        }
+         
         
     }
-}
+
     
 
 </script>

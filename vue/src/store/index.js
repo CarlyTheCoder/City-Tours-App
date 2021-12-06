@@ -20,7 +20,11 @@ export default new Vuex.Store({
   state: {
     token: currentToken || '',
     user: currentUser || {},
-    landmarks: []
+    landmarks: [],
+    filter: {
+      name: "",
+      category: ""
+    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -41,6 +45,9 @@ export default new Vuex.Store({
     },
     GET_ALL_LANDMARKS(state, data){
       state.landmarks = data;
+    },
+    UPDATE_FILTER(state, filter) {
+      state.filter = filter;
     }
   }
 })

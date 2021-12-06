@@ -1,8 +1,8 @@
 <template>
-  <div id="search">
+  <form id="search">
       <div class="form-element">
          <label for="name">Name:</label>
-         <input type="text" id="name" name="name">
+         <input type="text" id="name" name="name" v-model="filter.name">
       </div>
         <div class="form-element">
             <label for="category">Category:</label>
@@ -15,15 +15,37 @@
                 <option value="park">Park</option>
                 <option value="stadium">Stadium</option>
             </select>
+           
       </div>
-      
+        <div class="form-element">
+                <button v-on:click="clearFilter()">Clear</button>
+            </div>
+       <div class="form-element">
+                <button v-on:click.prevent="updateFilter(); ">Search</button>
+            </div>
 
-  </div>
+  </form>
 </template>
 
 <script>
 export default {
-    name: 'search'
+    name: 'search',
+    data() {
+        return {
+            filter: {
+                name: "",
+                category: ""
+        }
+        }
+    },
+    methods: {
+        updateFilter() {
+            this.$store.commit("UPDATE_FILTER", this.filter)
+        }
+    }
+   
+       
+    
 
 }
 </script>
