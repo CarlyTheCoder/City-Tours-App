@@ -6,9 +6,14 @@ import java.util.List;
 
 
 public interface LandmarkDao {
-    List<Landmark> findAll();
-    Landmark findByName();
-    Landmark findByLongitude();
-    Landmark getByLatitude();
-    Landmark getByCategory();
+
+    List<Landmark> getAll();
+
+    Landmark searchByName();
+
+    Landmark searchByLatitude();
+
+    Landmark searchByLongitude();
+
+    Landmark searchByCategory();
 }
