@@ -19,7 +19,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
     @Override
     public List<Landmark> getAll() {
          List<Landmark> landmarks = new ArrayList<>();
-      String sql = "SELECT name, category, address, latitude, longitude, open_from, open_to FROM landmarks " +
+      String sql = "SELECT id, name, category, address, latitude, longitude, open_from, open_to FROM landmarks " +
               "ORDER BY name";
         SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
         while (result.next()) {
