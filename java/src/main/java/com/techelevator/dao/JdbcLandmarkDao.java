@@ -17,47 +17,49 @@ public class JdbcLandmarkDao implements LandmarkDao {
      }
 
     @Override
-    public List<Landmark> findAll() {
-         List<Landmark> landmarks=new ArrayList<>();
-      String sql="SELECT name,category,address,coordinates,open_from,open_to FROM landmarks;";
-        SqlRowSet result=jdbcTemplate.queryForRowSet(sql);
-        while(result.next()){
-            Landmark landmark=mapRowToLandmark(result);
+    public List<Landmark> getAll() {
+         List<Landmark> landmarks = new ArrayList<>();
+      String sql = "SELECT id, name, category, address, latitude, longitude, open_from, open_to FROM landmarks " +
+              "ORDER BY name";
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
+        while (result.next()) {
+            Landmark landmark = mapRowToLandmark(result);
             landmarks.add(landmark);
         }
         return landmarks;
     }
 
     @Override
-    public Landmark findByName() {
+    public Landmark searchByName() {
         return null;
     }
 
     @Override
-    public Landmark findByLongitude() {
+    public Landmark searchByLatitude() {
         return null;
     }
 
     @Override
-    public Landmark getByLatitude() {
+    public Landmark searchByLongitude() {
         return null;
     }
 
     @Override
-    public Landmark getByCategory() {
+    public Landmark searchByCategory() {
         return null;
     }
-    private  Landmark mapRowToLandmark(SqlRowSet result){
-         Landmark landmark=new Landmark();
-         landmark.setName(result.getString("name"));
+
+    private  Landmark mapRowToLandmark(SqlRowSet result) {
+
+        Landmark landmark = new Landmark();
+        landmark.setId(result.getLong("id"));
+        landmark.setName(result.getString("name"));
         landmark.setCategory(result.getString("category"));
         landmark.setAddress(result.getString("address"));
-        landmark.setCoordinates(result.getString("coordinates"));
+        landmark.setLatitude(result.getFloat("latitude"));
+        landmark.setLongitude(result.getFloat("longitude"));
         landmark.setOpenFrom(result.getInt("open_from"));
         landmark.setOpenTo(result.getInt("open_to"));
-        landmark.setLongitude(result.getInt("longitude"));
-        landmark.setLatitude(result.getInt("latitude"));
-
         return landmark;
     }
 
