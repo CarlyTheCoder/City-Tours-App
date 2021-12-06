@@ -55,8 +55,8 @@ public class JdbcLandmarkDao implements LandmarkDao {
         landmark.setCoordinates(result.getString("coordinates"));
         landmark.setOpenFrom(result.getInt("open_from"));
         landmark.setOpenTo(result.getInt("open_to"));
-        landmark.setLongitude(result.getInt("longitude"));
-        landmark.setLatitude(result.getInt("latitude"));
+//        landmark.setLongitude(result.getInt("longitude"));
+//        landmark.setLatitude(result.getInt("latitude"));
 
         return landmark;
     }
