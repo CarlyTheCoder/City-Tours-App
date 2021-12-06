@@ -23,7 +23,7 @@ public class LandmarkController {
 
     @RequestMapping(value = "", method = RequestMethod.GET)
     List<Landmark> findAll() {
-       return landmarkDao.findAll();
+       return landmarkDao.getAll();
     }
 
 

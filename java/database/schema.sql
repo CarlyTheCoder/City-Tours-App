@@ -24,7 +24,8 @@ CREATE TABLE landmarks (
 	name varchar(100) NOT NULL,
 	category varchar(50),
 	address varchar (100),
-	coordinates point,
+	latitude float,
+	longitude float,
 	open_from int,
 	open_to int,
 	CONSTRAINT PK_landmark PRIMARY KEY (id)
