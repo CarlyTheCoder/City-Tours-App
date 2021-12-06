@@ -1,31 +1,34 @@
 <template>
   <div id="landmark-list">
-      <landmark-card v-for="landmark in getAllLandMarks"
+      <landmark-card v-for="landmark in this.$store.state.landmarks"
         v-bind:key="landmark.id" :landmark="landmark"></landmark-card>
   </div>
 </template>
 
 <script>
 import landmarkCard from '@/components/LandmarkCard';
-// import landmarkService from '@/services/LandmarkService'
+import landmarkService from '@/services/LandmarkService';
 export default {
     name: 'landmark-list',
     components: {
         landmarkCard
     },
  
-    computed: {
-    getAllLandMarks() {
-      return this.$store.state.landmarks;
-    }
+    created() {
+    this.retrieveAllLandMarks();
     },
-    // created() {
-    //     landmarkService.getAllLandMarks().then(response => {
-    //         this.$store.state.landmarks = response;
-    //     })
-    // }
-    
+  
+    methods: {
+      retrieveAllLandMarks() {
+        landmarkService.getAllLandmarks().then(response => {
+            this.$store.commit("GET_ALL_LANDMARKS", response.data);
+        })
+       }
+        
+    }
 }
+    
+
 </script>
 
 <style>

@@ -1,6 +1,7 @@
 <template>
 <div class="landmark-card">
   <h1>{{landmark.name}}</h1>
+  <p> {{landmark.category}} </p>
  
   </div>
 </template>
