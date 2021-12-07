@@ -1,3 +1,4 @@
+<<<<<<< HEAD
 --<<<<<<< HEAD
 --INSERT INTO landmarks (name, category, address, latitude, longitude, open_from, open_to, image)
 --VALUES ('Comerica Park', 'stadium', '2100 Woodward Ave, Detroit, MI 48201', 42.3393471877925, -83.0494890306972, 0, 24, 'https://i.imgur.com/08AMcpW.jpg?1'),
@@ -12,6 +13,7 @@
 --        ('Detroit Institute of Arts', 'museum', '5200 Woodward Ave, Detroit, MI 48202', 42.36015342142897, -83.06451619666238, 10, 16, 'https://i.imgur.com/Tro2fLi.jpg?1', 'The Detroit Institute of Arts has over 100 galleries and more than 650,000 square feet of floor space. This expansive art collection and museum is ranked along the top six museums in the United States.'),
 --        ('Belle Isle', 'park', 'Belle Isle, Detroit, Michigan', 42.34569298114107, -82.97408487582452, 5, 22, 'https://i.imgur.com/GhJjaV6.png?1', 'Belle Isle is a 982-acre park located on an island in the Detroit River. The park includes acres of natural area, an aquarium, museums, and the Anna Scripps Whitcomb Conservatory.');
 --=======
+
 INSERT INTO landmarks (name, category, address, latitude, longitude, sunday_open, sunday_close, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close,
             thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close, image, description)
 VALUES ('Comerica Park', 'stadium', '2100 Woodward Ave, Detroit, MI 48201', 42.3393471877925, -83.0494890306972,
@@ -19,7 +21,7 @@ VALUES ('Comerica Park', 'stadium', '2100 Woodward Ave, Detroit, MI 48201', 42.3
         ('Ford Field', 'stadium', '2000 Brush St, Detroit, MI 48226', 42.34056152112835, -83.04543133891744,
             '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', 'https://i.imgur.com/R9dhWOy.jpg?1', 'Named after Detroit`s most famous automaker, Ford Field is a modern, domed stadium that is home to the Detroit Lions National Football League team. The stadium is also utilized for college bowl games, state-level events for high school teams, and basketball events. Although indoors, the domed ceiling has expansive skylights that let in natural light, and the stadium''s structure incorporates a pre-existing warehouse for unique seating arrangements. In 2017, Ford Field underwent renovations to include new restaurants, bars, sound systems, suites, and video boards. '),
         ('Little Caesars Arena', 'stadium', '2645 Woodward Ave, Detroit, MI 48201', 42.341784593385626, -83.0552673,
-            '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', 'https://i.imgur.com/RgB3M7c.jpg?1', 'Built in 2015, Little Caesars Arena is a large indoor arena with a capacity of up to 20,332. The arena is utilized by both the Detroit Pistons of the NBA and the Detroit Red Wings of the NHL.'),
+            '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', 'https://i.imgur.com/RgB3M7c.jpg?1',   'Built in 2015, Little Caesars Arena is a large indoor arena with a capacity of up to 20,332. The arena is utilized by both the Detroit Pistons of the NBA and the Detroit Red Wings of the NHL.'),
         ('TCF Center', 'convention center', '1 Washington Blvd, Detroit, MI 48226', 42.32720636711678, -83.04946451534258,
             '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', 'https://i.imgur.com/nw6sunk.jpg?1', 'The TCF center is the 17th largest convention center in the United States. Built in 1960, the venue hosts a packed schedule of expos, tournaments, musical events, fairs, and other performances throughout the year.'),
         ('GM Renaissance Center', 'business', 'Renaissance Center, 400 Renaissance Dr W, Detroit, MI 48243', 42.32955507212509, -83.04018591534258,
@@ -27,9 +29,10 @@ VALUES ('Comerica Park', 'stadium', '2100 Woodward Ave, Detroit, MI 48201', 42.3
         ('Campus Martius', 'park', '800 Woodward Ave, Detroit, MI 48226', 42.33246786894614, -83.0465565,
             '06:00', '22:00', '06:00', '22:00', '06:00', '22:00', '06:00', '22:00', '06:00', '22:00', '06:00', '22:00', '06:00', '22:00', 'https://i.imgur.com/vukEizH.jpg', 'Announced as the 2021 Top Public Square by USA Today, Campus Martius Park is known for its expansive lawn and thoughtful design. Come here to enjoy relaxing water features, outdoor festivals, and a bit of nature in the bustling city.'),
         ('"The Fist"', 'monument', '5 Woodward Ave, Detroit, MI 48226', 42.32943650844858, -83.04466454602776,
-            '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', 'https://i.imgur.com/94yzCFw.jpg?1', 'Sculpted by Robert Graham and poured by Rolf Kriken in 1986, this suspended bronze statue pays tribute to legendary boxer, Joe Louis.'),
+            '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', '00:00', '23:59', 'https://i.imgur.com/94yzCFw.jpg?1','Sculpted by Robert Graham and poured by Rolf Kriken in 1986, this suspended bronze statue pays tribute to legendary boxer, Joe Louis.'),
         ('Detroit Institute of Arts', 'museum', '5200 Woodward Ave, Detroit, MI 48202', 42.36015342142897, -83.06451619666238,
-            '10:00', '17:00', '00:00', '00:00', '09:00', '16:00', '09:00', '16:00', '09:00', '16:00', '09:00', '21:00', '10:00', '17:00', 'https://i.imgur.com/Tro2fLi.jpg?1', 'The Detroit Institute of Arts has over 100 galleries and more than 650,000 square feet of floor space. This expansive art collection and museum is ranked along the top six museums in the United States.'),
+            '10:00', '17:00', '00:00', '00:00', '09:00', '16:00', '09:00', '16:00', '09:00', '16:00', '09:00', '21:00', '10:00', '17:00', 'https://i.imgur.com/Tro2fLi.jpg?1','The Detroit Institute of Arts has over 100 galleries and more than 650,000 square feet of floor space. This expansive art collection and museum is ranked along the top six museums in the United States.'),
         ('Belle Isle', 'park', 'Belle Isle, Detroit, Michigan', 42.34569298114107, -82.97408487582452,
             '05:00', '22:00', '05:00', '22:00', '05:00', '22:00', '05:00', '22:00', '05:00', '22:00', '05:00', '22:00', '05:00', '22:00', 'https://i.imgur.com/GhJjaV6.png?1','Belle Isle is a 982-acre park located on an island in the Detroit River. The park includes acres of natural area, an aquarium, museums, and the Anna Scripps Whitcomb Conservatory.');
+
 

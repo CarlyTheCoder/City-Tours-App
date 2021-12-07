@@ -28,9 +28,7 @@ public class Landmark {
     private String description;
 
 
-    public Landmark(){
-
-    }
+    public Landmark() { }
 
     public Landmark(int i, String s, String monument, String s1, float v, float v1, int i1, int i2, String s2) {
     }
@@ -167,5 +165,34 @@ public class Landmark {
     public void setDescription(String description) {
         this.description = description;
     }
-}
+
+
+    public Landmark( long id, String name, String category, String address,float latitude, float longitude, Time sundayOpen,
+                Time sundayClose, Time mondayOpen, Time mondayClose, Time tuesdayOpen, Time tuesdayClose, Time wednesdayOpen, Time wednesdayClose, Time thursdayOpen,
+                Time thursdayClose, Time fridayOpen, Time fridayClose, Time saturdayOpen, Time saturdayClose, String image, String description){
+            this.id = id;
+            this.name = name;
+            this.category = category;
+            this.address = address;
+            this.latitude = latitude;
+            this.longitude = longitude;
+            this.sundayOpen = sundayOpen;
+            this.sundayClose = sundayClose;
+            this.mondayOpen = mondayOpen;
+            this.mondayClose = mondayClose;
+            this.tuesdayOpen = tuesdayOpen;
+            this.tuesdayClose = tuesdayClose;
+            this.wednesdayOpen = wednesdayOpen;
+            this.wednesdayClose = wednesdayClose;
+            this.thursdayOpen = thursdayOpen;
+            this.thursdayClose = thursdayClose;
+            this.fridayOpen = fridayOpen;
+            this.fridayClose = fridayClose;
+            this.saturdayOpen = saturdayOpen;
+            this.saturdayClose = saturdayClose;
+            this.image = image;
+            this.description = description;
+        }
+
+    }
 

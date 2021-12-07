@@ -10,6 +10,7 @@ import javax.sql.DataSource;
 import java.util.List;
 
 public class JdbcLandmarkDaoTests extends FinalCapstoneDaoTests {
+
     private static final Landmark LANDMARK_1=new Landmark(7,"\"The Fist\"","monument","5 Woodward Ave, Detroit, MI 48226",42.329437f,
             -83.04466f,0,24,"https://i.imgur.com/94yzCFw.jpg?1");
 
@@ -39,6 +40,7 @@ public class JdbcLandmarkDaoTests extends FinalCapstoneDaoTests {
         Assert.assertEquals(expected.getLongitude(),actual.getLongitude(),0.00f);
         Assert.assertEquals(expected.getImage(),actual.getImage());
     }
+
 
 
 }

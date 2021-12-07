@@ -20,7 +20,9 @@ public class JdbcLandmarkDao implements LandmarkDao {
     public List<Landmark> getAll() {
          List<Landmark> landmarks = new ArrayList<>();
 
+
       String sql = "SELECT * FROM landmarks " + "ORDER BY name";
+
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
             Landmark landmark = mapRowToLandmark(results);
