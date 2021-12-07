@@ -21,32 +21,33 @@ public class JdbcLandmarkDao implements LandmarkDao {
          List<Landmark> landmarks = new ArrayList<>();
       String sql = "SELECT id, name, category, address, latitude, longitude, open_from, open_to, image FROM landmarks " +
               "ORDER BY name";
-        SqlRowSet result = jdbcTemplate.queryForRowSet(sql);
-        while (result.next()) {
-            Landmark landmark = mapRowToLandmark(result);
+        SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
+        while (results.next()) {
+            Landmark landmark = mapRowToLandmark(results);
             landmarks.add(landmark);
         }
         return landmarks;
     }
 
     @Override
-    public Landmark searchByName() {
-        return null;
-    }
-
-    @Override
-    public Landmark searchByLatitude() {
-        return null;
-    }
-
-    @Override
-    public Landmark searchByLongitude() {
-        return null;
-    }
-
-    @Override
-    public Landmark searchByCategory() {
-        return null;
+    public List<Landmark> filter(String name, String category) {
+         List<Landmark> filteredList = new ArrayList<>();
+         String sql = "SELECT * FROM landmarks WHERE name ILIKE concat('%', ?, '%') " +
+                 "AND category ILIKE concat('%', ?, '%')";
+//         if (!name.equals("") && !category.equals("")) {
+//             sql += " WHERE name ILIKE concat('%', ?, '%') AND category = '?'";
+//         } else if (!name.equals("")) {
+//             sql += " WHERE name ILIKE concat('%', ?, '%')";
+//         } else if (!category.equals("")) {
+//             sql += " WHERE category = '?'";
+//         }
+//         sql += " ORDER BY name;";
+         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name, category);
+         while (results.next()) {
+             Landmark landmark = mapRowToLandmark(results);
+             filteredList.add(landmark);
+         }
+         return filteredList;
     }
 
     private  Landmark mapRowToLandmark(SqlRowSet result) {

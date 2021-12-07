@@ -21,10 +21,6 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     landmarks: [],
-    filter: {
-      name: "",
-      category: ""
-    }
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -32,10 +28,12 @@ export default new Vuex.Store({
       localStorage.setItem('token', token);
       axios.defaults.headers.common['Authorization'] = `Bearer ${token}`
     },
+
     SET_USER(state, user) {
       state.user = user;
       localStorage.setItem('user',JSON.stringify(user));
     },
+
     LOGOUT(state) {
       localStorage.removeItem('token');
       localStorage.removeItem('user');
@@ -43,11 +41,9 @@ export default new Vuex.Store({
       state.user = {};
       axios.defaults.headers.common = {};
     },
-    GET_ALL_LANDMARKS(state, data){
+
+    POPULATE_LANDMARKS(state, data){
       state.landmarks = data;
-    },
-    UPDATE_FILTER(state, filter) {
-      state.filter = filter;
     }
   }
 })
