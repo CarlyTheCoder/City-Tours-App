@@ -28,6 +28,7 @@ CREATE TABLE landmarks (
 	longitude float,
 	open_from int,
 	open_to int,
+	image varchar(200),
 	CONSTRAINT PK_landmark PRIMARY KEY (id)
 );
 
