@@ -33,15 +33,8 @@ public class JdbcLandmarkDao implements LandmarkDao {
     public List<Landmark> filter(String name, String category) {
          List<Landmark> filteredList = new ArrayList<>();
          String sql = "SELECT * FROM landmarks WHERE name ILIKE concat('%', ?, '%') " +
-                 "AND category ILIKE concat('%', ?, '%')";
-//         if (!name.equals("") && !category.equals("")) {
-//             sql += " WHERE name ILIKE concat('%', ?, '%') AND category = '?'";
-//         } else if (!name.equals("")) {
-//             sql += " WHERE name ILIKE concat('%', ?, '%')";
-//         } else if (!category.equals("")) {
-//             sql += " WHERE category = '?'";
-//         }
-//         sql += " ORDER BY name;";
+                 "AND category ILIKE concat('%', ?, '%') " +
+                 "ORDER BY name";
          SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name, category);
          while (results.next()) {
              Landmark landmark = mapRowToLandmark(results);
