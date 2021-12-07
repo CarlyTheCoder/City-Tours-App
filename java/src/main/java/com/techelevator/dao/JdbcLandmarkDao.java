@@ -19,7 +19,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
     @Override
     public List<Landmark> getAll() {
          List<Landmark> landmarks = new ArrayList<>();
-      String sql = "SELECT id, name, category, address, latitude, longitude, open_from, open_to, image FROM landmarks " +
+      String sql = "SELECT * FROM landmarks " +
               "ORDER BY name";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
         while (results.next()) {
@@ -52,8 +52,20 @@ public class JdbcLandmarkDao implements LandmarkDao {
         landmark.setAddress(result.getString("address"));
         landmark.setLatitude(result.getFloat("latitude"));
         landmark.setLongitude(result.getFloat("longitude"));
-        landmark.setOpenFrom(result.getInt("open_from"));
-        landmark.setOpenTo(result.getInt("open_to"));
+        landmark.setSundayOpen(result.getTime("sunday_open"));
+        landmark.setSundayClose(result.getTime("sunday_close"));
+        landmark.setMondayOpen(result.getTime("monday_open"));
+        landmark.setMondayClose(result.getTime("monday_close"));
+        landmark.setTuesdayOpen(result.getTime("tuesday_open"));
+        landmark.setTuesdayClose(result.getTime("tuesday_close"));
+        landmark.setWednesdayOpen(result.getTime("wednesday_open"));
+        landmark.setWednesdayClose(result.getTime("wednesday_close"));
+        landmark.setThursdayOpen(result.getTime("thursday_open"));
+        landmark.setThursdayClose(result.getTime("thursday_close"));
+        landmark.setFridayOpen(result.getTime("friday_open"));
+        landmark.setFridayClose(result.getTime("friday_close"));
+        landmark.setSaturdayOpen(result.getTime("saturday_open"));
+        landmark.setSaturdayClose(result.getTime("saturday_close"));
         landmark.setImage(result.getString("image"));
         return landmark;
     }
