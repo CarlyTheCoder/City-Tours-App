@@ -2,12 +2,12 @@
   <form id="search">
       <div class="form-element">
          <label for="name">Name:</label>
-         <input type="text" id="name" name="name" v-model="filter.name">
+         <input type="text" id="name" name="name" v-model="filter.name" v-on:keyup="filterLandmarks()">
       </div>
         <div class="form-element">
             <label for="category">Category:</label>
-            <select name="category" id="category">
-                <option value="">--Please choose an option--</option>
+            <select name="category" id="category" v-model="filter.category" v-on:change="filterLandmarks()">
+                <option value=""></option>
                 <option value="business">Business</option>
                 <option value="convention-center">Convention Center</option>
                 <option value="monument">Monument</option>
@@ -18,16 +18,14 @@
            
       </div>
         <div class="form-element">
-                <button v-on:click="clearFilter()">Clear</button>
-            </div>
-       <div class="form-element">
-                <button v-on:click.prevent="updateFilter()">Search</button>
+                <button v-on:click.prevent="clearFilter()">Clear</button>
             </div>
 
   </form>
 </template>
 
 <script>
+import landmarkService from '@/services/LandmarkService';
 export default {
     name: 'search',
     data() {
@@ -35,18 +33,23 @@ export default {
             filter: {
                 name: "",
                 category: ""
-        }
+            }
         }
     },
     methods: {
-        updateFilter() {
-            this.$store.commit("UPDATE_FILTER", this.filter)
+        filterLandmarks() {
+            landmarkService.filter(this.filter.name, this.filter.category).then((response) => {
+                this.$store.commit("POPULATE_LANDMARKS", response.data)
+            })
+        },
+        clearFilter() {
+            this.filter = {
+                name: "",
+                category: ""
+            }
+            this.filterLandmarks();
         }
-    }
-   
-       
-    
-
+    } 
 }
 </script>
 
