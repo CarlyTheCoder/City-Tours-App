@@ -2,10 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.model.Landmark;
-import org.springframework.web.bind.annotation.CrossOrigin;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RequestMethod;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
@@ -21,9 +18,18 @@ public class LandmarkController {
         this.landmarkDao = landmarkDao;
     }
 
-    @RequestMapping(value = "", method = RequestMethod.GET)
-    List<Landmark> findAll() {
+    @RequestMapping(method = RequestMethod.GET)
+    List<Landmark> getAll() {
        return landmarkDao.getAll();
+    }
+
+    @RequestMapping(path= "/filter", method = RequestMethod.GET)
+    List<Landmark> filter(@RequestParam String name, @RequestParam String category) {
+        if (name.equals("") && category.equals("")) {
+            return landmarkDao.getAll();
+        } else {
+            return landmarkDao.filter(name, category);
+        }
     }
 
 

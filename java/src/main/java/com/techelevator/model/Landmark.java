@@ -1,5 +1,8 @@
 package com.techelevator.model;
 
+import java.sql.Time;
+import java.time.LocalTime;
+
 public class Landmark {
     private long id;
     private String name;
@@ -7,14 +10,28 @@ public class Landmark {
     private String address;
     private float latitude;
     private float longitude;
-    private Integer openFrom;
-    private Integer openTo;
+    private Time sundayOpen;
+    private Time sundayClose;
+    private Time mondayOpen;
+    private Time mondayClose;
+    private Time tuesdayOpen;
+    private Time tuesdayClose;
+    private Time wednesdayOpen;
+    private Time wednesdayClose;
+    private Time thursdayOpen;
+    private Time thursdayClose;
+    private Time fridayOpen;
+    private Time fridayClose;
+    private Time saturdayOpen;
+    private Time saturdayClose;
     private String image;
+    private String description;
 
+<<<<<<< HEAD
 
 
     public Landmark(long id, String name, String category, String address,
-                    float latitude, float longitude, Integer openFrom, Integer openTo, String image) {
+                    float latitude, float longitude, Integer openFrom, Integer openTo, String image, String description) {
         this.id = id;
         this.name = name;
         this.category = category;
@@ -24,10 +41,14 @@ public class Landmark {
         this.openFrom = openFrom;
         this.openTo = openTo;
         this.image = image;
+        this.description = description;
     }
     public Landmark(){
 
     }
+=======
+    public Landmark(){}
+>>>>>>> 53ed472a1cbebc65923fd1db8537b9896838e127
 
     public long getId() {
         return id;
@@ -65,25 +86,101 @@ public class Landmark {
     public void setLongitude(float longitude) {
         this.longitude = longitude;
     }
-    public Integer getOpenFrom() {
-        return openFrom;
+
+    public Time getSundayOpen() {
+        return sundayOpen;
     }
-    public void setOpenFrom(Integer openFrom) {
-        this.openFrom = openFrom;
+    public void setSundayOpen(Time sundayOpen) {
+        this.sundayOpen = sundayOpen;
     }
-    public Integer getOpenTo() {
-        return openTo;
+    public Time getSundayClose() {
+        return sundayClose;
     }
-    public void setOpenTo(Integer openTo) {
-        this.openTo = openTo;
+    public void setSundayClose(Time sundayClose) {
+        this.sundayClose = sundayClose;
+    }
+    public Time getMondayOpen() {
+        return mondayOpen;
+    }
+    public void setMondayOpen(Time mondayOpen) {
+        this.mondayOpen = mondayOpen;
+    }
+    public Time getMondayClose() {
+        return mondayClose;
+    }
+    public void setMondayClose(Time mondayClose) {
+        this.mondayClose = mondayClose;
+    }
+    public Time getTuesdayOpen() {
+        return tuesdayOpen;
+    }
+    public void setTuesdayOpen(Time tuesdayOpen) {
+        this.tuesdayOpen = tuesdayOpen;
+    }
+    public Time getTuesdayClose() {
+        return tuesdayClose;
+    }
+    public void setTuesdayClose(Time tuesdayClose) {
+        this.tuesdayClose = tuesdayClose;
+    }
+    public Time getWednesdayOpen() {
+        return wednesdayOpen;
+    }
+    public void setWednesdayOpen(Time wednesdayOpen) {
+        this.wednesdayOpen = wednesdayOpen;
+    }
+    public Time getWednesdayClose() {
+        return wednesdayClose;
+    }
+    public void setWednesdayClose(Time wednesdayClose) {
+        this.wednesdayClose = wednesdayClose;
+    }
+    public Time getThursdayOpen() {
+        return thursdayOpen;
+    }
+    public void setThursdayOpen(Time thursdayOpen) {
+        this.thursdayOpen = thursdayOpen;
+    }
+    public Time getThursdayClose() {
+        return thursdayClose;
+    }
+    public void setThursdayClose(Time thursdayClose) {
+        this.thursdayClose = thursdayClose;
+    }
+    public Time getFridayOpen() {
+        return fridayOpen;
+    }
+    public void setFridayOpen(Time fridayOpen) {
+        this.fridayOpen = fridayOpen;
+    }
+    public Time getFridayClose() {
+        return fridayClose;
+    }
+    public void setFridayClose(Time fridayClose) {
+        this.fridayClose = fridayClose;
+    }
+    public Time getSaturdayOpen() {
+        return saturdayOpen;
+    }
+    public void setSaturdayOpen(Time saturdayOpen) {
+        this.saturdayOpen = saturdayOpen;
+    }
+    public Time getSaturdayClose() {
+        return saturdayClose;
+    }
+    public void setSaturdayClose(Time saturdayClose) {
+        this.saturdayClose = saturdayClose;
     }
 
     public String getImage() {
         return image;
     }
-
     public void setImage(String image) {
         this.image = image;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
     }
 }
 

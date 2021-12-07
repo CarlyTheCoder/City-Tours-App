@@ -9,11 +9,5 @@ public interface LandmarkDao {
 
     List<Landmark> getAll();
 
-    Landmark searchByName();
-
-    Landmark searchByLatitude();
-
-    Landmark searchByLongitude();
-
-    Landmark searchByCategory();
+    List<Landmark> filter(String name, String category);
 }
