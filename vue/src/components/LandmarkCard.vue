@@ -13,15 +13,28 @@
     <div id="info">
       <p id="category"> <b>Category: </b>{{landmark.category}} </p>
     <p id="address"> <b>Address: </b>  {{landmark.address}} </p>
-    <p id="hours"><b>Hours: </b>  {{landmark.openFrom}} to {{landmark.openTo}} </p>
+    
     </div>
     <div id="description">
     <p>Lorem ipsum dolor sit amet, fugit ignota phaedrum ut duo. Sit volumus suavitate ut, et labitur appareat repudiare vix. An sed denique appetere probatus. Dolor ocurreret pertinacia vel ex, error prodesset mea cu. Ex sea amet probatus gloriatur, ad sit movet ceteros assentior. Ne illum quaeque vis, munere singulis sit eu, quo no graecis indoctum.
     {{landmark.description}} </p>
     </div>
+  
     
    
   </div>
+
+    <div id="hours">
+      <p class="time"><b>Hours: </b> </p> 
+      <p> <b>Sunday:</b>  6am to 5pm</p>
+      <p> <b>Monday:</b>  6am to 5pm</p>
+      <p> <b>Tuesday:</b>  6am to 5pm</p>
+      <p> <b>Wednesday:</b>  6am to 5pm</p>
+      <p> <b>Thursday:</b>  6am to 5pm</p>
+      <p> <b>Friday:</b>  6am to 5pm</p>
+      <p> <b>Saturday:</b>  6am to 5pm</p>
+
+    </div>
   
  
  
@@ -53,15 +66,16 @@ methods: {
   padding: 10px;
   margin: 5px 0;
   border-radius: 5px;
-  width: 75%;
+  width: 100%;
   display: grid;
-  grid-auto-columns: 275px 1fr;
-  grid-template-areas: "image text";
+  grid-auto-columns: 275px 1fr 200px;
+  grid-template-areas: "image text hours";
 }
 #text {
   grid-area: text;
   display: flex;
   flex-direction: column;
+  padding-right: 15px; 
   
 }
 
@@ -84,6 +98,15 @@ methods: {
 #info {
   padding: 5px 0px 0 0;
 }
+#hours  {
+  grid-area: hours;
+}
+#hours p {
+padding: 0;
+margin: 8px;
+}
+
+
 
 
 
