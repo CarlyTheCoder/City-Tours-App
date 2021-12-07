@@ -21,7 +21,7 @@
                 <button v-on:click="clearFilter()">Clear</button>
             </div>
        <div class="form-element">
-                <button v-on:click.prevent="updateFilter(); ">Search</button>
+                <button v-on:click.prevent="updateFilter()">Search</button>
             </div>
 
   </form>
@@ -58,6 +58,7 @@ export default {
 }
 .form-element {
     padding: 5px;
+    
 }
 
 </style>
