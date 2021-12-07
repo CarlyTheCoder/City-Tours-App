@@ -97,7 +97,7 @@ export default {
   border-style: solid;
   border-width: 3px;
   border-radius: 10px;
-  border-color: rgb(3, 92, 114);
+  border-color: #29648A;
   padding: 0px 10px 15px 10px;
   height: auto;
   max-width: 75%;
@@ -116,7 +116,7 @@ input[type=text], input[type=password] {
   margin: 5px 0px 22px 0;
   display: inline-block;
   border: none;
-  background: #bcdae4;
+  background: #AAABB8;
 }
 
 #createAccountTitle{
