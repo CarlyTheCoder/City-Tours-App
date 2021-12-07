@@ -37,8 +37,6 @@ public class JdbcLandmarkDaoTests extends FinalCapstoneDaoTests {
         Assert.assertEquals(expected.getAddress(),actual.getAddress());
         Assert.assertEquals(expected.getLatitude(),actual.getLatitude(),0.00f);
         Assert.assertEquals(expected.getLongitude(),actual.getLongitude(),0.00f);
-        Assert.assertEquals(expected.getOpenFrom(),actual.getOpenFrom());
-        Assert.assertEquals(expected.getOpenTo(),actual.getOpenTo());
         Assert.assertEquals(expected.getImage(),actual.getImage());
     }
 
