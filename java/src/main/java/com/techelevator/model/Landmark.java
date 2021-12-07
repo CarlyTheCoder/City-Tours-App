@@ -27,28 +27,11 @@ public class Landmark {
     private String image;
     private String description;
 
-<<<<<<< HEAD
 
-
-    public Landmark(long id, String name, String category, String address,
-                    float latitude, float longitude, Integer openFrom, Integer openTo, String image, String description) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.openFrom = openFrom;
-        this.openTo = openTo;
-        this.image = image;
-        this.description = description;
-    }
-    public Landmark(){
-
-    }
-=======
     public Landmark(){}
->>>>>>> 53ed472a1cbebc65923fd1db8537b9896838e127
+
+
+
 
     public long getId() {
         return id;
