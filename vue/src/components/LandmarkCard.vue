@@ -13,7 +13,7 @@
     <div id="info">
       <p id="category"> <b>Category: </b>{{landmark.category}} </p>
     <p id="address"> <b>Address: </b>  {{landmark.address}} </p>
-    <p id="hours"><b>Hours: </b>  {{landmark.openFrom}} through {{ulandmark.openTo}} </p>
+    <p id="hours"><b>Hours: </b>  {{landmark.openFrom}} through {{landmark.openTo}} </p>
     </div>
     <div id="description">
     <p>Lorem ipsum dolor sit amet, fugit ignota phaedrum ut duo. Sit volumus suavitate ut, et labitur appareat repudiare vix. An sed denique appetere probatus. Dolor ocurreret pertinacia vel ex, error prodesset mea cu. Ex sea amet probatus gloriatur, ad sit movet ceteros assentior. Ne illum quaeque vis, munere singulis sit eu, quo no graecis indoctum.
