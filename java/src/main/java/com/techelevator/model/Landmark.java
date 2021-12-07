@@ -11,23 +11,7 @@ public class Landmark {
     private Integer openTo;
     private String image;
 
-
-
-    public Landmark(long id, String name, String category, String address,
-                    float latitude, float longitude, Integer openFrom, Integer openTo, String image) {
-        this.id = id;
-        this.name = name;
-        this.category = category;
-        this.address = address;
-        this.latitude = latitude;
-        this.longitude = longitude;
-        this.openFrom = openFrom;
-        this.openTo = openTo;
-        this.image = image;
-    }
-    public Landmark(){
-
-    }
+    public Landmark(){}
 
     public long getId() {
         return id;
@@ -77,11 +61,9 @@ public class Landmark {
     public void setOpenTo(Integer openTo) {
         this.openTo = openTo;
     }
-
     public String getImage() {
         return image;
     }
-
     public void setImage(String image) {
         this.image = image;
     }
