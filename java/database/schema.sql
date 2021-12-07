@@ -29,6 +29,7 @@ CREATE TABLE landmarks (
 	open_from int,
 	open_to int,
 	image varchar(200),
+	description varchar(1000),
 	CONSTRAINT PK_landmark PRIMARY KEY (id)
 );
 
