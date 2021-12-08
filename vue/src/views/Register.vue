@@ -100,35 +100,18 @@ export default {
   border-color: #29648A;
   padding: 0px 10px 15px 10px;
   height: auto;
-  max-width: 75%;
-  margin: auto;
+  width: 50%;
+  max-width: 400px;
+  margin-left: 40px;
+}
+
+form h1{
+  margin: 10px 0 10px 0;
+  font-size: 28px;
 }
 
 .sr-only{
   font-weight:bold;
-}
-
-* {box-sizing: border-box}
-
-input[type=text], input[type=password] {
-  width: 100%;
-  padding: 15px;
-  margin: 5px 0px 22px 0;
-  display: inline-block;
-  border: none;
-  background-color:rgb(228, 228, 228);
-}
-
-#createAccountTitle{
-  font-size: 45px;
-}
-
-
-
-input[type=text]:focus, input[type=password]:focus {
-  background-color: rgb(255, 255, 255);
-  outline: none;
-  border-radius: 5px;
 }
 
 </style>

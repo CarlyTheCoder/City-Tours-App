@@ -2,7 +2,7 @@
   <div class="home">
     <div id="main">
     <search/>
-    <landmark-list id="landmark-list"></landmark-list>
+    <landmark-list id="filtered-list"></landmark-list>
     </div>
   </div>
 </template>
@@ -33,6 +33,12 @@ export default {
 #main {
   grid-area: main;
   margin-left: 20px;
+}
+
+#filtered-list {
+  max-width: 60%;
+  margin: auto;
+  margin-top: 10px;
 }
 
 </style>

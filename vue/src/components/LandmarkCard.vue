@@ -61,9 +61,9 @@ methods: {
 
 <style>
 #landmark-card {
-  background-image: linear-gradient(to bottom left, rgb(228, 228, 228), rgba(250, 248, 248, 0));
+  background-image: linear-gradient(to bottom left, rgb(255, 255, 255), rgba(255, 255, 255, 0.644));
   padding: 10px;
-  margin: 5px 0;
+  margin: 5px;
   border-radius: 5px;
   width: 100%;
   display: grid;

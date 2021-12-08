@@ -1,6 +1,6 @@
 <template>
   <div id="landmark-list">
-    <landmark-card
+    <landmark-card class="card-in-list"
       v-for="landmark in this.$store.state.landmarks"
       v-bind:key="landmark.id"
       :landmark="landmark"
@@ -37,5 +37,9 @@ export default {
   flex-direction: column;
   align-items: center;
   justify-content: center;
+}
+
+.card-in-list {
+  margin-bottom: 5px;
 }
 </style>
