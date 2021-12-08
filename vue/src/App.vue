@@ -1,6 +1,6 @@
 <template>
   <div id="app">
-    <sidebar/>
+   
     <div id="main">
     <div id="nav">
       <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
@@ -26,9 +26,13 @@ export default {
   Font-family: calibri;
 }
 #nav {
-display: flex;
+display: block;
 justify-content: flex-end;
 padding: 0px 5px;
+position: fixed;  
+top: 0;
+right: left;
+  width: 100%;
 }
 
 .button {
@@ -42,5 +46,14 @@ padding: 0px 5px;
   display: inline-block;
   border-radius: 10px;
   margin-left: 15px;
+  }
+
+
+
+#main {
+  display: flex;
+  flex-direction: column;
 }
+
+
 </style>

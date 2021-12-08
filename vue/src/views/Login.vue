@@ -1,5 +1,7 @@
 <template>
-<div class="background">
+<div id="main">
+
+
   <div id="login" class="text-center">
     <form class="form-signin" @submit.prevent="login">
       <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
@@ -79,13 +81,17 @@ export default {
 </script>
 <style>
 html { 
-  background: url(../assets/detroit-skyline.jpg) no-repeat center center fixed; 
+  background: url(../assets/pexels-anon-702343.jpg) no-repeat center center fixed; 
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
 }
-
+#main {
+  display: flex;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
 
 </style>
 
