@@ -5,9 +5,9 @@
          <input type="text" id="search" name="search" v-model="filter.name" v-on:keyup="filterLandmarks()">
       </div>
         <div class="form-element">
-            <label for="category">Filter:</label>
+            <label for="category">Category:</label>
             <select name="category" id="category" v-model="filter.category" v-on:change="filterLandmarks()">
-                <option value="">Filter</option>
+                <option value=""></option>
                 <option value="business">Business</option>
                 <option value="convention-center">Convention Center</option>
                 <option value="monument">Monument</option>
@@ -57,7 +57,7 @@ export default {
 #search {
     display: flex;
     flex-direction: row;
-    justify-content: center;
+    justify-content: space-around;
     height: 25px;
 }
 .form-element {

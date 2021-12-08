@@ -1,14 +1,11 @@
 <template>
   <div id="app">
-   
-    <div id="main">
     <div id="nav">
       <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
       <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
-    <router-view />
+      <router-view id="view" />
     </div>
-  </div>
 </template>
 
 
@@ -23,6 +20,11 @@ export default {
 <style>
 
 #app {
+  display: grid;
+  grid-template-rows: 2em 1fr;
+  grid-template-areas: 
+    "navbar"
+    "view";
   Font-family: calibri;
 }
 
@@ -41,18 +43,15 @@ export default {
   }
 
 
-
-#main {
+#nav {
+  grid-area: navbar;
   display: flex;
-  flex-direction: column;
-  
-
+  flex-direction: row;
+  justify-content: flex-end;
 }
 
-#nav {
-  display: flex;
-  justify-content: flex-end;
-  padding: 0 5px;
+#view {
+  grid-area: view;
 }
 
 
