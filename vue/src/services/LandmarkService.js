@@ -10,8 +10,8 @@ export default {
     return http.get('/landmarks');
   },
 
-  filter(name, category) {
-    return http.get(`/landmarks/filter?name=${name}&category=${category}`)
+  filter(name, category, day) {
+    return http.get(`/landmarks/filter?name=${name}&category=${category}&day=${day}`)
   }
 
 }

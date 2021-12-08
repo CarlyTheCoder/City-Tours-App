@@ -17,6 +17,20 @@
             </select>
            
       </div>
+      <div class="form-element">
+            <label for="day">Open On:</label>
+            <select name="day" id="day" class="form-control" v-model="filter.day" v-on:change="filterLandmarks()">
+                <option value=""></option>
+                <option value="Sunday">Sunday</option>
+                <option value="Monday">Monday</option>
+                <option value="Tuesday">Tuesday</option>
+                <option value="Wednesday">Wednesday</option>
+                <option value="Thursday">Thursday</option>
+                <option value="Friday">Friday</option>
+                <option value="Saturday">Saturday</option>
+            </select>
+           
+      </div>
         <div class="form-element">
                 <button v-on:click.prevent="clearFilter()" class="button">Clear</button>
             </div>
@@ -32,20 +46,22 @@ export default {
         return {
             filter: {
                 name: "",
-                category: ""
+                category: "",
+                day: ""
             }
         }
     },
     methods: {
         filterLandmarks() {
-            landmarkService.filter(this.filter.name, this.filter.category).then((response) => {
+            landmarkService.filter(this.filter.name, this.filter.category, this.filter.day).then((response) => {
                 this.$store.commit("POPULATE_LANDMARKS", response.data)
             })
         },
         clearFilter() {
             this.filter = {
                 name: "",
-                category: ""
+                category: "",
+                day: ""
             }
             this.filterLandmarks();
         }
@@ -68,7 +84,7 @@ export default {
     column-gap: 15px;
 }
 
-#name, #category {
+#name, #category, #day {
     margin: 0;
      padding: 0.2em;
     height: 1.5rem;
