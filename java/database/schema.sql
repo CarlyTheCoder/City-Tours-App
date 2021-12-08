@@ -45,6 +45,25 @@ CREATE TABLE landmarks (
 	CONSTRAINT PK_landmark PRIMARY KEY (id)
 );
 
+CREATE TABLE itineraries (
+    id SERIAL,
+    user_id int NOT NULL,
+    name VARCHAR(100) NOT NULL,
+    starting_point int,
+    trip_date date,
+    CONSTRAINT PK_itinerary PRIMARY KEY (id),
+    CONSTRAINT FK_itinerary FOREIGN KEY (user_id) REFERENCES users (user_id)
+
+
+);
+
+CREATE TABLE itineraries_landmarks (
+
+    landmark_id int REFERENCES landmarks (id),
+    itinerary_id int REFERENCES itineraries (id),
+    PRIMARY KEY (landmark_id, itinerary_id)
+);
+
 
 
 
