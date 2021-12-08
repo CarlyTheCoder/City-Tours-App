@@ -32,8 +32,8 @@
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }" id="accountLink">Have an account?</router-link>
-      <button class="btn btn-lg btn-primary btn-block" type="submit">
+      <router-link :to="{ name: 'login' }" >Have an account?</router-link>
+      <button class="button" type="submit"  >
         Create Account
       </button>
     </form>
@@ -116,28 +116,19 @@ input[type=text], input[type=password] {
   margin: 5px 0px 22px 0;
   display: inline-block;
   border: none;
-  background: #AAABB8;
+  background-color:rgb(228, 228, 228);
 }
 
 #createAccountTitle{
   font-size: 45px;
 }
 
-#accountLink{
-  background-color: white;
-  font-weight: bold;
-  color: black;
-  border: 1px solid rgb(3, 92, 114);
-  padding: 0px 10px;
-  text-align: center;
-  text-decoration: none;
-  display: inline-block;
-  border-radius: 10px;
-}
+
 
 input[type=text]:focus, input[type=password]:focus {
   background-color: rgb(255, 255, 255);
   outline: none;
+  border-radius: 5px;
 }
 
 </style>

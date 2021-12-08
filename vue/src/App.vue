@@ -3,8 +3,8 @@
     <sidebar/>
     <div id="main">
     <div id="nav">
-      <router-link v-bind:to="{ name: 'home' }">Home</router-link>&nbsp;|&nbsp;
-      <router-link v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
+      <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     <router-view />
     </div>
@@ -13,11 +13,9 @@
 
 
 <script>
-import sidebar from "@/components/Sidebar"
+
 export default {
-components: {
-  sidebar
-}
+
 }
 
 </script>
@@ -26,22 +24,6 @@ components: {
 
 #app {
   Font-family: calibri;
-  display: grid;
-  grid-template-columns: 250px 1fr;
-  grid-template-areas: 'sidebar main';
-}
-#sidebar {
-  grid-area: sidebar;
-  position: fixed;
-  top: 0;
-  bottom: 0;
-  padding: 10px 40px 0 10px;
-  
-  
-}
-#main {
-  grid-area: main;
-  margin-left: 20px;
 }
 #nav {
 display: flex;
@@ -49,4 +31,16 @@ justify-content: flex-end;
 padding: 0px 5px;
 }
 
+.button {
+  background-color: white;
+  font-weight: bold;
+  color: black;
+  border: 1px solid rgb(3, 92, 114);
+  padding: 0px 10px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 10px;
+  margin-left: 15px;
+}
 </style>

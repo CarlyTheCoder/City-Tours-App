@@ -1,13 +1,13 @@
 <template>
   <form id="search">
       <div class="form-element">
-         <label for="name">Name:</label>
-         <input type="text" id="name" name="name" v-model="filter.name" v-on:keyup="filterLandmarks()">
+         <label for="search">Search:</label>
+         <input type="text" id="search" name="search" v-model="filter.name" v-on:keyup="filterLandmarks()">
       </div>
         <div class="form-element">
-            <label for="category">Category:</label>
+            <label for="category">Filter:</label>
             <select name="category" id="category" v-model="filter.category" v-on:change="filterLandmarks()">
-                <option value=""></option>
+                <option value="">Filter</option>
                 <option value="business">Business</option>
                 <option value="convention-center">Convention Center</option>
                 <option value="monument">Monument</option>
@@ -18,7 +18,7 @@
            
       </div>
         <div class="form-element">
-                <button v-on:click.prevent="clearFilter()">Clear</button>
+                <button v-on:click.prevent="clearFilter()" class="button">Clear</button>
             </div>
 
   </form>
@@ -58,9 +58,15 @@ export default {
     display: flex;
     flex-direction: row;
     justify-content: center;
+    height: 25px;
 }
 .form-element {
     padding: 5px;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    column-gap: 15px;
+   
     
 }
 

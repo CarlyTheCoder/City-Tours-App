@@ -16,8 +16,7 @@
     
     </div>
     <div id="description">
-    <p>Lorem ipsum dolor sit amet, fugit ignota phaedrum ut duo. Sit volumus suavitate ut, et labitur appareat repudiare vix. An sed denique appetere probatus. Dolor ocurreret pertinacia vel ex, error prodesset mea cu. Ex sea amet probatus gloriatur, ad sit movet ceteros assentior. Ne illum quaeque vis, munere singulis sit eu, quo no graecis indoctum.
-    {{landmark.description}} </p>
+   <p> {{landmark.description}} </p>
     </div>
   
     
@@ -26,7 +25,7 @@
 
     <div id="hours">
       <p class="time"><b>Hours: </b> </p> 
-      <p> <b>Sunday:</b>  6am to 5pm</p>
+      <p> <b>Sunday:</b> {{ formatTime(landmark.sundayOpen)}} to {{formatTime(landmark.sundayOpen)}} </p>
       <p> <b>Monday:</b>  6am to 5pm</p>
       <p> <b>Tuesday:</b>  6am to 5pm</p>
       <p> <b>Wednesday:</b>  6am to 5pm</p>
@@ -49,11 +48,11 @@ props: ['landmark'],
 methods: {
  formatTime(hour) {
    console.log(hour);
-    return moment(hour).format('ha')
- }
+ return moment().format('h:mm')
 }
  
   
+}
 }
 
 
@@ -104,6 +103,9 @@ methods: {
 #hours p {
 padding: 0;
 margin: 8px;
+}
+.time {
+  font-size: 1.5em;
 }
 
 
