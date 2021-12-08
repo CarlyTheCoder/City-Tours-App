@@ -7,6 +7,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Locale;
 
 @Service
 public class JdbcLandmarkDao implements LandmarkDao {
@@ -20,7 +21,6 @@ public class JdbcLandmarkDao implements LandmarkDao {
     public List<Landmark> getAll() {
          List<Landmark> landmarks = new ArrayList<>();
 
-
       String sql = "SELECT * FROM landmarks " + "ORDER BY name";
 
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql);
@@ -32,10 +32,12 @@ public class JdbcLandmarkDao implements LandmarkDao {
     }
 
     @Override
-    public List<Landmark> filter(String name, String category) {
+    public List<Landmark> filter(String name, String category, String day) {
          List<Landmark> filteredList = new ArrayList<>();
+         String weekday = day.toLowerCase();
          String sql = "SELECT * FROM landmarks WHERE name ILIKE concat('%', ?, '%') " +
                  "AND category ILIKE concat('%', ?, '%') " +
+                 "AND " + weekday + "_close > " + weekday + "_open " +
                  "ORDER BY name";
          SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name, category);
          while (results.next()) {

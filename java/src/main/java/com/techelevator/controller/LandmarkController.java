@@ -24,11 +24,11 @@ public class LandmarkController {
     }
 
     @RequestMapping(path= "/filter", method = RequestMethod.GET)
-    List<Landmark> filter(@RequestParam String name, @RequestParam String category) {
-        if (name.equals("") && category.equals("")) {
+    List<Landmark> filter(@RequestParam String name, @RequestParam String category, @RequestParam String day) {
+        if (name.equals("") && category.equals("") && day.equals("")){
             return landmarkDao.getAll();
         } else {
-            return landmarkDao.filter(name, category);
+            return landmarkDao.filter(name, category, day);
         }
     }
 
