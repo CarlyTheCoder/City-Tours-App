@@ -89,8 +89,9 @@ html {
 }
 #main {
   display: flex;
-  align-items: flex-start;
-  justify-content: flex-start;
+  flex-direction: column;
+  align-items: flex-end;
+  justify-content: flex-end;
 }
 
 </style>

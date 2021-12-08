@@ -25,15 +25,7 @@ export default {
 #app {
   Font-family: calibri;
 }
-#nav {
-display: block;
-justify-content: flex-end;
-padding: 0px 5px;
-position: fixed;  
-top: 0;
-right: left;
-  width: 100%;
-}
+
 
 .button {
   background-color: white;
@@ -53,6 +45,14 @@ right: left;
 #main {
   display: flex;
   flex-direction: column;
+  
+
+}
+
+#nav {
+  display: flex;
+  justify-content: flex-end;
+  padding: 0 5px;
 }
 
 
