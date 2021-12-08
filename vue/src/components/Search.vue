@@ -1,7 +1,7 @@
 <template>
   <form id="search">
       <div class="form-element">
-         <label for="name">Search Name:</label>
+         <label for="name">Search:</label>
          <input type="text" id="name" name="name" class="form-control" v-model="filter.name" v-on:keyup="filterLandmarks()">
       </div>
         <div class="form-element">
@@ -68,12 +68,10 @@ export default {
     column-gap: 15px;
 }
 
-#name {
+#name, #category {
     margin: 0;
-}
-
-#category, #name {
-    padding: 0.2em;
+     padding: 0.2em;
+    height: 1.5rem;
 }
 
 

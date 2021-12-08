@@ -71,6 +71,7 @@ html {
 
 #site-title {
   margin: 0;
+  padding-left: 40px;
 }
 
 * {box-sizing: border-box}
@@ -80,9 +81,10 @@ html {
   padding: 10px;
   margin: 5px 0px 15px 0;
   display: inline-block;
-  border: none;
+  border: 1px solid #29638a86;
   border-radius: 5px;
   background-color:rgb(255, 255, 255);
+ 
 }
 
 .form-control:focus {

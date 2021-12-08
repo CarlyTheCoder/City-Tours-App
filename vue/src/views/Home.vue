@@ -1,7 +1,7 @@
 <template>
   <div class="home">
     <div id="main">
-    <search/>
+    <search id="search-bar"/>
     <landmark-list id="filtered-list"></landmark-list>
     </div>
   </div>
@@ -36,9 +36,15 @@ export default {
 }
 
 #filtered-list {
-  max-width: 60%;
+  max-width: 70%;
+  min-width: 1000px;
   margin: auto;
   margin-top: 10px;
+}
+#search-bar {
+  display: flex;
+
+  margin: auto;
 }
 
 </style>

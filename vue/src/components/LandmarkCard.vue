@@ -11,7 +11,7 @@
     </div>
     
     <div id="info">
-      <p id="category"> <b>Category: </b>{{landmark.category}} </p>
+      <p id="card-category"> <b>Category: </b>{{landmark.category}} </p>
     <p id="address"> <b>Address: </b>  {{landmark.address}} </p>
     
     </div>
@@ -25,13 +25,13 @@
 
     <div id="hours">
       <p class="time"><b>Hours: </b> </p> 
-      <p> <b>Sunday:</b> {{ formatTime(landmark.sundayOpen)}} to {{formatTime(landmark.sundayOpen)}} </p>
-      <p> <b>Monday:</b>  6am to 5pm</p>
-      <p> <b>Tuesday:</b>  6am to 5pm</p>
-      <p> <b>Wednesday:</b>  6am to 5pm</p>
-      <p> <b>Thursday:</b>  6am to 5pm</p>
-      <p> <b>Friday:</b>  6am to 5pm</p>
-      <p> <b>Saturday:</b>  6am to 5pm</p>
+      <p> <b>Sunday:</b> {{ formatTime(landmark.sundayOpen)}} to {{formatTime(landmark.sundayClose)}} </p>
+      <p> <b>Monday:</b> {{ formatTime(landmark.mondayOpen)}} to {{formatTime(landmark.mondayClose)}}</p>
+      <p> <b>Tuesday:</b>  {{ formatTime(landmark.tuesdayOpen)}} to {{formatTime(landmark.tuesdayClose)}}</p>
+      <p> <b>Wednesday:</b>  {{ formatTime(landmark.wednesdayOpen)}} to {{formatTime(landmark.wednesdayClose)}}</p>
+      <p> <b>Thursday:</b> {{ formatTime(landmark.thursdayOpen)}} to {{formatTime(landmark.thursdayClose)}}</p>
+      <p> <b>Friday:</b> {{ formatTime(landmark.fridayOpen)}} to {{formatTime(landmark.fridayClose)}}</p>
+      <p> <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen)}} to {{formatTime(landmark.saturdayClose)}}</p>
 
     </div>
   
@@ -47,8 +47,8 @@ name: 'landmark-card',
 props: ['landmark'],
 methods: {
  formatTime(hour) {
-   console.log(hour);
- return moment().format('h:mm')
+   
+ return moment(hour.toString(), "hh:mm:ss").format('h:mma')
 }
  
   
@@ -67,14 +67,16 @@ methods: {
   border-radius: 5px;
   width: 100%;
   display: grid;
-  grid-auto-columns: 275px 1fr 200px;
+  grid-auto-columns: 340px 1fr 240px;
   grid-template-areas: "image text hours";
+ 
 }
 #text {
   grid-area: text;
   display: flex;
   flex-direction: column;
-  padding-right: 15px; 
+  padding-right: 20px; 
+
   
 }
 
@@ -84,18 +86,23 @@ methods: {
   margin: 0;
   font-size: 1.8em;
 }
-#category, #address, #hours {
+#card-category, #address, #hours {
   font-size: 1em;
   margin: 0px;
 }
 
+#card-category {
+  padding: 0;
+  margin-top: 5px;
+}
 #image {
   grid-area: image;
-  width: 250px;
+  width: 315px;
+  
 }
 
 #info {
-  padding: 5px 0px 0 0;
+  padding: 5px 0 0 0;
 }
 #hours  {
   grid-area: hours;
@@ -106,6 +113,7 @@ margin: 8px;
 }
 .time {
   font-size: 1.5em;
+  margin-top: 0;
 }
 
 

@@ -103,6 +103,7 @@ export default {
   width: 50%;
   max-width: 400px;
   margin-left: 40px;
+  background-image: linear-gradient(to bottom left, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.3));
 }
 
 form h1{
