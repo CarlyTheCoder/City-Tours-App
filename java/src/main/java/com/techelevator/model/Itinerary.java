@@ -7,6 +7,7 @@ public class Itinerary {
 
     private long id;
     private String name;
+    private long userId;
     private long startingPoint;
     private List<Landmark> landmarks;
     private Date tripDate;
@@ -53,5 +54,13 @@ public class Itinerary {
 
     public void setTripDate(Date tripDate) {
         this.tripDate = tripDate;
+    }
+
+    public long getUserId() {
+        return userId;
+    }
+
+    public void setUserId(long userId) {
+        this.userId = userId;
     }
 }
