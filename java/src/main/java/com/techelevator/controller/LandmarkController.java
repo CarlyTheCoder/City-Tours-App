@@ -18,6 +18,11 @@ public class LandmarkController {
         this.landmarkDao = landmarkDao;
     }
 
+    @RequestMapping(path = "/{id}", method = RequestMethod.GET)
+    Landmark getById(@PathVariable long id) {
+        return landmarkDao.getById(id);
+    }
+
     @RequestMapping(method = RequestMethod.GET)
     List<Landmark> getAll() {
        return landmarkDao.getAll();

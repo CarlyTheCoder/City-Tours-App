@@ -17,6 +17,18 @@ public class JdbcLandmarkDao implements LandmarkDao {
          this.jdbcTemplate=jdbcTemplate;
      }
 
+     @Override
+     public Landmark getById(long id) {
+         Landmark landmark = new Landmark();
+         String sql = "SELECT * FROM landmarks WHERE id = ?;";
+         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, id);
+         if (result.next()) {
+             landmark = mapRowToLandmark(result);
+         }
+         return landmark;
+     }
+
+
     @Override
     public List<Landmark> getAll() {
          List<Landmark> landmarks = new ArrayList<>();

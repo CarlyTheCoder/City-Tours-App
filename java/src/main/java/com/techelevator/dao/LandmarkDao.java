@@ -7,6 +7,8 @@ import java.util.List;
 
 public interface LandmarkDao {
 
+    Landmark getById(long id);
+
     List<Landmark> getAll();
 
     List<Landmark> filter(String name, String category, String day);

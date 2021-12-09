@@ -6,6 +6,10 @@ const http = axios.create({
 
 export default {
 
+  getById(id) {
+    return http.get(`/landmarks/${id}`)
+  },
+
   getAll() {
     return http.get('/landmarks');
   },

@@ -21,6 +21,7 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     landmarks: [],
+    activeLandmarkId: 0
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -44,6 +45,10 @@ export default new Vuex.Store({
 
     POPULATE_LANDMARKS(state, data){
       state.landmarks = data;
+    },
+
+    SET_ACTIVE_LANDMARK_ID(state, id) {
+      state.activeLandmarkId = id;
     }
   }
 })

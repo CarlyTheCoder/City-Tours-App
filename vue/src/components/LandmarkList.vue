@@ -1,23 +1,23 @@
 <template>
 
   <div id="landmark-list">
-    <landmark-card class="card-in-list"
+    <landmark-preview class="preview-in-list"
       v-for="landmark in this.$store.state.landmarks"
       v-bind:key="landmark.id"
       :landmark="landmark"
-    ></landmark-card>
+    ></landmark-preview>
   </div>
 
 </template>
 
 <script>
 
-import landmarkCard from "@/components/LandmarkCard";
+import landmarkPreview from "@/components/LandmarkPreview";
 import landmarkService from "@/services/LandmarkService";
 export default {
   name: "landmark-list",
   components: {
-    landmarkCard,
+    landmarkPreview,
   },
 
   created() {
