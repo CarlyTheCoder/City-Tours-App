@@ -1,5 +1,3 @@
-
-
 INSERT INTO landmarks (name, category, address, latitude, longitude, sunday_open, sunday_close, monday_open, monday_close, tuesday_open, tuesday_close, wednesday_open, wednesday_close,
             thursday_open, thursday_close, friday_open, friday_close, saturday_open, saturday_close, image, description)
 VALUES ('Comerica Park', 'stadium', '2100 Woodward Ave, Detroit, MI 48201', 42.3393471877925, -83.0494890306972,
