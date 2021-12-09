@@ -35,8 +35,10 @@ public class JdbcItineraryDao implements ItineraryDao {
         Itinerary itinerary = new Itinerary();
         String sql = "SELECT * FROM itineraries WHERE itineraries.id = ?";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, itineraryId);
-        itinerary = mapRowToItinerary(results);
-        itinerary.setLandmarks(landmarkDao.getByItineraryId(itinerary.getId()));
+        if (results.next()) {
+            itinerary = mapRowToItinerary(results);
+            itinerary.setLandmarks(landmarkDao.getByItineraryId(itinerary.getId()));
+        }
         return itinerary;
     }
 
