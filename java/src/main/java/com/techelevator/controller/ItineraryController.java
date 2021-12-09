@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.ItineraryDao;
 import com.techelevator.model.Itinerary;
+import org.springframework.data.annotation.CreatedBy;
 import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
@@ -17,12 +18,9 @@ public class ItineraryController {
         this.itineraryDao = itineraryDao;
     }
 
-
     @RequestMapping(path = "/users/{userId}/itineraries", method = RequestMethod.GET)
     List<Itinerary> getAll(@PathVariable long userId) {
-
         return itineraryDao.getAll(userId);
-
     }
 
     @RequestMapping(path= "/itineraries/{itineraryId}", method = RequestMethod.GET)
@@ -30,11 +28,15 @@ public class ItineraryController {
             return itineraryDao.getById(itineraryId);
     }
 
-
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/itineraries", method = RequestMethod.POST)
     Itinerary create(@RequestBody Itinerary itinerary) {
         return itineraryDao.create(itinerary);
     }
 
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/itineraries/{itineraryId}/landmarks", method = RequestMethod.POST)
+    void addLandmark(@PathVariable long itineraryId, @RequestBody long landmarkId) {
+        itineraryDao.addLandmark(itineraryId, landmarkId);
+    }
 }

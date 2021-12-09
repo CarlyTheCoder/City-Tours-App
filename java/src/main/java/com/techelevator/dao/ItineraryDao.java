@@ -8,6 +8,10 @@ import java.util.List;
 public interface ItineraryDao {
 
     List<Itinerary> getAll(long userId);
+
     Itinerary getById(long itineraryId);
+
     Itinerary create(Itinerary itinerary);
+
+    void addLandmark(long itineraryId, long landmarkId);
 }
