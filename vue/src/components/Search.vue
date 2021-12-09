@@ -1,12 +1,13 @@
 <template>
+
   <form id="search">
-      <div class="form-element">
-         <label for="name">Search:</label>
-         <input type="text" id="name" name="name" class="form-control" v-model="filter.name" v-on:keyup="filterLandmarks()">
+      <div class="search-element">
+         <label for="name">Name:</label>
+         <input type="text" id="search-name" name="name" class="input-field" v-model="filter.name" v-on:keyup="filterLandmarks()">
       </div>
-        <div class="form-element">
+        <div class="search-element">
             <label for="category">Category:</label>
-            <select name="category" id="category" class="form-control" v-model="filter.category" v-on:change="filterLandmarks()">
+            <select name="category" id="search-category" class="input-field" v-model="filter.category" v-on:change="filterLandmarks()">
                 <option value=""></option>
                 <option value="business">Business</option>
                 <option value="convention-center">Convention Center</option>
@@ -14,12 +15,11 @@
                 <option value="museum">Museum</option>
                 <option value="park">Park</option>
                 <option value="stadium">Stadium</option>
-            </select>
-           
+            </select>  
       </div>
-      <div class="form-element">
+      <div class="search-element">
             <label for="day">Open On:</label>
-            <select name="day" id="day" class="form-control" v-model="filter.day" v-on:change="filterLandmarks()">
+            <select name="day" id="search-day" class="input-field" v-model="filter.day" v-on:change="filterLandmarks()">
                 <option value=""></option>
                 <option value="Sunday">Sunday</option>
                 <option value="Monday">Monday</option>
@@ -29,16 +29,16 @@
                 <option value="Friday">Friday</option>
                 <option value="Saturday">Saturday</option>
             </select>
-           
       </div>
-        <div class="form-element">
-                <button v-on:click.prevent="clearFilter()" class="button">Clear</button>
-            </div>
-
+        <div class="search-element">
+            <button v-on:click.prevent="clearFilter()" class="button">Clear</button>
+        </div>
   </form>
+
 </template>
 
 <script>
+
 import landmarkService from '@/services/LandmarkService';
 export default {
     name: 'search',
@@ -67,16 +67,12 @@ export default {
         }
     } 
 }
+
 </script>
 
 <style>
-#search {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-around;
-    height: 25px;
-}
-.form-element {
+
+.search-element {
     padding: 5px;
     display: flex;
     flex-direction: row;
@@ -84,11 +80,8 @@ export default {
     column-gap: 15px;
 }
 
-#name, #category, #day {
+#search-name, #search-category, #search-day {
     margin: 0;
-     padding: 0.2em;
-    height: 1.5rem;
 }
-
 
 </style>

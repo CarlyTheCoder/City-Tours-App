@@ -1,4 +1,5 @@
 <template>
+
   <div id="landmark-list">
     <landmark-card class="card-in-list"
       v-for="landmark in this.$store.state.landmarks"
@@ -6,9 +7,11 @@
       :landmark="landmark"
     ></landmark-card>
   </div>
+
 </template>
 
 <script>
+
 import landmarkCard from "@/components/LandmarkCard";
 import landmarkService from "@/services/LandmarkService";
 export default {
@@ -29,9 +32,11 @@ export default {
     },
   },
 };
+
 </script>
 
 <style>
+
 #landmark-list {
   display: flex;
   flex-direction: column;
@@ -42,4 +47,5 @@ export default {
 .card-in-list {
   margin-bottom: 5px;
 }
+
 </style>

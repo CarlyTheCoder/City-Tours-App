@@ -1,38 +1,32 @@
 <template>
-  <div class="home">
-    <div id="main">
-    <search id="search-bar"/>
-    <landmark-list id="filtered-list"></landmark-list>
+
+  <div>
+    <div id="home">
+      <search id="landmark-search-bar"/>
+      <landmark-list id="filtered-list"></landmark-list>
     </div>
   </div>
+  
 </template>
 
 <script>
+
 import landmarkList from '@/components/LandmarkList';
 import search from '@/components/Search';
-
-
 export default {
- 
   name: "home",
   components: {
     landmarkList,
     search,
   }
 };
+
 </script>
 
 <style> 
-#home {
-  Font-family: calibri;
-  display: grid;
-  grid-template-columns: 1fr 5fr;
-  grid-template-areas: 'main';
-}
 
-#main {
-  grid-area: main;
-  margin-left: 20px;
+#home {
+  margin: auto;
 }
 
 #filtered-list {
@@ -41,9 +35,11 @@ export default {
   margin: auto;
   margin-top: 10px;
 }
-#search-bar {
-  display: flex;
 
+#landmark-search-bar {
+  max-width: 70%;
+  display: flex;
+  justify-content: space-around;
   margin: auto;
 }
 

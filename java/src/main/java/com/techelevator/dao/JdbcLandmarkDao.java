@@ -36,9 +36,14 @@ public class JdbcLandmarkDao implements LandmarkDao {
          List<Landmark> filteredList = new ArrayList<>();
          String weekday = day.toLowerCase();
          String sql = "SELECT * FROM landmarks WHERE name ILIKE concat('%', ?, '%') " +
-                 "AND category ILIKE concat('%', ?, '%') " +
-                 "AND " + weekday + "_close > " + weekday + "_open " +
-                 "ORDER BY name";
+                "AND category ILIKE concat('%', ?, '%') " +
+                "ORDER BY name";
+         if (!weekday.equals("")) {
+             sql = "SELECT * FROM landmarks WHERE name ILIKE concat('%', ?, '%') " +
+                     "AND category ILIKE concat('%', ?, '%') " +
+                     "AND " + weekday + "_close > " + weekday + "_open " +
+                     "ORDER BY name";
+         }
          SqlRowSet results = jdbcTemplate.queryForRowSet(sql, name, category);
          while (results.next()) {
              Landmark landmark = mapRowToLandmark(results);

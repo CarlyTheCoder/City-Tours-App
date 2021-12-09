@@ -1,5 +1,5 @@
 <template><div id="sidebar">
-    <div id="logo">
+    <div>
         <h1>Detroit Tours</h1>
     </div>
     <div>
@@ -19,13 +19,5 @@ export default {
 </script>
 
 <style>
-
-#logo {
-background-image: "@/assets/detroit-city-skyline-silhouette.jpg";
-}
-
-#sidebar {
-    border-right: 1px solid black;
-}
 
 </style>

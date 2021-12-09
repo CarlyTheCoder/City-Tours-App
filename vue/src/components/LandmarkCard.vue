@@ -1,25 +1,26 @@
 <template>
+
   <div id="landmark-card">
     <div>
-      <img id="image" v-bind:src="landmark.image" alt="" />
+      <img id="lm-card-image" v-bind:src="landmark.image" alt="" />
     </div>
 
-    <div id="text">
-      <div id="name">
-        <h2 id="title">{{ landmark.name }}</h2>
+    <div id="lm-card-text">
+      <div id="lm-card-name">
+        <h2 id="lm-card-title">{{ landmark.name }}</h2>
       </div>
 
-      <div id="info">
-        <p id="card-category"><b>Category: </b>{{ landmark.category }}</p>
-        <p id="address"><b>Address: </b> {{ landmark.address }}</p>
+      <div id="lm-card-info">
+        <p id="lm-card-category"><b>Category: </b>{{ landmark.category }}</p>
+        <p id="lm-card-address"><b>Address: </b> {{ landmark.address }}</p>
       </div>
-      <div id="description">
+      <div id="lm-card-description">
         <p>{{ landmark.description }}</p>
       </div>
     </div>
 
-    <div id="hours">
-      <p class="time"><b>Hours: </b></p>
+    <div id="lm-card-hours">
+      <p class="lm-card-time"><b>Hours: </b></p>
       <p>
         <b>Sunday:</b> {{ formatTime(landmark.sundayOpen, landmark.sundayClose) }} 
       </p>
@@ -43,9 +44,11 @@
       </p>
     </div>
   </div>
+
 </template>
 
 <script>
+
 import moment from "moment";
 export default {
   name: "landmark-card",
@@ -65,12 +68,13 @@ export default {
     },
   },
 };
+
 </script>
 
 <style>
+
 #landmark-card {
-  background-image: linear-gradient(
-    to bottom left,
+  background-image: linear-gradient(to bottom left,
     rgb(255, 255, 255),
     rgba(255, 255, 255, 0.644)
   );
@@ -82,46 +86,51 @@ export default {
   grid-auto-columns: 340px 1fr 240px;
   grid-template-areas: "image text hours";
 }
-#text {
+
+#lm-card-text {
   grid-area: text;
   display: flex;
   flex-direction: column;
   padding-right: 20px;
 }
 
-#title {
+#lm-card-title {
   padding: 0px;
   margin: 0;
   font-size: 1.8em;
 }
-#card-category,
-#address,
-#hours {
+
+#lm-card-hours {
   font-size: 1em;
   margin: 0px;
 }
 
-#card-category {
+#lm-card-category {
   padding: 0;
   margin-top: 5px;
 }
-#image {
+
+#lm-card-image {
   grid-area: image;
   width: 315px;
 }
 
-#info {
+#lm-card-info {
   padding: 5px 0 0 0;
 }
-#hours {
+
+#lm-card-hours {
   grid-area: hours;
 }
-#hours p {
+
+#lm-card-hours p {
   padding: 0;
   margin: 8px;
 }
-.time {
+
+.lm-card-time {
   font-size: 1.5em;
   margin-top: 0;
 }
+
 </style>

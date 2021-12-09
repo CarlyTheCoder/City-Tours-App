@@ -1,7 +1,8 @@
 <template>
-  <div id="register" class="text-center">
-    <form class="form-register" @submit.prevent="register">
-      <h1 id= "createAccountTitle" class="h3 mb-3 font-weight-normal">Create Account</h1>
+
+  <div class="account-container">
+    <form id="register" class="form-register" @submit.prevent="register">
+      <h1>Create Account</h1>
       <div class="alert alert-danger" role="alert" v-if="registrationErrors">
         {{ registrationErrorMsg }}
       </div>
@@ -9,7 +10,7 @@
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="input-field"
         placeholder="Username"
         v-model="user.username"
         required
@@ -19,7 +20,7 @@
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="input-field"
         placeholder="Password"
         v-model="user.password"
         required
@@ -27,22 +28,23 @@
       <input
         type="password"
         id="confirmPassword"
-        class="form-control"
+        class="input-field"
         placeholder="Confirm Password"
         v-model="user.confirmPassword"
         required
       />
-      <router-link :to="{ name: 'login' }" >Have an account?</router-link>
-      <button class="button" type="submit"  >
-        Create Account
-      </button>
+      <div id="register-actions">
+        <button class="button" type="submit" >Create Account</button>
+        <router-link :to="{ name: 'login' }" >Have an account?</router-link>
+      </div>
     </form>
   </div>
+
 </template>
 
 <script>
-import authService from '../services/AuthService';
 
+import authService from '../services/AuthService';
 export default {
   name: 'register',
   data() {
@@ -88,31 +90,41 @@ export default {
     },
   },
 };
+
 </script>
 
-
-
 <style>
-.text-center{
-  border-style: solid;
-  border-width: 3px;
-  border-radius: 10px;
-  border-color: #29648A;
-  padding: 0px 10px 15px 10px;
-  height: auto;
-  width: 50%;
-  max-width: 400px;
-  margin-left: 40px;
-  background-image: linear-gradient(to bottom left, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.3));
+
+#register {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  justify-content: flex-start;
 }
 
-form h1{
+#register h1 {
   margin: 10px 0 10px 0;
   font-size: 28px;
 }
 
-.sr-only{
+#register input{
+  width: 50%;
+}
+
+#register .sr-only {
   font-weight:bold;
+}
+
+#register-actions {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#register-actions .button {
+  margin-left: 0;
 }
 
 </style>

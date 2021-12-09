@@ -1,8 +1,8 @@
 <template>
-<div id="main">
-  <div id="login" class="text-center">
-    <form class="form-signin" @submit.prevent="login">
-      <h1 class="h3 mb-3 font-weight-normal">Please Sign In</h1>
+
+  <div class="account-container">
+    <form id="login" class="form-signin" @submit.prevent="login">
+      <h1>Please Sign In</h1>
       <div
         class="alert alert-danger"
         role="alert"
@@ -17,7 +17,7 @@
       <input
         type="text"
         id="username"
-        class="form-control"
+        class="input-field"
         placeholder="Username"
         v-model="user.username"
         required
@@ -27,22 +27,23 @@
       <input
         type="password"
         id="password"
-        class="form-control"
+        class="input-field"
         placeholder="Password"
         v-model="user.password"
         required
       />
-      <router-link :to="{ name: 'register' }">Need an account?</router-link>
-      <button type="submit" class="button">Sign in</button>
+      <div id="login-actions">
+        <button type="submit" class="button">Sign in</button>
+        <router-link :to="{ name: 'register' }">Need an account?</router-link>
+      </div>
     </form>
   </div>
-</div>
 
 </template>
 
 <script>
-import authService from "../services/AuthService";
 
+import authService from "../services/AuthService";
 export default {
   name: "login",
   components: {},
@@ -76,14 +77,41 @@ export default {
     }
   }
 };
+
 </script>
+
 <style>
 
-#main {
+#login {
   display: flex;
   flex-direction: column;
-  align-items: flex-end;
-  justify-content: flex-end;
+  align-items: flex-start;
+  justify-content: flex-start;
+}
+
+#login h1 {
+  margin: 10px 0 10px 0;
+  font-size: 28px;
+}
+
+#login input{
+  width: 50%;
+}
+
+#login .sr-only {
+  font-weight:bold;
+}
+
+#login-actions {
+  width: 100%;
+  margin-top: 10px;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+
+#login-actions .button {
+  margin-left: 0;
 }
 
 </style>

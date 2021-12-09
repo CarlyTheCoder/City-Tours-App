@@ -1,6 +1,7 @@
 <template>
+
   <div id="app">
-    <div id="nav">
+    <div id="site-nav">
      <div>
        <h1 id="site-title">Detroit City Tours</h1>
      </div>
@@ -9,18 +10,12 @@
       <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
     </div>
     </div>
-      <router-view id="view" />
+      <router-view id="main-view" />
     </div>
+
 </template>
 
-
-<script>
-
-export default {
-
-}
-
-</script>
+<script></script>
 
 <style>
 
@@ -30,6 +25,7 @@ html {
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+  box-sizing: border-box;
 }
 
 #app {
@@ -41,12 +37,11 @@ html {
   Font-family: calibri;
 }
 
-
 .button {
   background-color: white;
   font-weight: bold;
   color: black;
-  border: 1px solid rgb(3, 92, 114);
+  border: 1px solid rgb(41, 133, 156);
   padding: 0px 10px;
   text-align: center;
   text-decoration: none;
@@ -54,10 +49,14 @@ html {
   border-radius: 10px;
   margin-left: 15px;
   height: 1.5em
-  }
+}
 
+.button:hover {
+  background-color: rgb(242, 246, 255);
+  border: 1px solid white;
+}
 
-#nav {
+#site-nav {
   grid-area: navbar;
   display: flex;
   flex-direction: row;
@@ -65,33 +64,48 @@ html {
   align-items: flex-center;
 }
 
-#view {
-  grid-area: view;
-}
-
 #site-title {
   margin: 0;
   padding-left: 40px;
 }
 
-* {box-sizing: border-box}
+#main-view {
+  grid-area: view;
+}
 
-.form-control {
+.input-field {
   width: 100%;
-  padding: 10px;
+  padding: 0.2rem;
   margin: 5px 0px 15px 0;
   display: inline-block;
   border: 1px solid #29638a86;
   border-radius: 5px;
-  background-color:rgb(255, 255, 255);
- 
+  background-color: white;
 }
 
-.form-control:focus {
-  background-color: rgb(255, 255, 255);
+.input-field:hover {
+  background-color: rgb(242, 246, 255);
+  border: 1px solid white;
+}
+
+.input-field:focus {
+  background-color: white;
   outline: none;
   border-radius: 5px;
   border: 2px solid #29638ac5
+}
+
+.account-container{
+  border-style: solid;
+  border-width: 3px;
+  border-radius: 10px;
+  border-color: #29648A;
+  padding: 0px 10px 15px 10px;
+  height: auto;
+  width: 50%;
+  max-width: 400px;
+  margin-left: 40px;
+  background-image: linear-gradient(to bottom left, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.3));
 }
 
 </style>
