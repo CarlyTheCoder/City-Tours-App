@@ -7,5 +7,6 @@ import java.util.List;
 
 public interface ItineraryDao {
 
-    List<Itinerary> filter();
+    List<Itinerary> getItinerariesByUserId(int userId);
+    List<Landmark> getLandmarksByItineraryId(int itineraryId);
 }
