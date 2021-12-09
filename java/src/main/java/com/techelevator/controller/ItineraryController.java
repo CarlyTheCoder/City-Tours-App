@@ -24,7 +24,7 @@ public class ItineraryController {
 
     }
 
-    @RequestMapping(path= "itineraries/{itineraryId}", method = RequestMethod.GET)
+    @RequestMapping(path= "/itineraries/{itineraryId}", method = RequestMethod.GET)
     Itinerary getById( @PathVariable long itineraryId) {
             return itineraryDao.getById(itineraryId);
     }
