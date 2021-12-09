@@ -51,6 +51,7 @@ export default {
             }
         }
     },
+
     methods: {
         filterLandmarks() {
             landmarkService.filter(this.filter.name, this.filter.category, this.filter.day).then((response) => {

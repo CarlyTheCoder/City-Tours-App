@@ -6,6 +6,7 @@ import Login from '../views/Login.vue'
 import Logout from '../views/Logout.vue'
 import Register from '../views/Register.vue'
 import LandmarkDetails from '../views/LandmarkDetails.vue'
+import Itineraries from '../views/Itineraries.vue'
 
 Vue.use(Router)
 
@@ -61,7 +62,15 @@ const router = new Router({
       meta: {
         requiresAuth: true
       }
-    }
+    },
+      {
+        path: "/:userId/itineraries",
+        name: "itineraries",
+        component: Itineraries,
+        meta: {
+          requiresAuth: true
+        }
+      }
   ]
 })
 

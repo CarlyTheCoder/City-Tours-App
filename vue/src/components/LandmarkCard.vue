@@ -43,8 +43,20 @@
         <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
       </p>
     </div>
-  </div>
 
+
+  <!--<div class="rating">
+   Thumbs up 
+  <div class="like">
+    <i class="fa fa-thumbs-up fa-3x like" aria-hidden="true" v-onClick:class = "(thumbsUp === true) ? 'active': '' "></i>
+  </div>
+   Thumbs down 
+  <div class="dislike">
+    <i class="fa fa-thumbs-down fa-3x like" aria-hidden="true"></i>
+    </div>
+  </div> -->
+
+  </div>
 </template>
 
 <script>
@@ -53,6 +65,12 @@ import moment from "moment";
 export default {
   name: "landmark-card",
   props: ["landmark"],
+    // data() {
+    //     return {
+    //         thumbsUp = false,
+    //         thumbsDown = false
+    //     }
+    // },
   methods: {
     formatTime(hourA, hourB) {
       let timeA = moment(hourA.toString(), "hh:mm:ss").format("h:mma");
@@ -66,8 +84,18 @@ export default {
         return timeA + " to " + timeB;
       }
     },
+   // toggleLike(){
+    
+    
   },
 };
+
+
+// $('.like, .dislike').on('click', function() {
+//     event.preventDefault();
+//     $('.active').removeClass('active');
+//     $(this).addClass('active');
+// });
 
 </script>
 
@@ -132,5 +160,32 @@ export default {
   font-size: 1.5em;
   margin-top: 0;
 }
+
+.rating {
+  display: inline-block;
+  width: 100%;
+  margin-top: 40px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.like,
+.dislike {
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px;
+}
+
+.dislike:hover,
+.like:hover {
+  color: #2EBDD1;
+  transition: all .2s ease-in-out;
+  transform: scale(1.1);
+}
+
+.active {
+  color: #2EBDD1;
+}
+
 
 </style>

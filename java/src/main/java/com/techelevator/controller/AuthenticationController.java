@@ -63,6 +63,12 @@ public class AuthenticationController {
         }
     }
 
+    @RequestMapping(value= "/users/{username}", method = RequestMethod.GET)
+    public long getUserIdByUsername(@PathVariable String username) {
+       return userDao.findIdByUsername(username);
+    }
+
+
     /**
      * Object to return as body in JWT Authentication.
      */
@@ -94,5 +100,6 @@ public class AuthenticationController {
 			this.user = user;
 		}
     }
+
 }
 
