@@ -5,28 +5,21 @@ import java.util.List;
 
 public class Itinerary {
 
-    private int id;
+    private long id;
     private String name;
-    private int startingPoint;
+    private long startingPoint;
     private List<Landmark> landmarks;
-    private Date visitDate;
+    private Date tripDate;
 
     public Itinerary() {
+
     }
 
-    public Itinerary(int id, String name, int startingPoint, List<Landmark> landmarks, Date visitDate) {
-        this.id = id;
-        this.name = name;
-        this.startingPoint = startingPoint;
-        this.landmarks = landmarks;
-        this.visitDate = visitDate;
-    }
-
-    public int getId() {
+    public long getId() {
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(long id) {
         this.id = id;
     }
 
@@ -38,11 +31,11 @@ public class Itinerary {
         this.name = name;
     }
 
-    public int getStartingPoint() {
+    public long getStartingPoint() {
         return startingPoint;
     }
 
-    public void setStartingPoint(int startingPoint) {
+    public void setStartingPoint(long startingPoint) {
         this.startingPoint = startingPoint;
     }
 
@@ -54,11 +47,11 @@ public class Itinerary {
         this.landmarks = landmarks;
     }
 
-    public Date getVisitDate() {
-        return visitDate;
+    public Date getTripDate() {
+        return tripDate;
     }
 
-    public void setVisitDate(Date visitDate) {
-        this.visitDate = visitDate;
+    public void setTripDate(Date tripDate) {
+        this.tripDate = tripDate;
     }
 }

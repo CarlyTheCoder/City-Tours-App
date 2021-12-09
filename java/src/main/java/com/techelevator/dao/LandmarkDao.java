@@ -10,4 +10,5 @@ public interface LandmarkDao {
     List<Landmark> getAll();
 
     List<Landmark> filter(String name, String category, String day);
+    List<Landmark> getByItineraryId(long itineraryId);
 }
