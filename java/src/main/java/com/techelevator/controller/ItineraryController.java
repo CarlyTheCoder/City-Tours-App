@@ -18,10 +18,10 @@ public class ItineraryController {
     }
 
 
-    @RequestMapping(path= "/filter", method = RequestMethod.GET)
-    List<Itinerary> filter() {
+    @RequestMapping(path= "/users/{userId}", method = RequestMethod.GET)
+    List<Itinerary> getItinerariesByUserId(@PathVariable int userId) {
 
-            return itineraryDao.filter();
+            return itineraryDao.getItinerariesByUserId(userId);
 
     }
 
