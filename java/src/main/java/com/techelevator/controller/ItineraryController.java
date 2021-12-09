@@ -8,7 +8,6 @@ import java.util.List;
 
 @RestController
 @CrossOrigin
-@RequestMapping(path = "/itineraries")
 public class ItineraryController {
 
     private ItineraryDao itineraryDao;
@@ -18,11 +17,16 @@ public class ItineraryController {
     }
 
 
-    @RequestMapping(path= "/users/{userId}", method = RequestMethod.GET)
-    List<Itinerary> getItinerariesByUserId(@PathVariable int userId) {
+    @RequestMapping(path = "/users/{userId}/itineraries", method = RequestMethod.GET)
+    List<Itinerary> getAll(@PathVariable long userId) {
 
-            return itineraryDao.getItinerariesByUserId(userId);
+        return itineraryDao.getAll(userId);
 
+    }
+
+    @RequestMapping(path= "itineraries/{itineraryId}", method = RequestMethod.GET)
+    Itinerary getById( @PathVariable long itineraryId) {
+            return itineraryDao.getById(itineraryId);
     }
 
 }
