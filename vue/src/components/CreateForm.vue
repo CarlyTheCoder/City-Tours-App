@@ -1,12 +1,12 @@
 <template>
   <form id="itinerary-form" v-on:submit.prevent="createItinerary()">
       <label for="itinerary-name">Name:</label>
-      <input type="text" name="name" id="itinerary-name" class="input-field" v-model="itinerary.name">
+      <input type="text" name="name" id="itinerary-name" class="input-field" v-model="itinerary.name" required>
       <label for="itinerary-trip-date">Itinerary Date:</label>
       <input type="date" name="tripDate" id="itinerary-trip-date" class="input-field" v-model="itinerary.tripDate">
-      <label for="itinerary-start">Starting Point:</label>  
+      <label for="itinerary-start" required>Starting Point:</label>  
       <input type="number" name="startingPoint" id="itinerary-start" class="input-field" v-model="itinerary.startingPoint">
-      <input type="submit" name="submit" id="Submit" class="button">  
+      <input type="submit" name="submit" id="Submit" class="button" required>  
   </form>
 </template>
 
@@ -31,7 +31,7 @@ export default {
             itineraryService.create(this.itinerary).then((response) => {
                 if (response.status === 201) {
                     alert("DO STUFF HERE, Date: " + this.itinerary.tripDate)
-                    this.getByUserId;
+                    this.getByUserId();
                     
                 }
             })
