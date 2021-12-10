@@ -44,4 +44,10 @@ public class ItineraryController {
     void deleteItineraries(@PathVariable  long id){
         itineraryDao.delete(id);
     }
+
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path = "/landmark/{landmarkId}/itinerary/{itineraryId}", method = RequestMethod.DELETE)
+    void deleteLandmarkFromItinerary(@PathVariable long landmarkId, @PathVariable long itineraryId) {
+        itineraryDao.deleteLandmarkFromItinerary(landmarkId, itineraryId);
+    }
 }

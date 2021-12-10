@@ -58,7 +58,7 @@ public class JdbcItineraryDao implements ItineraryDao {
                 "VALUES (?, ?);";
         jdbcTemplate.update(sql, itineraryID, landmarkId);
     }
-     @ResponseStatus(HttpStatus.OK)
+
     @Override
     public void delete(long id) {
         landmarkDao.deleteLandmarkByItineraryId(id);
@@ -67,6 +67,11 @@ public class JdbcItineraryDao implements ItineraryDao {
 
     }
 
+    @Override
+    public void deleteLandmarkFromItinerary(long landmarkId, long itineraryId) {
+        String sql = "DELETE FROM itineraries_landmarks WHERE landmark_id = ? AND itinerary_id = ?;";
+        jdbcTemplate.update(sql, landmarkId, itineraryId);
+    }
 
     private  Itinerary mapRowToItinerary(SqlRowSet result) {
 
