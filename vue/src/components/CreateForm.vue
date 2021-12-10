@@ -31,10 +31,16 @@ export default {
             itineraryService.create(this.itinerary).then((response) => {
                 if (response.status === 201) {
                     alert("DO STUFF HERE, Date: " + this.itinerary.tripDate)
+                    this.getByUserId;
                     
                 }
             })
-        }
+        },
+         getByUserId() {
+      itineraryService.getByUserId(this.$route.params.userId).then((response) => {
+        this.$store.commit("POPULATE_ITINERARIES", response.data);
+      });
+    }
     }
 }
 </script>

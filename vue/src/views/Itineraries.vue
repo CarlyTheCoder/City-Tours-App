@@ -2,9 +2,10 @@
 
   <div>
       <div id="itineraries">
-        <button class="button">Create New Itinerary</button>
+        <button class="button" v-on:click="toggleCreateForm">Create New Itinerary</button>
+         <create-form v-if="showCreateForm"></create-form>
           <itinerary-list id="filtered-itinerary-list"></itinerary-list>
-        <create-form></create-form>
+       
       </div>
   </div>
 
@@ -16,9 +17,20 @@ import itineraryList from '@/components/ItineraryList';
 import createForm from '@/components/CreateForm'
 export default {
     name: "itineraries",
+    data() {
+      return {
+        showCreateForm: false
+      }
+    },
+    
     components: {
         itineraryList,
         createForm
+    },
+    methods: {
+      toggleCreateForm() {
+        this.showCreateForm = ! this.showCreateForm;
+      }
     }
 }
 

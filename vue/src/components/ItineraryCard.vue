@@ -18,8 +18,8 @@ export default {
           console.log("delete")
           itineraryService.delete(this.itinerary.id).then(response => {
               if (response.status === 200) {
+                  this.$router.push({name:"itineraries", params:{userId: this.$store.state.user.id}});
                   this.getByUserId();
-                  this.$router.push({name:"itineraries",params:{userId:this.$store.user.id}});
               }
           })
       },
