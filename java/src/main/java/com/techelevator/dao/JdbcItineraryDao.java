@@ -1,9 +1,11 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Itinerary;
+import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -55,6 +57,14 @@ public class JdbcItineraryDao implements ItineraryDao {
         String sql = "INSERT INTO itineraries_landmarks (itinerary_id, landmark_id) " +
                 "VALUES (?, ?);";
         jdbcTemplate.update(sql, itineraryID, landmarkId);
+    }
+     @ResponseStatus(HttpStatus.OK)
+    @Override
+    public void delete(long id) {
+        landmarkDao.deleteLandmarkByItineraryId(id);
+        String sql=" DELETE FROM itineraries WHERE id=?";
+        jdbcTemplate.update(sql,id);
+
     }
 
 

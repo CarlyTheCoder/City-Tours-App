@@ -13,4 +13,5 @@ public interface LandmarkDao {
 
     List<Landmark> filter(String name, String category, String day);
     List<Landmark> getByItineraryId(long itineraryId);
+    void deleteLandmarkByItineraryId(long id);
 }

@@ -14,4 +14,6 @@ public interface ItineraryDao {
     Itinerary create(Itinerary itinerary);
 
     void addLandmark(long itineraryId, long landmarkId);
+    void delete(long id);
+
 }

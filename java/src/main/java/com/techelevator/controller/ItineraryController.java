@@ -39,4 +39,9 @@ public class ItineraryController {
     void addLandmark(@PathVariable long itineraryId, @RequestBody long landmarkId) {
         itineraryDao.addLandmark(itineraryId, landmarkId);
     }
+    @ResponseStatus(HttpStatus.OK)
+    @RequestMapping(path="/itineraries/{id}", method = RequestMethod.DELETE)
+    void deleteItineraries(@PathVariable  long id){
+        itineraryDao.delete(id);
+    }
 }

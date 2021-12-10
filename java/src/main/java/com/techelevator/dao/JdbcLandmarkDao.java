@@ -78,6 +78,11 @@ public class JdbcLandmarkDao implements LandmarkDao {
         }
         return filteredList;
     }
+    @Override
+    public void deleteLandmarkByItineraryId(long id) {
+        String sql = "  DELETE FROM itineraries_landmarks WHERE itinerary_id=?";
+        jdbcTemplate.update(sql, id);
+    }
 
     private  Landmark mapRowToLandmark(SqlRowSet result) {
 
