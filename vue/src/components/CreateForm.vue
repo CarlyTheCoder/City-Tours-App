@@ -31,6 +31,7 @@ export default {
             itineraryService.create(this.itinerary).then((response) => {
                 if (response.status === 201) {
                     alert("DO STUFF HERE, Date: " + this.itinerary.tripDate)
+                    
                 }
             })
         }

@@ -2,18 +2,18 @@
 
     <div>
         <div id="itinerary-details">
-            <itinerary-preview  v-bind:itinerary="this.itinerary"></itinerary-preview>
+            <itinerary-card  v-bind:itinerary="this.itinerary"></itinerary-card>
         </div>
     </div>
 
 </template>
 
 <script>
-import itineraryPreview from '@/components/ItineraryPreview'
+import itineraryCard from '@/components/ItineraryCard'
 import itineraryService from '@/services/ItineraryService';
 export default {
     components: {
-        itineraryPreview
+        itineraryCard
     },
     data() {
         return {

@@ -16,5 +16,9 @@ export default {
 
     create(itinerary){
         return http.post(`/itineraries`, itinerary)
+    },
+
+    delete(itineraryId) {
+        return http.delete(`/itineraries/${itineraryId}`)
     }
 }
