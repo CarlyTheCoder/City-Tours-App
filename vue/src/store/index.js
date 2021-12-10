@@ -21,7 +21,6 @@ export default new Vuex.Store({
     token: currentToken || '',
     user: currentUser || {},
     landmarks: [],
-    activeLandmarkId: 0,
     itineraries: [],
     activeItineraryId: 0
   },

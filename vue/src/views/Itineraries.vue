@@ -1,7 +1,9 @@
 <template>
    <div>
     <div id="itineraries">
+      <button class="button">Create New Itinerary</button>
       <itinerary-list id="filtered-itinerary-list"></itinerary-list>
+      <create-form></create-form>
     </div>
   </div>
 
@@ -9,14 +11,16 @@
 
 <script>
 
-import ItineraryList from '@/components/ItineraryList';
-
+import itineraryList from '@/components/ItineraryList';
+import createForm from '@/components/CreateForm'
 export default {
     name: "itineraries",
     components: {
-        ItineraryList
+        itineraryList,
+        createForm
     }
 }
+
 </script>
 
 <style>

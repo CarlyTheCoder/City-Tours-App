@@ -10,11 +10,11 @@ export default {
         return http.get(`/users/${userId}/itineraries`)
     },
 
-    getByItineraryId(itineraryId){
+    getById(itineraryId){
         return http.get(`itineraries/${itineraryId}`)
     },
 
-    createItinerary(itinerary){
+    create(itinerary){
         return http.post(`/itineraries`, itinerary)
     }
 }

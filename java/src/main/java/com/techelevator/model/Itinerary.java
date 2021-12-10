@@ -13,7 +13,6 @@ public class Itinerary {
     private Date tripDate;
 
     public Itinerary() {
-
     }
 
     public long getId() {

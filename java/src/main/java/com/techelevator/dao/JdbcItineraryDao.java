@@ -1,15 +1,10 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Itinerary;
-import com.techelevator.model.Landmark;
-import org.springframework.http.HttpStatus;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.validation.Valid;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -70,7 +65,6 @@ public class JdbcItineraryDao implements ItineraryDao {
         itinerary.setUserId(result.getLong("user_id"));
         itinerary.setName(result.getString("name"));
         itinerary.setStartingPoint(result.getLong("starting_point"));
-
         itinerary.setTripDate(result.getDate("trip_date"));
 
         return itinerary;

@@ -5,13 +5,6 @@
           <h2> {{itinerary.name}}</h2>
           <p>Date: {{itinerary.tripDate}}</p>
       </div>
-    
-       <div id="itinerary-preview-landmark-preview" v-for="landmark in itinerary.landmarks" v-bind:key="landmark.id">
-      
-      <h3>{{landmark.name}}</h3>
-      <img v-bind:src="landmark.imageWide">
-    </div>
-
     </div>
    
 
