@@ -22,7 +22,9 @@ export default new Vuex.Store({
     user: currentUser || {},
     landmarks: [],
     itineraries: [],
-    activeItineraryId: 0
+    activeItinerary: {},
+    activeItineraryId: 0,
+    showCreateForm: false
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -58,6 +60,10 @@ export default new Vuex.Store({
 
     SET_ACTIVE_ITINERARY_ID(state, id){
       state.activeItineraryId = id;
+    },
+
+    SET_ACTIVE_ITINERARY(state, itinerary){
+      state.activeItinerary = itinerary;
     }
   }
 })

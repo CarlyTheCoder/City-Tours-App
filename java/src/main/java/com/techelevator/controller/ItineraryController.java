@@ -35,10 +35,11 @@ public class ItineraryController {
     }
 
     @ResponseStatus(HttpStatus.CREATED)
-    @RequestMapping(path = "/itineraries/{itineraryId}/landmarks", method = RequestMethod.POST)
-    void addLandmark(@PathVariable long itineraryId, @RequestBody long landmarkId) {
+    @RequestMapping(path = "/itineraries/{itineraryId}/landmarks/{landmarkId}", method = RequestMethod.POST)
+    void addLandmark(@PathVariable long itineraryId, @PathVariable long landmarkId) {
         itineraryDao.addLandmark(itineraryId, landmarkId);
     }
+
     @ResponseStatus(HttpStatus.OK)
     @RequestMapping(path="/itineraries/{id}", method = RequestMethod.DELETE)
     void deleteItineraries(@PathVariable  long id){
@@ -46,8 +47,8 @@ public class ItineraryController {
     }
 
     @ResponseStatus(HttpStatus.OK)
-    @RequestMapping(path = "/landmark/{landmarkId}/itinerary/{itineraryId}", method = RequestMethod.DELETE)
-    void deleteLandmarkFromItinerary(@PathVariable long landmarkId, @PathVariable long itineraryId) {
-        itineraryDao.deleteLandmarkFromItinerary(landmarkId, itineraryId);
+    @RequestMapping(path = "/itineraries/{itineraryId}/landmarks/{landmarkId}", method = RequestMethod.DELETE)
+    void deleteLandmarkFromItinerary( @PathVariable long itineraryId, @PathVariable long landmarkId) {
+        itineraryDao.deleteLandmarkFromItinerary(itineraryId, landmarkId);
     }
 }
