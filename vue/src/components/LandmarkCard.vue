@@ -44,6 +44,10 @@
       </p>
     </div>
 
+    <div id="lm-card-wide-img">
+      <img v-bind:src="landmark.imageWide">
+    </div>
+
 
   <!--<div class="rating">
    Thumbs up 
@@ -112,7 +116,16 @@ export default {
   width: 100%;
   display: grid;
   grid-auto-columns: 340px 1fr 240px;
-  grid-template-areas: "image text hours";
+  grid-template-areas: "image text hours" "wide-img wide-img wide-img";
+  row-gap: 15px;
+}
+
+#lm-card-wide-img {
+  grid-area: wide-img;
+}
+
+#lm-card-wide-img img {
+  width: 100%;
 }
 
 #lm-card-text {

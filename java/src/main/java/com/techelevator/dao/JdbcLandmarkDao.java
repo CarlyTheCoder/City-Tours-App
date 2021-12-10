@@ -103,6 +103,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
         landmark.setSaturdayOpen(result.getTime("saturday_open"));
         landmark.setSaturdayClose(result.getTime("saturday_close"));
         landmark.setImage(result.getString("image"));
+        landmark.setImageWide(result.getString("image_wide"));
         landmark.setDescription(result.getString("description"));
         return landmark;
     }

@@ -25,6 +25,7 @@ public class Landmark {
     private Time saturdayOpen;
     private Time saturdayClose;
     private String image;
+    private String imageWide;
     private String description;
 
 
@@ -158,6 +159,15 @@ public class Landmark {
     public String getImage() {
         return image;
     }
+
+    public String getImageWide() {
+        return imageWide;
+    }
+
+    public void setImageWide(String imageWide) {
+        this.imageWide = imageWide;
+    }
+
     public void setImage(String image) {
         this.image = image;
     }
