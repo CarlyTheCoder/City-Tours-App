@@ -17,6 +17,18 @@
       <div id="lm-card-description">
         <p>{{ landmark.description }}</p>
       </div>
+      <div id="lm-card-buttons">
+        <router-link v-bind:to="{ name: 'home'}">
+          <button class="button">Add To Itinerary</button>
+        </router-link>
+        <router-link v-bind:to="{ name: 'home'}">
+          <button class="button">Back To Search</button>
+        </router-link>
+      </div>
+      
+     
+      
+      
     </div>
 
     <div id="lm-card-hours">
@@ -172,6 +184,12 @@ export default {
 .lm-card-time {
   font-size: 1.5em;
   margin-top: 0;
+}
+
+#lm-card-buttons {
+  display: flex;
+  align-items: flex-start;
+  margin: 0px;
 }
 
 .rating {
