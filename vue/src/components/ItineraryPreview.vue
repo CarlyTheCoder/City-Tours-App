@@ -1,12 +1,13 @@
 <template>
 
+  <router-link v-bind:to="{ name: 'itinerary', params: {id: itinerary.id} }">
     <div id="itinerary-preview">
       <div>
           <h2> {{itinerary.name}}</h2>
           <p>Date: {{itinerary.tripDate}}</p>
       </div>
     </div>
-   
+  </router-link>
 
 </template>
 
@@ -33,6 +34,13 @@ name: "itinerary-preview",
   min-width: 1000px;
   margin: auto;
   margin-top: 10px;
+}
+
+#itinerary-preview:hover {
+  background-image: linear-gradient(to bottom left,
+    rgb(219, 219, 219),
+    rgba(204, 204, 204, 0.644)
+  );
 }
 
 #itinerary-preview h2 {

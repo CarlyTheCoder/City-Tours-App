@@ -1,10 +1,11 @@
 <template>
-   <div>
-    <div id="itineraries">
-      <button class="button">Create New Itinerary</button>
-      <itinerary-list id="filtered-itinerary-list"></itinerary-list>
-      <create-form></create-form>
-    </div>
+
+  <div>
+      <div id="itineraries">
+        <button class="button">Create New Itinerary</button>
+          <itinerary-list id="filtered-itinerary-list"></itinerary-list>
+        <create-form></create-form>
+      </div>
   </div>
 
 </template>
@@ -24,5 +25,11 @@ export default {
 </script>
 
 <style>
+
+a:-webkit-any-link {
+    color: black;
+    cursor: pointer;
+    text-decoration: none;
+}
 
 </style>
