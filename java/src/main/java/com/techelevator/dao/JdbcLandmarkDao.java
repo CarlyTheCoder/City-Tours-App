@@ -84,6 +84,13 @@ public class JdbcLandmarkDao implements LandmarkDao {
         jdbcTemplate.update(sql, id);
     }
 
+    @Override
+    public int getLikes(long landmarkId) {
+        String sql = "INSERT INTO landmarks_users (user_id, landmark_id) VALUES (1,1);";
+        jdbcTemplate.
+    }
+
+
     private  Landmark mapRowToLandmark(SqlRowSet result) {
 
         Landmark landmark = new Landmark();

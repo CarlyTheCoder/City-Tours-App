@@ -65,6 +65,12 @@ CREATE TABLE itineraries_landmarks (
     PRIMARY KEY (landmark_id, itinerary_id)
 );
 
+CREATE TABLE landmarks_users (
+    landmark_id int REFERENCES landmarks (id),
+    user_id int REFERENCES users (user_id),
+    PRIMARY KEY (landmark_id, user_id)
+);
+
 
 
 

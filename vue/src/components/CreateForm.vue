@@ -32,6 +32,7 @@ export default {
                 if (response.status === 201) {
                     alert("DO STUFF HERE, Date: " + this.itinerary.tripDate)
                     this.getByUserId();
+
                     
                 }
             })
