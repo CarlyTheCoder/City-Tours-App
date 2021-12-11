@@ -26,6 +26,20 @@
         <router-link v-bind:to="{ name: 'home'}">
           <button class="button">Back To Search</button>
         </router-link>
+
+      <div class="rating">
+    
+      <div class="like">
+        <p>{{likes}}</p>
+        <button id="likeButton" class="thumbButton">Like</button>
+      </div>
+     
+      <div class="dislike">
+        <p>{{dislikes}}</p>
+        <button id="dislikeButton" class="thumbButton">Dislike</button>
+      </div>
+    </div> 
+
       </div>
     </div>
     <div id="lm-card-hours">
@@ -52,26 +66,17 @@
         <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
       </p>
     </div>
+
     <div id="lm-card-wide-img">
       <img v-bind:src="landmark.imageWide">
     </div>
-
-  <!--<div class="rating">
-   Thumbs up 
-  <div class="like">
-    <i class="fa fa-thumbs-up fa-3x like" aria-hidden="true" v-onClick:class = "(thumbsUp === true) ? 'active': '' "></i>
-  </div>
-   Thumbs down 
-  <div class="dislike">
-    <i class="fa fa-thumbs-down fa-3x like" aria-hidden="true"></i>
-    </div>
-  </div> -->
 
   </div>
 </template>
 
 <script>
-import itineraryService from '@/services/ItineraryService'
+import itineraryService from '@/services/ItineraryService';
+import landmarkService from '@/services/LandmarkService';
 import moment from "moment";
 export default {
   name: "landmark-card",
@@ -80,8 +85,6 @@ export default {
         return {
           itineraries: {},
           itineraryId: ""
-            // thumbsUp = false,
-            // thumbsDown = false
         }
     },
   created() {
@@ -89,6 +92,18 @@ export default {
       this.itineraries = response.data
     })
   },
+  computed: {
+
+    likes(){
+      let likes = this.getLikes();
+      return likes;
+      },
+    dislikes(){
+      let dislikes = this.getDislikes();
+      return dislikes;
+    } 
+  },
+
   methods: {
     formatTime(hourA, hourB) {
       let timeA = moment(hourA.toString(), "hh:mm:ss").format("h:mma");
@@ -111,18 +126,22 @@ export default {
         }
       })
     },
-   // toggleLike(){
     
-    
-  },
+    getLikes(){
+
+      landmarkService.getLikes(this.landmark.id).then((response) => {
+        this.likes = response.data;
+      })},
+
+
+    getDislikes(){
+      landmarkService.getDislikes(this.landmark.id).then((response) => {
+        this.dislikes = response.data;
+      })
+    }
+  }
 };
 
-
-// $('.like, .dislike').on('click', function() {
-//     event.preventDefault();
-//     $('.active').removeClass('active');
-//     $(this).addClass('active');
-// });
 
 </script>
 
