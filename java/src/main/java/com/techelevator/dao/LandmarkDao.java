@@ -14,4 +14,11 @@ public interface LandmarkDao {
     List<Landmark> filter(String name, String category, String day);
     List<Landmark> getByItineraryId(long itineraryId);
     void deleteLandmarkByItineraryId(long id);
+    int getLikes(long landmarkId);
+    int getDislikes(long landmarkId);
+    void addLike(long landmarkId, long userId);
+    void addDislike(long landmarkId, long userId);
+    void removeLike(long landmarkId, long userId);
+    void removeDislike(long landmarkId, long userId);
+
 }

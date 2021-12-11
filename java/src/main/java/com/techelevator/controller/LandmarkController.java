@@ -2,6 +2,7 @@ package com.techelevator.controller;
 
 import com.techelevator.dao.LandmarkDao;
 import com.techelevator.model.Landmark;
+import org.springframework.http.HttpStatus;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -37,5 +38,39 @@ public class LandmarkController {
         }
     }
 
+    @RequestMapping(path = "/{landmarkId}/likes", method = RequestMethod.GET)
+    int getLikes(@PathVariable long landmarkId) {
+       return landmarkDao.getLikes(landmarkId);
+    }
+
+
+    @RequestMapping(path = "/{landmarkId}/dislikes", method = RequestMethod.GET)
+    int getDislikes(@PathVariable long landmarkId) {
+        return landmarkDao.getDislikes(landmarkId);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/{landmarkId}/dislikes/{userId}", method = RequestMethod.POST)
+    void addDislike(@PathVariable long landmarkId, @PathVariable long userId) {
+        landmarkDao.addDislike(landmarkId, userId);
+    }
+
+    @ResponseStatus(HttpStatus.CREATED)
+    @RequestMapping(path = "/{landmarkId}/likes/{userId}", method = RequestMethod.POST)
+    void addLike(@PathVariable long landmarkId, @PathVariable long userId) {
+        landmarkDao.addLike(landmarkId, userId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping(path = "/{landmarkId}/likes/{userId}")
+    void removeLike(@PathVariable long landmarkId, @PathVariable long userId) {
+        landmarkDao.removeLike(landmarkId, userId);
+    }
+
+    @ResponseStatus(HttpStatus.OK)
+    @DeleteMapping(path = "/{landmarkId}/dislikes/{userId}")
+    void removeDislike(@PathVariable long landmarkId, @PathVariable long userId) {
+        landmarkDao.removeDislike(landmarkId, userId);
+    }
 
 }

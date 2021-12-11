@@ -4,6 +4,7 @@ import com.techelevator.model.Landmark;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
+import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -86,8 +87,49 @@ public class JdbcLandmarkDao implements LandmarkDao {
 
     @Override
     public int getLikes(long landmarkId) {
-        String sql = "INSERT INTO landmarks_users (user_id, landmark_id) VALUES (1,1);";
-        jdbcTemplate.
+        String sql = "SELECT COUNT(*) FROM landmark_likes WHERE landmark_id = ?;";
+        int likeCount = 0;
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId);
+        if (result.next()) {
+            likeCount = result.getInt("count");
+        }
+        return likeCount;
+    }
+
+    @Override
+    public int getDislikes(long landmarkId) {
+        String sql = "SELECT COUNT(*) FROM landmark_dislikes WHERE landmark_id = ?;";
+        int dislikeCount = 0;
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId);
+        if (result.next()) {
+            dislikeCount = result.getInt("count");
+        }
+        return dislikeCount;
+    }
+
+    @Override
+    public void addLike(long landmarkId, long userId) {
+        String sql = "INSERT INTO landmark_likes (user_id, landmark_id) VALUES (?,?);";
+        jdbcTemplate.update(sql, landmarkId, userId);
+    }
+
+
+    @Override
+    public void addDislike(long landmarkId, long userId) {
+        String sql = "INSERT INTO landmark_dislikes (user_id, landmark_id) VALUES (?,?);";
+        jdbcTemplate.update(sql, landmarkId, userId);
+    }
+
+    @Override
+    public void removeLike(long landmarkId, long userId) {
+        String sql ="DELETE FROM landmark_likes WHERE landmark_id = ? AND user_id = ?;";
+        jdbcTemplate.update(sql, landmarkId, userId);
+    }
+
+    @Override
+    public void removeDislike(long landmarkId, long userId) {
+        String sql ="DELETE FROM landmark_dislikes WHERE landmark_id = ? AND user_id = ?;";
+        jdbcTemplate.update(sql, landmarkId, userId);
     }
 
 
