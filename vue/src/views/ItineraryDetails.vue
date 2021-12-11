@@ -2,23 +2,18 @@
 
     <div>
         <div id="itinerary-details">
-            <itinerary-card  v-bind:itinerary="this.itinerary"></itinerary-card>
+            <itinerary-info></itinerary-info>
         </div>
     </div>
 
 </template>
 
 <script>
-import itineraryCard from '@/components/ItineraryCard'
+import itineraryInfo from '@/components/ItineraryInfo'
 import itineraryService from '@/services/ItineraryService';
 export default {
     components: {
-        itineraryCard
-    },
-    data() {
-        return {
-            itinerary: {}
-        }
+        itineraryInfo
     },
     created() {
         const thisId = this.$route.params.id;
@@ -27,7 +22,7 @@ export default {
     methods: {
         getItinerary(id) {
             itineraryService.getById(id).then((response) => {
-                this.itinerary = response.data;
+                this.$store.commit("SET_ACTIVE_ITINERARY", response.data)
             })
         }
     }

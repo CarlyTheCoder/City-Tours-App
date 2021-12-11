@@ -1,5 +1,5 @@
 <template>
-  <form id="itinerary-form" v-on:submit.prevent="createItinerary()">
+  <form id="itinerary-form" v-on:submit.prevent="createItinerary(), hideCreateForm()">
       <label for="itinerary-name">Name:</label>
       <input type="text" name="name" id="itinerary-name" class="input-field" v-model="itinerary.name" required>
       <label for="itinerary-trip-date">Itinerary Date:</label>
@@ -37,11 +37,14 @@ export default {
                 }
             })
         },
+        hideCreateForm() {
+        this.$store.state.showCreateForm = false;
+        },
          getByUserId() {
-      itineraryService.getByUserId(this.$route.params.userId).then((response) => {
+        itineraryService.getByUserId(this.$route.params.userId).then((response) => {
         this.$store.commit("POPULATE_ITINERARIES", response.data);
-      });
-    }
+            });
+        }
     }
 }
 </script>

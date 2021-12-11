@@ -11,12 +11,12 @@
 </template>
 
 <script>
-import ItineraryPreview from "@/components/ItineraryPreview";
-import ItineraryService from "@/services/ItineraryService";
+import itineraryPreview from "@/components/ItineraryPreview";
+import itineraryService from "@/services/ItineraryService";
 export default {
   name: "itinerary-list",
   components: {
-    ItineraryPreview
+    itineraryPreview
   },
 
   created() {
@@ -25,7 +25,7 @@ export default {
 
   methods: {
     getByUserId() {
-      ItineraryService.getByUserId(this.$route.params.userId).then((response) => {
+      itineraryService.getByUserId(this.$route.params.userId).then((response) => {
         this.$store.commit("POPULATE_ITINERARIES", response.data);
       });
     },

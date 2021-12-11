@@ -22,8 +22,7 @@ export default {
         }
     },
     created() {
-        const thisId = this.$route.params.id;
-        this.getLandmark(thisId);
+        this.getLandmark(this.$route.params.id);
     },
     methods: {
         getLandmark(id) {

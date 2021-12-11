@@ -20,5 +20,13 @@ export default {
 
     delete(itineraryId) {
         return http.delete(`/itineraries/${itineraryId}`)
+    },
+
+    deleteLandmarkFromItinerary(itineraryId, landmarkId) {
+        return http.delete(`/itineraries/${itineraryId}/landmarks/${landmarkId}`)
+    },
+
+    addLandmark(itineraryId, landmarkId) {
+        return http.post(`/itineraries/${itineraryId}/landmarks/${landmarkId}`)
     }
 }

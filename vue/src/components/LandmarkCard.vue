@@ -4,12 +4,10 @@
     <div>
       <img id="lm-card-image" v-bind:src="landmark.image" alt="" />
     </div>
-
     <div id="lm-card-text">
       <div id="lm-card-name">
         <h2 id="lm-card-title">{{ landmark.name }}</h2>
       </div>
-
       <div id="lm-card-info">
         <p id="lm-card-category"><b>Category: </b>{{ landmark.category }}</p>
         <p id="lm-card-address"><b>Address: </b> {{ landmark.address }}</p>
@@ -18,19 +16,18 @@
         <p>{{ landmark.description }}</p>
       </div>
       <div id="lm-card-buttons">
-        <router-link v-bind:to="{ name: 'home'}">
-          <button class="button">Add To Itinerary</button>
-        </router-link>
+        <form>
+          <select name="itinerary" id="itinerary-select" class="button" v-model="itineraryId">
+            <option value="">Add to my Itinerary</option>
+            <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
+          </select>
+        </form>
+        <button class="button" v-on:click.prevent="addLandmark()">Add</button>
         <router-link v-bind:to="{ name: 'home'}">
           <button class="button">Back To Search</button>
         </router-link>
       </div>
-      
-     
-      
-      
     </div>
-
     <div id="lm-card-hours">
       <p class="lm-card-time"><b>Hours: </b></p>
       <p>
@@ -55,11 +52,9 @@
         <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
       </p>
     </div>
-
     <div id="lm-card-wide-img">
       <img v-bind:src="landmark.imageWide">
     </div>
-
 
   <!--<div class="rating">
    Thumbs up 
@@ -76,17 +71,24 @@
 </template>
 
 <script>
-
+import itineraryService from '@/services/ItineraryService'
 import moment from "moment";
 export default {
   name: "landmark-card",
   props: ["landmark"],
-    // data() {
-    //     return {
-    //         thumbsUp = false,
-    //         thumbsDown = false
-    //     }
-    // },
+    data() {
+        return {
+          itineraries: {},
+          itineraryId: ""
+            // thumbsUp = false,
+            // thumbsDown = false
+        }
+    },
+  created() {
+    itineraryService.getByUserId(this.$store.state.user.id).then((response) => {
+      this.itineraries = response.data
+    })
+  },
   methods: {
     formatTime(hourA, hourB) {
       let timeA = moment(hourA.toString(), "hh:mm:ss").format("h:mma");
@@ -99,6 +101,15 @@ export default {
       } else {
         return timeA + " to " + timeB;
       }
+    },
+    addLandmark() {
+      
+      itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
+        if (response.status === 201) {
+          alert(this.landmark.name + " added to " + this.itineraryId);
+          this.itineraryId = "";
+        }
+      })
     },
    // toggleLike(){
     

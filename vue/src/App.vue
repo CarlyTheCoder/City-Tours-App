@@ -7,7 +7,7 @@
      </div>
     <div>
       <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
-      <router-link class="button" v-bind:to="{name: 'itineraries', params: {userId: this.$store.state.user.id}}">Itineraries</router-link>
+      <router-link class="button" v-bind:to="{name: 'itineraries', params: {userId: this.$store.state.user.id}}">My Itineraries</router-link>
       <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
       
     </div>
