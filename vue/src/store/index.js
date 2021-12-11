@@ -24,7 +24,11 @@ export default new Vuex.Store({
     itineraries: [],
     activeItinerary: {},
     activeItineraryId: 0,
-    showCreateForm: false
+    showCreateForm: false,
+    likes: 0,
+    dislikes: 0,
+    isLiked: false,
+    isDisliked: false
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -64,6 +68,38 @@ export default new Vuex.Store({
 
     SET_ACTIVE_ITINERARY(state, itinerary){
       state.activeItinerary = itinerary;
-    }
+    },
+
+    SET_LIKES(state, likes){
+      state.likes = likes;
+    },
+
+    SET_DISLIKES(state, dislikes){
+      state.dislikes = dislikes;
+    },
+
+    ADD_LIKE(state){
+      state.likes += 1;
+    },
+
+    ADD_DISLIKE(state){
+      state.dislikes += 1;
+    },
+
+    TOGGLE_ISLIKED_TRUE(state){
+      state.isLiked = true;
+    },
+
+    TOGGLE_ISDISLIKED_TRUE(state){
+      state.isDisliked = true;
+    },
+
+    TOGGLE_ISLIKED_FALSE(state){
+      state.isLiked = false;
+    },
+
+    TOGGLE_ISDISLIKED_FALSE(state){
+      state.isDisliked = false;
+    },
   }
 })

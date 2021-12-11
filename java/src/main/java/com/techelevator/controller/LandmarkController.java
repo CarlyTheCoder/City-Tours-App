@@ -49,6 +49,16 @@ public class LandmarkController {
         return landmarkDao.getDislikes(landmarkId);
     }
 
+    @GetMapping(path = "/{landmarkId}/likes/{userId}")
+    boolean getIsLiked(@PathVariable long landmarkId, @PathVariable long userId) {
+        return landmarkDao.getIsLiked(landmarkId, userId);
+    }
+
+    @GetMapping(path = "/{landmarkId}/dislikes/{userId}")
+    boolean getIsDisliked(@PathVariable long landmarkId, @PathVariable long userId) {
+        return landmarkDao.getIsDisliked(landmarkId, userId);
+    }
+
     @ResponseStatus(HttpStatus.CREATED)
     @RequestMapping(path = "/{landmarkId}/dislikes/{userId}", method = RequestMethod.POST)
     void addDislike(@PathVariable long landmarkId, @PathVariable long userId) {

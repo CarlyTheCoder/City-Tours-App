@@ -26,6 +26,14 @@ export default {
     return http.get(`/landmarks/${landmarkId}/dislikes`)
   },
 
+  getIsLiked(landmarkId, userId){
+    return http.get(`/landmarks/${landmarkId}/likes/${userId}`)
+  },
+
+  getIsDisliked(landmarkId, userId){
+    return http.get(`/landmarks/${landmarkId}/dislikes/${userId}`)
+  },
+
   addLike(landmarkId, userId){
     return http.post(`/landmarks/${landmarkId}/likes/${userId}`)
   },

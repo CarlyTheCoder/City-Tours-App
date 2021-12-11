@@ -30,13 +30,13 @@
       <div class="rating">
     
       <div class="like">
-        <p>{{likes}}</p>
-        <button id="likeButton" class="thumbButton">Like</button>
+        <p>{{this.$store.state.likes}}</p>
+        <button id="likeButton" class="thumbButton" @click.prevent="like()" v-bind:class="(this.$store.$state.isLiked)?'isLiked':''">Like</button>
       </div>
      
       <div class="dislike">
-        <p>{{dislikes}}</p>
-        <button id="dislikeButton" class="thumbButton">Dislike</button>
+        <p>{{this.$store.state.dislikes}}</p>
+        <button id="dislikeButton" class="thumbButton" @click.prevent="dislike()" v-bind:class="(this.$store.$state.isDisliked)?'isDisliked':''">Dislike</button>
       </div>
     </div> 
 
@@ -81,29 +81,16 @@ import moment from "moment";
 export default {
   name: "landmark-card",
   props: ["landmark"],
-    data() {
-        return {
-          itineraries: {},
-          itineraryId: ""
-        }
-    },
+  data() {
+    return {
+      itineraries: {},
+      itineraryId: ""
+    }
+  },
   created() {
-    itineraryService.getByUserId(this.$store.state.user.id).then((response) => {
-      this.itineraries = response.data
-    })
+    this.getLikesAndDislikes();
+    this.getIsLikedAndDisliked();
   },
-  computed: {
-
-    likes(){
-      let likes = this.getLikes();
-      return likes;
-      },
-    dislikes(){
-      let dislikes = this.getDislikes();
-      return dislikes;
-    } 
-  },
-
   methods: {
     formatTime(hourA, hourB) {
       let timeA = moment(hourA.toString(), "hh:mm:ss").format("h:mma");
@@ -118,7 +105,6 @@ export default {
       }
     },
     addLandmark() {
-      
       itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
         if (response.status === 201) {
           alert(this.landmark.name + " added to " + this.itineraryId);
@@ -126,17 +112,52 @@ export default {
         }
       })
     },
-    
-    getLikes(){
-
-      landmarkService.getLikes(this.landmark.id).then((response) => {
-        this.likes = response.data;
-      })},
-
-
-    getDislikes(){
-      landmarkService.getDislikes(this.landmark.id).then((response) => {
-        this.dislikes = response.data;
+    getLikesAndDislikes() {
+      landmarkService.getLikes(this.$route.params.id).then((response) => {
+        this.$store.commit("SET_LIKES", response.data);
+      })
+      landmarkService.getDislikes(this.$route.params.id).then((response) => {
+        this.$store.commit("SET_DISLIKES", response.data);
+      })
+    },
+    getIsLikedAndDisliked() {
+      let isLiked = false;
+      let isDisliked = false;
+      landmarkService.getIsLiked(this.$route.params.id, this.$store.state.user.id).then((response) => {
+        isLiked = response.data;
+        if (isLiked) {
+          this.$store.commit("TOGGLE_ISLIKED_TRUE");
+        }
+      }),
+      landmarkService.getIsDisliked(this.$route.params.id, this.$store.state.user.id).then((response) => {
+        isDisliked = response.data;
+        if (isDisliked) {
+          this.$store.commit("TOGGLE_ISDISLIKED_TRUE");
+        }
+      })
+    },
+    like() {
+      landmarkService.addLike(this.$route.params.id, this.$store.state.user.id).then((response) => {
+        if (response.status === 201) {
+          this.$store.commit("ADD_LIKE");
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert("We appreciate the enthusiasm, but you may only like a location once!")
+        }
+      })
+    },
+    dislike() {
+      landmarkService.addDislike(this.$route.params.id, this.$store.state.user.id).then((response) => {
+        if (response.status === 201) {
+          this.$store.commit("ADD_DISLIKE");
+        }
+      })
+      .catch((error) => {
+        if (error.response) {
+          alert("Calm down, you may only dislike a location once.")
+        }
       })
     }
   }
@@ -248,5 +269,12 @@ export default {
   color: #2EBDD1;
 }
 
+.isLiked {
+  background-color: blue;
+}
+
+.isDisliked {
+  background-color: red;
+}
 
 </style>

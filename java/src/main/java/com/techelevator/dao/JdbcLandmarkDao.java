@@ -108,15 +108,44 @@ public class JdbcLandmarkDao implements LandmarkDao {
     }
 
     @Override
+    public boolean getIsLiked(long landmarkId, long userId) {
+         String sql = "SELECT COUNT(*) FROM landmark_likes WHERE landmark_id = ? " +
+                 "AND user_id = ?;";
+         boolean isLiked = false;
+         SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId, userId);
+         if (result.next()) {
+             if (result.getInt("count") > 0) {
+                isLiked = true;
+             }
+         }
+        return isLiked;
+    }
+
+    @Override
+    public boolean getIsDisliked(long landmarkId, long userId) {
+        String sql = "SELECT COUNT(*) FROM landmark_dislikes WHERE landmark_id = ? " +
+                "AND user_id = ?;";
+        boolean isDisliked = false;
+        SqlRowSet result = jdbcTemplate.queryForRowSet(sql, landmarkId, userId);
+        if (result.next()) {
+            if (result.getInt("count") > 0) {
+                isDisliked = true;
+            }
+        }
+        return isDisliked;
+    }
+
+
+    @Override
     public void addLike(long landmarkId, long userId) {
-        String sql = "INSERT INTO landmark_likes (user_id, landmark_id) VALUES (?,?);";
+        String sql = "INSERT INTO landmark_likes (landmark_id, user_id) VALUES (?,?);";
         jdbcTemplate.update(sql, landmarkId, userId);
     }
 
 
     @Override
     public void addDislike(long landmarkId, long userId) {
-        String sql = "INSERT INTO landmark_dislikes (user_id, landmark_id) VALUES (?,?);";
+        String sql = "INSERT INTO landmark_dislikes (landmark_id, user_id) VALUES (?,?);";
         jdbcTemplate.update(sql, landmarkId, userId);
     }
 
