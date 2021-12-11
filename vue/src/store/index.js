@@ -86,6 +86,14 @@ export default new Vuex.Store({
       state.dislikes += 1;
     },
 
+    DELETE_LIKE(state) {
+      state.likes -= 1;
+    },
+
+    DELETE_DISLIKE(state) {
+      state.dislikes -= 1;
+    },
+
     TOGGLE_ISLIKED_TRUE(state){
       state.isLiked = true;
     },

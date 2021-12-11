@@ -31,12 +31,12 @@
     
       <div class="like">
         <p>{{this.$store.state.likes}}</p>
-        <button id="likeButton" class="thumbButton" @click.prevent="like()" v-bind:class="(this.$store.$state.isLiked)?'isLiked':''">Like</button>
+        <button id="likeButton" class="thumbButton" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''">Like</button>
       </div>
      
       <div class="dislike">
         <p>{{this.$store.state.dislikes}}</p>
-        <button id="dislikeButton" class="thumbButton" @click.prevent="dislike()" v-bind:class="(this.$store.$state.isDisliked)?'isDisliked':''">Dislike</button>
+        <button id="dislikeButton" class="thumbButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''">Dislike</button>
       </div>
     </div> 
 
@@ -140,26 +140,58 @@ export default {
       landmarkService.addLike(this.$route.params.id, this.$store.state.user.id).then((response) => {
         if (response.status === 201) {
           this.$store.commit("ADD_LIKE");
+          this.$store.commit("TOGGLE_ISLIKED_TRUE");
+        } 
+        if (this.$store.state.isDisliked) {
+          landmarkService.deleteDislike(this.$route.params.id, this.$store.state.user.id).then((response) => {
+          if (response.status === 200) {
+          this.$store.commit("DELETE_DISLIKE");
+          this.$store.commit("TOGGLE_ISDISLIKED_FALSE");
+        }
+        })
         }
       })
       .catch((error) => {
         if (error.response) {
-          alert("We appreciate the enthusiasm, but you may only like a location once!")
+        landmarkService.deleteLike(this.$route.params.id, this.$store.state.user.id).then((response) => {
+          if (response.status === 200) {
+          this.$store.commit("DELETE_LIKE");
+          this.$store.commit("TOGGLE_ISLIKED_FALSE");
         }
-      })
+        })
+        } 
+      }) 
     },
     dislike() {
       landmarkService.addDislike(this.$route.params.id, this.$store.state.user.id).then((response) => {
         if (response.status === 201) {
           this.$store.commit("ADD_DISLIKE");
+          this.$store.commit("TOGGLE_ISDISLIKED_TRUE");
+        }
+        if (this.$store.state.isLiked) {
+          landmarkService.deleteLike(this.$route.params.id, this.$store.state.user.id).then((response) => {
+          if (response.status === 200) {
+          this.$store.commit("DELETE_LIKE");
+          this.$store.commit("TOGGLE_ISLIKED_FALSE");
+        }
+        })
         }
       })
       .catch((error) => {
         if (error.response) {
-          alert("Calm down, you may only dislike a location once.")
+        landmarkService.deleteDislike(this.$route.params.id, this.$store.state.user.id).then((response) => {
+          if (response.status === 200) {
+          this.$store.commit("DELETE_DISLIKE");
+          this.$store.commit("TOGGLE_ISDISLIKED_FALSE");
         }
-      })
+        })
+        } 
+      }) 
     }
+
+
+
+
   }
 };
 
