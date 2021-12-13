@@ -32,6 +32,16 @@ export default {
     editItinerary,
     draggable
   },
+  computed: {
+    myLandmarks: {
+        get() {
+            return this.$store.state.activeItinerary.landmarks
+        },
+        set(value) {
+            this.$store.commit('POPULATE_LANDMARKS', value)
+        }
+    }
+   },
   methods: {
       deleteItinerary() {
           console.log("delete")
