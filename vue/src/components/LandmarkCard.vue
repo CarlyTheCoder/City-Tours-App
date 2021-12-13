@@ -319,21 +319,21 @@ export default {
   background-color: red;
 }
 
-.like-count {
-  padding: 0;
-  margin-bottom: 3px;
-  text-align: center;
-}
-
 div.like, div.dislike {
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  justify-content: flex-start;
+  
 }
 
 .lm-card-likes {
   display: flex;
-
 }
+
+#likeButton, #dislikeButton {
+  margin-left: 0px;
+}
+
+
 
 </style>
