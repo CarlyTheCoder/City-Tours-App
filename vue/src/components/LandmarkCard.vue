@@ -312,11 +312,11 @@ export default {
 }
 
 .isLiked {
-  background-color: blue;
+  background-color: rgb(169, 185, 255);
 }
 
 .isDisliked {
-  background-color: red;
+  background-color: rgb(255, 117, 117);
 }
 
 div.like, div.dislike {
