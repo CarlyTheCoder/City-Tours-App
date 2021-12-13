@@ -28,5 +28,8 @@ export default {
 
     addLandmark(itineraryId, landmarkId) {
         return http.post(`/itineraries/${itineraryId}/landmarks/${landmarkId}`)
-    }
+    },
+    updateItinerary(itinerary, itineraryId){
+        return http.put(`/itineraries/${itineraryId}`, itinerary)
+    },
 }

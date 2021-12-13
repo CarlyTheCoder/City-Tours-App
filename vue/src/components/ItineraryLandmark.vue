@@ -17,10 +17,13 @@
       <div id="itl-description">
         <p>{{ landmark.description }}</p>
       </div>
-      <router-link v-bind:to="{ name: 'landmark', params: {id: landmark.id} }">
+      <div>
+        <router-link v-bind:to="{ name: 'landmark', params: {id: landmark.id} }">
         <button class="button">View Details</button>
       </router-link>
       <button class="button" @click="removeLandmarkFromItinerary()">Remove</button>
+      </div>
+      
     </div>
 
     <div id="itl-hours">
@@ -130,6 +133,7 @@ export default {
 #itl-image {
   grid-area: image;
   width: 315px;
+  max-height: 325px;
 }
 
 #itl-info {

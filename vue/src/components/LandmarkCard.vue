@@ -7,6 +7,8 @@
     <div id="lm-card-text">
       <div id="lm-card-name">
         <h2 id="lm-card-title">{{ landmark.name }}</h2>
+          
+
       </div>
       <div id="lm-card-info">
         <p id="lm-card-category"><b>Category: </b>{{ landmark.category }}</p>
@@ -15,7 +17,7 @@
       <div id="lm-card-description">
         <p>{{ landmark.description }}</p>
       </div>
-      <div id="lm-card-buttons">
+      <div class="lm-card-buttons">
         <form>
           <select name="itinerary" id="itinerary-select" class="button" v-model="itineraryId">
             <option value="">Add to my Itinerary</option>
@@ -26,21 +28,9 @@
         <router-link v-bind:to="{ name: 'home'}">
           <button class="button">Back To Search</button>
         </router-link>
-
-      <div class="rating">
+      </div>
     
-      <div class="like">
-        <p>{{this.$store.state.likes}}</p>
-        <button id="likeButton" class="thumbButton" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''">Like</button>
-      </div>
-     
-      <div class="dislike">
-        <p>{{this.$store.state.dislikes}}</p>
-        <button id="dislikeButton" class="thumbButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''">Dislike</button>
-      </div>
-    </div> 
-
-      </div>
+      
     </div>
     <div id="lm-card-hours">
       <p class="lm-card-time"><b>Hours: </b></p>
@@ -65,7 +55,26 @@
       <p>
         <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
       </p>
-    </div>
+        
+    
+      <div class="lm-card-likes">
+          <div class="like">
+            <p class="like-count">{{this.$store.state.likes}} {{this.$store.state.likes === 1 ? 'like' : 'likes' }}</p>
+            <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''">Like</button>
+          </div>
+          
+        
+          <div class="dislike">
+        <p class="like-count">{{this.$store.state.dislikes}} {{this.$store.state.dislikes === 1 ? 'dislike' : 'dislikes' }} </p>
+        <button id="dislikeButton" class="thumbButton button" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''">Dislike</button>
+      </div>
+        
+      </div>
+     
+    
+    </div> 
+
+    
 
     <div id="lm-card-wide-img">
       <img v-bind:src="landmark.imageWide">
@@ -275,10 +284,11 @@ export default {
   margin-top: 0;
 }
 
-#lm-card-buttons {
+.lm-card-buttons {
   display: flex;
   align-items: flex-start;
   margin: 0px;
+
 }
 
 .rating {
@@ -308,11 +318,28 @@ export default {
 }
 
 .isLiked {
-  background-color: blue;
+  background-color: rgb(169, 185, 255);
 }
 
 .isDisliked {
-  background-color: red;
+  background-color: rgb(255, 117, 117);
 }
+
+div.like, div.dislike {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  
+}
+
+.lm-card-likes {
+  display: flex;
+}
+
+#likeButton, #dislikeButton {
+  margin-left: 0px;
+}
+
+
 
 </style>

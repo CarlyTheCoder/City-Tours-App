@@ -1,7 +1,12 @@
 <template>
   <div id="this-itinerary-info">
+
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
     <h4>{{this.$store.state.activeItinerary.tripDate}}</h4>
+    
+    <edit-itinerary/>
+    <button v-on:click="deleteItinerary" class="button">Delete Itinerary</button>
+
     <draggable :list="myLandmarks" @start="drag=true" @end="drag=false" v-model="myLandmarks">
     <itinerary-landmark class="preview-in-list"
       v-for="landmark in myLandmarks"
@@ -9,11 +14,14 @@
       :landmark="landmark"
     ></itinerary-landmark>
     </draggable>
+
     <button v-on:click="deleteItinerary">Delete Itinerary</button>
+  
   </div>
 </template>
 
 <script>
+import editItinerary from '@/components/EditItinerary'
 import itineraryLandmark from '@/components/ItineraryLandmark'
 import itineraryService from '@/services/ItineraryService'
 import draggable from 'vuedraggable'
@@ -21,17 +29,8 @@ export default {
   name: "itinerary-info",
   components: {
     itineraryLandmark,
+    editItinerary,
     draggable
-  },
-  computed: {
-    myLandmarks: {
-        get() {
-            return this.$store.state.activeItinerary.landmarks
-        },
-        set(value) {
-            this.$store.commit('POPULATE_LANDMARKS', value)
-        }
-    }
   },
   methods: {
       deleteItinerary() {
