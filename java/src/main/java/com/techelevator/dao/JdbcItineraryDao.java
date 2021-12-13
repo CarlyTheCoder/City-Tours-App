@@ -1,13 +1,11 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Itinerary;
-import org.springframework.http.HttpStatus;
+import com.techelevator.model.LandmarkDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
-import javax.sql.RowSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -78,6 +76,16 @@ public class JdbcItineraryDao implements ItineraryDao {
     public void update(Itinerary itinerary, long itineraryId) {
         String sql="UPDATE itineraries  SET name=?,starting_point=?,trip_date=?  WHERE id =?;";
         jdbcTemplate.update(sql,itinerary.getName(),itinerary.getStartingPoint(),itinerary.getTripDate(),itineraryId);
+        updateLandmarkOrder(itinerary,itineraryId);
+    }
+    @Override
+    public void updateLandmarkOrder(Itinerary itinerary, long itineraryId){
+        for(LandmarkDTO landmark:itinerary.getLandmarks()){
+            String sql="UPDATE itineraries_landmarks SET order_position = ? WHERE landmark_id = ? " +
+                    "and itinerary_id = ?;";
+            jdbcTemplate.update(sql,landmark.getOrder(),landmark.getId(),itineraryId);
+
+        }
     }
     private  Itinerary mapRowToItinerary(SqlRowSet result) {
 
