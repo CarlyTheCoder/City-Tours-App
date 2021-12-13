@@ -20,11 +20,7 @@ export default {
     name:"edit-itinerary",
     data(){
         return{
-      itinerary: {
-                name: "",
-                tripDate: "",
-                startingPoint: "",
-            }
+      itinerary: this.$store.state.activeItinerary
         }
     },
  methods:{

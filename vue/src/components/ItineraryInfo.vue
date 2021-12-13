@@ -57,15 +57,9 @@ export default {
         this.$store.commit("POPULATE_ITINERARIES", response.data);
       });
     },
-    // updateOrder(this.draggable.value) {
-    //   value.array.forEach(landmark => {
-    //         landmark.order = landmark.index + 1
-    //       });
-    }
-   
     
   }
-
+}
 
 </script>
 
