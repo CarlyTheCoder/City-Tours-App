@@ -4,10 +4,11 @@
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
     <h4>{{this.$store.state.activeItinerary.tripDate}}</h4>
     
-    <edit-itinerary/>
+    <!-- <edit-itinerary v-bind:itinerary="itinerary" /> -->
     <button v-on:click="deleteItinerary" class="button">Delete Itinerary</button>
 
-    <draggable :list="myLandmarks" @start="drag=true" @end="drag=false" v-model="myLandmarks">
+    <p v-if="this.$store.state.showEditItineraryForm">Do stuff then hit submit to save:</p>
+    <draggable :list="myLandmarks" @start="drag=true" @end="drag=false, updateItemOrder()" v-model="myLandmarks" >
     <itinerary-landmark class="preview-in-list"
       v-for="landmark in myLandmarks"
       v-bind:key="landmark.order"
@@ -21,7 +22,7 @@
 </template>
 
 <script>
-import editItinerary from '@/components/EditItinerary'
+// import editItinerary from '@/components/EditItinerary'
 import itineraryLandmark from '@/components/ItineraryLandmark'
 import itineraryService from '@/services/ItineraryService'
 import draggable from 'vuedraggable'
@@ -29,16 +30,13 @@ export default {
   name: "itinerary-info",
   components: {
     itineraryLandmark,
-    editItinerary,
+    // editItinerary,
     draggable
   },
   computed: {
     myLandmarks: {
         get() {
             return this.$store.state.activeItinerary.landmarks
-        },
-        set(value) {
-            this.$store.commit('POPULATE_LANDMARKS', value)
         }
     }
    },
@@ -57,7 +55,17 @@ export default {
         this.$store.commit("POPULATE_ITINERARIES", response.data);
       });
     },
-    
+    updateItemOrder() {
+      this.myLandmarks.forEach((landmark, index) => {
+        landmark.order = index + 1;
+      });
+      this.$store.commit("UPDATE_LANDMARK_ORDER", this.myLandmarks)
+      itineraryService.updateItinerary(this.$store.state.activeItinerary).then((response) => {
+        if (response.status === 200) {
+          alert("Changes Saved")
+        }
+      })
+    }
   }
 }
 
