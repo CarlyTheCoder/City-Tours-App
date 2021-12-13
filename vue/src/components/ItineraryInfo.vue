@@ -1,14 +1,17 @@
 <template>
   <div id="this-itinerary-info">
+
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
     <h4>{{this.$store.state.activeItinerary.tripDate}}</h4>
+    
     <edit-itinerary/>
+      <button v-on:click="deleteItinerary" class="button">Delete Itinerary</button>
     <itinerary-landmark class="preview-in-list"
       v-for="landmark in this.$store.state.activeItinerary.landmarks"
       v-bind:key="landmark.id"
       :landmark="landmark"
     ></itinerary-landmark>
-    <button v-on:click="deleteItinerary">Delete Itinerary</button>
+  
   </div>
 </template>
 
