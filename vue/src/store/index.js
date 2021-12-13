@@ -28,7 +28,8 @@ export default new Vuex.Store({
     likes: 0,
     dislikes: 0,
     isLiked: false,
-    isDisliked: false
+    isDisliked: false,
+    showEditItineraryForm:false
   },
   mutations: {
     SET_AUTH_TOKEN(state, token) {
@@ -109,5 +110,11 @@ export default new Vuex.Store({
     TOGGLE_ISDISLIKED_FALSE(state){
       state.isDisliked = false;
     },
+    UPDATE_ITINERARY(state,data){
+      state.activeItinerary=data;
+    },
+    TOGGLE_EDIT_ITINERARY_FORM(state){
+     state.showEditItineraryForm=!state.showEditItineraryForm;
+    }
   }
 })

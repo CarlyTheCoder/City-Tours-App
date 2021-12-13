@@ -2,6 +2,7 @@
   <div id="this-itinerary-info">
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
     <h4>{{this.$store.state.activeItinerary.tripDate}}</h4>
+    <edit-itinerary/>
     <itinerary-landmark class="preview-in-list"
       v-for="landmark in this.$store.state.activeItinerary.landmarks"
       v-bind:key="landmark.id"
@@ -12,12 +13,14 @@
 </template>
 
 <script>
+import editItinerary from '@/components/EditItinerary'
 import itineraryLandmark from '@/components/ItineraryLandmark'
 import itineraryService from '@/services/ItineraryService'
 export default {
   name: "itinerary-info",
   components: {
-    itineraryLandmark
+    itineraryLandmark,
+    editItinerary
   },
   // computed: {
   //   currentItinerary() {
