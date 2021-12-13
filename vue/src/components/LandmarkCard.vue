@@ -29,22 +29,7 @@
           <button class="button">Back To Search</button>
         </router-link>
       </div>
-      <div class="lm-card-buttons">
     
-      <div class="like lm-card-buttons">
-        <div>
-          <p class="like-count">{{this.$store.state.likes}} {{this.$store.state.likes === 1 ? 'like' : 'likes' }}</p>
-          <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''">Like</button>
-        </div>
-        
-      </div>
-     
-      <div class="dislike">
-        <p class="like-count">{{this.$store.state.dislikes}} {{this.$store.state.dislikes === 1 ? 'dislike' : 'dislikes' }} </p>
-        <button id="dislikeButton" class="thumbButton button" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''">Dislike</button>
-      </div>
-    </div> 
-
       
     </div>
     <div id="lm-card-hours">
@@ -70,7 +55,26 @@
       <p>
         <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
       </p>
-    </div>
+        
+    
+      <div class="lm-card-likes">
+          <div class="like">
+            <p class="like-count">{{this.$store.state.likes}} {{this.$store.state.likes === 1 ? 'like' : 'likes' }}</p>
+            <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''">Like</button>
+          </div>
+          
+        
+          <div class="dislike">
+        <p class="like-count">{{this.$store.state.dislikes}} {{this.$store.state.dislikes === 1 ? 'dislike' : 'dislikes' }} </p>
+        <button id="dislikeButton" class="thumbButton button" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''">Dislike</button>
+      </div>
+        
+      </div>
+     
+    
+    </div> 
+
+    
 
     <div id="lm-card-wide-img">
       <img v-bind:src="landmark.imageWide">
@@ -278,6 +282,7 @@ export default {
   display: flex;
   align-items: flex-start;
   margin: 0px;
+
 }
 
 .rating {
@@ -315,9 +320,20 @@ export default {
 }
 
 .like-count {
-  margin-left: 20px;
   padding: 0;
   margin-bottom: 3px;
+  text-align: center;
+}
+
+div.like, div.dislike {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+}
+
+.lm-card-likes {
+  display: flex;
+
 }
 
 </style>
