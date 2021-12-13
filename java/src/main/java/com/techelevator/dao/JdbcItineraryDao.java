@@ -7,6 +7,7 @@ import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
 import org.springframework.web.bind.annotation.ResponseStatus;
 
+import javax.sql.RowSet;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -73,6 +74,11 @@ public class JdbcItineraryDao implements ItineraryDao {
         jdbcTemplate.update(sql, itineraryId, landmarkId);
     }
 
+    @Override
+    public void update(Itinerary itinerary, long itineraryId) {
+        String sql="UPDATE itineraries  SET name=?,starting_point=?,trip_date=?  WHERE id =?;";
+        jdbcTemplate.update(sql,itinerary.getName(),itinerary.getStartingPoint(),itinerary.getTripDate(),itineraryId);
+    }
     private  Itinerary mapRowToItinerary(SqlRowSet result) {
 
         Itinerary itinerary = new Itinerary();
