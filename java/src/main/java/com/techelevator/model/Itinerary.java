@@ -9,7 +9,7 @@ public class Itinerary {
     private String name;
     private long userId;
     private long startingPoint;
-    private List<Landmark> landmarks;
+    private List<LandmarkDTO> landmarks;
     private Date tripDate;
 
     public Itinerary() {
@@ -39,11 +39,11 @@ public class Itinerary {
         this.startingPoint = startingPoint;
     }
 
-    public List<Landmark> getLandmarks() {
+    public List<LandmarkDTO> getLandmarks() {
         return landmarks;
     }
 
-    public void setLandmarks(List<Landmark> landmarks) {
+    public void setLandmarks(List<LandmarkDTO> landmarks) {
         this.landmarks = landmarks;
     }
 

@@ -90,6 +90,7 @@ export default {
   created() {
     this.getLikesAndDislikes();
     this.getIsLikedAndDisliked();
+    this.getItineraries();
   },
   methods: {
     formatTime(hourA, hourB) {
@@ -110,6 +111,11 @@ export default {
           alert(this.landmark.name + " added to " + this.itineraryId);
           this.itineraryId = "";
         }
+      })
+    },
+    getItineraries() {
+      itineraryService.getByUserId(this.$store.state.user.id).then((response) => {
+      this.itineraries = response.data
       })
     },
     getLikesAndDislikes() {

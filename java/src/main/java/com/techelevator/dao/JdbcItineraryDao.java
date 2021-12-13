@@ -53,10 +53,10 @@ public class JdbcItineraryDao implements ItineraryDao {
     }
 
     @Override
-    public void addLandmark(long itineraryID, long landmarkId) {
-        String sql = "INSERT INTO itineraries_landmarks (itinerary_id, landmark_id) " +
-                "VALUES (?, ?);";
-        jdbcTemplate.update(sql, itineraryID, landmarkId);
+    public void addLandmark(long itineraryId, long landmarkId) {
+        String sql = "INSERT INTO itineraries_landmarks (itinerary_id, landmark_id, order_position) " +
+                "VALUES (?, ?, (SELECT COUNT(*) + 1 FROM itineraries_landmarks WHERE itinerary_id = ?));";
+        jdbcTemplate.update(sql, itineraryId, landmarkId, itineraryId);
     }
 
     @Override

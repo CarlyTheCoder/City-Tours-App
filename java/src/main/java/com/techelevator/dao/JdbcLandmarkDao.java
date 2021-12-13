@@ -1,14 +1,13 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Landmark;
+import com.techelevator.model.LandmarkDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Locale;
 
 @Service
 public class JdbcLandmarkDao implements LandmarkDao {
@@ -67,14 +66,14 @@ public class JdbcLandmarkDao implements LandmarkDao {
 
 
     @Override
-    public List<Landmark> getByItineraryId(long itineraryId) {
-        List<Landmark> filteredList = new ArrayList<>();
+    public List<LandmarkDTO> getByItineraryId(long itineraryId) {
+        List<LandmarkDTO> filteredList = new ArrayList<>();
         String sql = "SELECT * FROM landmarks " +
                 "JOIN itineraries_landmarks on landmarks.id = itineraries_landmarks.landmark_id " +
-                "WHERE itineraries_landmarks.itinerary_id = ?;";
+                "WHERE itineraries_landmarks.itinerary_id = ? ORDER BY order_position;";
         SqlRowSet results = jdbcTemplate.queryForRowSet(sql, itineraryId);
         while (results.next()) {
-            Landmark landmark = mapRowToLandmark(results);
+            LandmarkDTO landmark = mapRowToLandmarkDTO(results);
             filteredList.add(landmark);
         }
         return filteredList;
@@ -191,4 +190,33 @@ public class JdbcLandmarkDao implements LandmarkDao {
         return landmark;
     }
 
+    private LandmarkDTO mapRowToLandmarkDTO(SqlRowSet result) {
+
+        LandmarkDTO landmark = new LandmarkDTO();
+        landmark.setId(result.getLong("id"));
+        landmark.setName(result.getString("name"));
+        landmark.setCategory(result.getString("category"));
+        landmark.setAddress(result.getString("address"));
+        landmark.setLatitude(result.getFloat("latitude"));
+        landmark.setLongitude(result.getFloat("longitude"));
+        landmark.setSundayOpen(result.getTime("sunday_open"));
+        landmark.setSundayClose(result.getTime("sunday_close"));
+        landmark.setMondayOpen(result.getTime("monday_open"));
+        landmark.setMondayClose(result.getTime("monday_close"));
+        landmark.setTuesdayOpen(result.getTime("tuesday_open"));
+        landmark.setTuesdayClose(result.getTime("tuesday_close"));
+        landmark.setWednesdayOpen(result.getTime("wednesday_open"));
+        landmark.setWednesdayClose(result.getTime("wednesday_close"));
+        landmark.setThursdayOpen(result.getTime("thursday_open"));
+        landmark.setThursdayClose(result.getTime("thursday_close"));
+        landmark.setFridayOpen(result.getTime("friday_open"));
+        landmark.setFridayClose(result.getTime("friday_close"));
+        landmark.setSaturdayOpen(result.getTime("saturday_open"));
+        landmark.setSaturdayClose(result.getTime("saturday_close"));
+        landmark.setImage(result.getString("image"));
+        landmark.setImageWide(result.getString("image_wide"));
+        landmark.setDescription(result.getString("description"));
+        landmark.setOrder(result.getInt("order_position"));
+        return landmark;
+    }
 }

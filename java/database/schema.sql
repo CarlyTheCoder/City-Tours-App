@@ -62,6 +62,7 @@ CREATE TABLE itineraries_landmarks (
 
     landmark_id int REFERENCES landmarks (id),
     itinerary_id int REFERENCES itineraries (id),
+    order_position int NOT NULL,
     PRIMARY KEY (landmark_id, itinerary_id)
 );
 

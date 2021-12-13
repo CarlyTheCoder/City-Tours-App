@@ -1,6 +1,7 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Landmark;
+import com.techelevator.model.LandmarkDTO;
 
 import java.util.List;
 
@@ -12,7 +13,7 @@ public interface LandmarkDao {
     List<Landmark> getAll();
 
     List<Landmark> filter(String name, String category, String day);
-    List<Landmark> getByItineraryId(long itineraryId);
+    List<LandmarkDTO> getByItineraryId(long itineraryId);
     void deleteLandmarkByItineraryId(long id);
     int getLikes(long landmarkId);
     int getDislikes(long landmarkId);

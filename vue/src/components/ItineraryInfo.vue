@@ -2,11 +2,13 @@
   <div id="this-itinerary-info">
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
     <h4>{{this.$store.state.activeItinerary.tripDate}}</h4>
+    <draggable :list="myLandmarks" @start="drag=true" @end="drag=false" v-model="myLandmarks">
     <itinerary-landmark class="preview-in-list"
-      v-for="landmark in this.$store.state.activeItinerary.landmarks"
-      v-bind:key="landmark.id"
+      v-for="landmark in myLandmarks"
+      v-bind:key="landmark.order"
       :landmark="landmark"
     ></itinerary-landmark>
+    </draggable>
     <button v-on:click="deleteItinerary">Delete Itinerary</button>
   </div>
 </template>
@@ -14,16 +16,23 @@
 <script>
 import itineraryLandmark from '@/components/ItineraryLandmark'
 import itineraryService from '@/services/ItineraryService'
+import draggable from 'vuedraggable'
 export default {
   name: "itinerary-info",
   components: {
-    itineraryLandmark
+    itineraryLandmark,
+    draggable
   },
-  // computed: {
-  //   currentItinerary() {
-  //     return this.$store.state.activeItinerary
-  //   }
-  // },
+  computed: {
+    myLandmarks: {
+        get() {
+            return this.$store.state.activeItinerary.landmarks
+        },
+        set(value) {
+            this.$store.commit('POPULATE_LANDMARKS', value)
+        }
+    }
+  },
   methods: {
       deleteItinerary() {
           console.log("delete")
@@ -38,9 +47,14 @@ export default {
       itineraryService.getByUserId(this.$route.params.userId).then((response) => {
         this.$store.commit("POPULATE_ITINERARIES", response.data);
       });
+    },
+    // updateOrder(this.draggable.value) {
+    //   value.array.forEach(landmark => {
+    //         landmark.order = landmark.index + 1
+    //       });
     }
    
-    }
+    
   }
 
 
