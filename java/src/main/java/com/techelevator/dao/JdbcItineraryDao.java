@@ -73,6 +73,8 @@ public class JdbcItineraryDao implements ItineraryDao {
         jdbcTemplate.update(sql, itineraryId, landmarkId);
     }
 
+
+
     private  Itinerary mapRowToItinerary(SqlRowSet result) {
 
         Itinerary itinerary = new Itinerary();
