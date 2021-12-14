@@ -8,6 +8,7 @@ import Register from '../views/Register.vue'
 import LandmarkDetails from '../views/LandmarkDetails.vue'
 import Itineraries from '../views/Itineraries.vue'
 import ItineraryDetails from '../views/ItineraryDetails.vue'
+import TestView from '../views/TestView.vue'
 
 Vue.use(Router)
 
@@ -78,6 +79,14 @@ const router = new Router({
       component: ItineraryDetails,
       meta: {
         requiresAuth: true
+      }
+    },
+    {
+      path: "/test",
+      name: "test",
+      component: TestView,
+      meta: {
+        requiresAuth: false
       }
     }
   ]

@@ -8,10 +8,18 @@ import 'sweetalert2/dist/sweetalert2.min.css';
 
 Vue.use(Swal);
 window.Swal = Swal;
+import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.config.productionTip = false
 
 axios.defaults.baseURL = process.env.VUE_APP_REMOTE_API;
+
+Vue.use(VueGoogleMaps, {
+  load: {
+    key: 'AIzaSyBDlKcy0iLCKP3CwJ0OEQ4-WZlHf6unL_Y',
+    libraries: 'places',
+  }
+});
 
 new Vue({
   router,
