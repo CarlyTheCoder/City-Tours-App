@@ -1,6 +1,7 @@
 <template>
 <div>
   <div id="itineraries">
+    <h2>{{this.$store.state.user.username}}'s Ititineraries</h2>
     <div> <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
         <button class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button></div>
        
