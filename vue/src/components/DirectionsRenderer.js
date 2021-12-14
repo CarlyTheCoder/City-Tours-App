@@ -27,7 +27,7 @@ export default MapElementFactory({
           (response, status) => {
             if (status !== "OK") return;
             // eslint-disable-next-line no-debugger
-            debugger
+            // debugger
             directionsRenderer.setDirections(response);
           }
         );

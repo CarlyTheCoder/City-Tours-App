@@ -1,12 +1,12 @@
 <template>
-  <google-map></google-map>
+  <maps-test></maps-test>
 </template>
 
 <script>
-import googleMap from '@/components/GoogleMap.vue'
+import mapsTest from '@/components/MapsTest.vue'
 export default {
     components: {
-        googleMap
+        mapsTest
     }
 }
 </script>
