@@ -38,6 +38,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2'
 // import editItinerary from '@/components/EditItinerary'
 import itineraryLandmark from '@/components/ItineraryLandmark'
 import itineraryService from '@/services/ItineraryService'
@@ -58,13 +59,30 @@ export default {
    },
   methods: {
       deleteItinerary() {
-          console.log("delete")
-          itineraryService.delete(this.$store.state.activeItinerary.id).then(response => {
+        Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+     itineraryService.delete(this.$store.state.activeItinerary.id).then(response => {
               if (response.status === 200) {
                   this.$router.push({name:"itineraries", params:{userId: this.$store.state.user.id}});
                   this.getByUserId();
               }
           })
+    Swal.fire(
+      'Deleted!',
+      'Your file has been deleted.',
+      'success'
+    )
+  }
+})
+         
       },
        getByUserId() {
       itineraryService.getByUserId(this.$route.params.userId).then((response) => {

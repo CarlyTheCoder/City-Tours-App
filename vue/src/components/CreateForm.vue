@@ -11,6 +11,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 import itineraryService from '@/services/ItineraryService';
 export default {
     data() {
@@ -30,7 +31,7 @@ export default {
             this.itinerary.userId = this.$route.params.userId
             itineraryService.create(this.itinerary).then((response) => {
                 if (response.status === 201) {
-                    alert("DO STUFF HERE, Date: " + this.itinerary.tripDate)
+                    Swal.fire('Itinerary created')
                     this.getByUserId();
 
                     

@@ -55,6 +55,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 import itineraryService from '@/services/ItineraryService'
 import moment from "moment";
 export default {
@@ -74,12 +75,29 @@ export default {
       }
     },
     removeLandmarkFromItinerary() {
-        itineraryService.deleteLandmarkFromItinerary(this.$route.params.id, this.landmark.id).then((response) => {
+      Swal.fire({
+  title: 'Are you sure?',
+  text: "You won't be able to revert this!",
+  icon: 'warning',
+  showCancelButton: true,
+  confirmButtonColor: '#3085d6',
+  cancelButtonColor: '#d33',
+  confirmButtonText: 'Yes, delete it!'
+}).then((result) => {
+  if (result.isConfirmed) {
+    itineraryService.deleteLandmarkFromItinerary(this.$route.params.id, this.landmark.id).then((response) => {
             if (response.status === 200) {
-                alert("it's gone")
                 this.refreshItineraries();
             }
         })
+    Swal.fire(
+      'Deleted!',
+      'The landmark was removed',
+      'success'
+    )
+  }
+})
+        
     },
     refreshItineraries() {
       itineraryService.getById(this.$route.params.id).then((response) => {
