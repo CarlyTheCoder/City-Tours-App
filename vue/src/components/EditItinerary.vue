@@ -20,17 +20,17 @@
 import itineraryService from '@/services/ItineraryService';
 export default {
     name:"edit-itinerary",
-    data(){
-        return{
-      itinerary: this.$store.state.activeItinerary
-        }
+    props: ["itinerary"],
+    created() {
+      const thisItinerary = this.$store.state.activeItinerary
+      this.itinerary = thisItinerary;
     },
  methods:{
-     toggleEditForm(){
+    toggleEditForm(){
       this.$store.commit('TOGGLE_EDIT_ITINERARY_FORM');
-     },
-     updateItinerary(){
-    itineraryService.updateItinerary(this.itinerary,this.$store.state.activeItinerary.id);
+    },
+    updateItinerary(){
+    itineraryService.updateItinerary(this.itinerary);
     itineraryService.getByUserId(this.$store.state.user.id).then((response)=>{
         if(response.status==200){
             this.$store.state.itineraries=response.data;

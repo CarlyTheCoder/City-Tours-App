@@ -110,11 +110,17 @@ export default new Vuex.Store({
     TOGGLE_ISDISLIKED_FALSE(state){
       state.isDisliked = false;
     },
+
     UPDATE_ITINERARY(state,data){
       state.activeItinerary=data;
     },
+
     TOGGLE_EDIT_ITINERARY_FORM(state){
      state.showEditItineraryForm=!state.showEditItineraryForm;
+    },
+
+    UPDATE_LANDMARK_ORDER(state, landmarks) {
+      state.activeItinerary.landmarks = landmarks;
     }
   }
 })

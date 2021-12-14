@@ -1,11 +1,10 @@
 package com.techelevator.dao;
 
 import com.techelevator.model.Itinerary;
-import org.springframework.http.HttpStatus;
+import com.techelevator.model.LandmarkDTO;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.jdbc.support.rowset.SqlRowSet;
 import org.springframework.stereotype.Service;
-import org.springframework.web.bind.annotation.ResponseStatus;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -50,7 +49,7 @@ public class JdbcItineraryDao implements ItineraryDao {
     long newId = jdbcTemplate.queryForObject(sql, long.class, itinerary.getUserId(), itinerary.getName(), itinerary.getStartingPoint(),
             itinerary.getTripDate());
     return getById(newId);
-    }
+    }gi
 
     @Override
     public void addLandmark(long itineraryId, long landmarkId) {
@@ -71,6 +70,22 @@ public class JdbcItineraryDao implements ItineraryDao {
     public void deleteLandmarkFromItinerary(long itineraryId, long landmarkId) {
         String sql = "DELETE FROM itineraries_landmarks WHERE itinerary_id = ? AND landmark_id = ?;";
         jdbcTemplate.update(sql, itineraryId, landmarkId);
+    }
+
+    @Override
+    public void update(Itinerary itinerary, long itineraryId) {
+        String sql="UPDATE itineraries  SET name=?,starting_point=?,trip_date=?  WHERE id =?;";
+        jdbcTemplate.update(sql,itinerary.getName(),itinerary.getStartingPoint(),itinerary.getTripDate(),itineraryId);
+        updateLandmarkOrder(itinerary,itineraryId);
+    }
+    @Override
+    public void updateLandmarkOrder(Itinerary itinerary, long itineraryId){
+        for(LandmarkDTO landmark:itinerary.getLandmarks()){
+            String sql="UPDATE itineraries_landmarks SET order_position = ? WHERE landmark_id = ? " +
+                    "and itinerary_id = ?;";
+            jdbcTemplate.update(sql,landmark.getOrder(),landmark.getId(),itineraryId);
+
+        }
     }
 
     private  Itinerary mapRowToItinerary(SqlRowSet result) {

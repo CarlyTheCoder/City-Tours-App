@@ -51,4 +51,10 @@ public class ItineraryController {
     void deleteLandmarkFromItinerary( @PathVariable long itineraryId, @PathVariable long landmarkId) {
         itineraryDao.deleteLandmarkFromItinerary(itineraryId, landmarkId);
     }
+    @ResponseStatus(HttpStatus.OK)
+    @PutMapping("/itineraries/{itineraryId}")
+    void update(@RequestBody Itinerary itinerary,@PathVariable long itineraryId){
+        itineraryDao.update(itinerary,itineraryId);
+    }
+
 }
