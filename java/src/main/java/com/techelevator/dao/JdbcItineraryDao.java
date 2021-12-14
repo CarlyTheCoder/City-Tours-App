@@ -49,7 +49,7 @@ public class JdbcItineraryDao implements ItineraryDao {
     long newId = jdbcTemplate.queryForObject(sql, long.class, itinerary.getUserId(), itinerary.getName(), itinerary.getStartingPoint(),
             itinerary.getTripDate());
     return getById(newId);
-    }gi
+    }
 
     @Override
     public void addLandmark(long itineraryId, long landmarkId) {
