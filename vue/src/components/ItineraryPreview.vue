@@ -6,6 +6,9 @@
           <h2> {{itinerary.name}}</h2>
           <p>Date: {{itinerary.tripDate}}</p>
       </div>
+      <div class="landmark-names">
+        <p v-for="landmark in itinerary.landmarks" v-bind:key="landmark.id">{{landmark.name}}</p>
+      </div>
     </div>
   </router-link>
 
@@ -26,15 +29,20 @@ name: "itinerary-preview",
   );
   padding: 10px;
   border-radius: 5px;
-  display: grid;
-  grid-auto-columns: 1fr;
-  grid-template-areas: "itinerary-preview";
+  display: flex;
+  justify-content: flex-start;
   row-gap: 15px;
-   max-width: 70%;
+  max-width: 70%;
   min-width: 1000px;
   margin: auto;
   margin-top: 10px;
 }
+
+.landmark-names {
+  padding-left: 120px;
+}
+
+
 
 #itinerary-preview:hover {
   background-image: linear-gradient(to bottom left,

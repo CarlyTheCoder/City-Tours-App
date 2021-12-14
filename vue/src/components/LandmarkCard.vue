@@ -24,7 +24,10 @@
             <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
           </select>
         </form>
-        <button class="button" v-on:click.prevent="addLandmark()">Add</button>
+        <router-link v-bind:to="{name: 'home'}">
+           <button class="button" v-on:click="addLandmark()">Add</button>
+        </router-link>
+       
         <router-link v-bind:to="{ name: 'home'}">
           <button class="button">Back To Search</button>
         </router-link>

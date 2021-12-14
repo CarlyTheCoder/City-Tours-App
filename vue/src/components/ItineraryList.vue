@@ -1,6 +1,7 @@
 <template>
   
  <div id="itinerary-list">
+   
     <itinerary-preview class="itinerary-in-list"
       v-for="itinerary in this.$store.state.itineraries"
       v-bind:key="itinerary.id"

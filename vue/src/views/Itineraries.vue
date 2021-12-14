@@ -1,14 +1,13 @@
 <template>
-
-  <div>
-      <div id="itineraries">
-        <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
-        <button class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button>
+<div>
+  <div id="itineraries">
+    <div> <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
+        <button class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button></div>
+       
          <create-form v-if="this.$store.state.showCreateForm" ></create-form>
           <itinerary-list id="filtered-itinerary-list"></itinerary-list>
       </div>
-  </div>
-
+</div>
 </template>
 
 <script>
@@ -36,6 +35,14 @@ a:-webkit-any-link {
     color: black;
     cursor: pointer;
     text-decoration: none;
+}
+
+#itineraries {
+  max-width: 1000px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
 
 </style>

@@ -73,6 +73,9 @@ html {
 
 #main-view {
   grid-area: view;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
 }
 
 .input-field {

@@ -1,13 +1,15 @@
 <template>
-  <div>
+  <div id="edit-itinerary">
+      <div>
          <button class="button" v-on:click="toggleEditForm" v-if="this.$store.state.showEditItineraryForm">Cancel</button>
         <button class="button" v-on:click="toggleEditForm" v-else>Edit Itinerary</button>
-        <form v-if="this.$store.state.showEditItineraryForm" v-on:submit.prevent="updateItinerary(), hideEditForm()"> 
-           <label for="edit-name"> Name</label>
+        </div>
+        <form v-if="this.$store.state.showEditItineraryForm" v-on:submit.prevent="updateItinerary(), hideEditForm()" id="edit-form"> 
+           <label for="edit-name"> Name: </label>
            <input type="text" name="edit-name" id="edit-name" v-model="itinerary.name">
-           <label for="edit-date">Date</label>
+           <label for="edit-date">Date: </label>
            <input type="date" name="edit-date" id="edit-date" v-model="itinerary.tripDate">
-           <label for="edit-starting-location"> Starting point</label>
+           <label for="edit-starting-location"> Starting point: </label>
            <input type="text" name="edit-starting-location" id="edit-starting-location" v-model="itinerary.startingPoint">
            <input type="submit" class="button">
          </form>
@@ -45,5 +47,14 @@ export default {
 </script>
 
 <style>
+#edit-itinerary {
+display: flex;
+flex-direction: row;
+column-gap: 15px;
+}
 
+#edit-form {
+    display: flex;
+    column-gap: 10px;
+}
 </style>

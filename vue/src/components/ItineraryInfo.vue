@@ -2,10 +2,26 @@
   <div id="this-itinerary-info">
 
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
-    <h4>{{this.$store.state.activeItinerary.tripDate}}</h4>
+    <h4><b>Trip date:</b>  {{this.$store.state.activeItinerary.tripDate}}</h4>
     
-    <edit-itinerary/>
-    <button v-on:click="deleteItinerary" class="button">Delete Itinerary</button>
+    <div v-if="this.$store.state.activeItinerary.landmarks.length > 0" id="landmarks-present">
+      <router-link v-bind:to="{ name: 'home'}" ><button class="button" v-if="!this.$store.state.showEditItineraryForm">Search Landmarks</button></router-link>
+          <edit-itinerary />
+         <button v-on:click="deleteItinerary" class="button" v-if="!this.$store.state.showEditItineraryForm">Delete Itinerary</button>
+      
+    </div>
+     <div v-else id="no-landmarks-in-itinerary">
+      
+        <h2>Search landmarks to add to your itinerary!</h2>
+        <div>
+         <router-link v-bind:to="{ name: 'home'}" > <button class="button">Search Landmarks</button></router-link> 
+         <button v-on:click="deleteItinerary" class="button">Delete Itinerary</button>
+         </div>
+         
+      
+    </div>
+   
+    
 
     <draggable :list="myLandmarks" @start="drag=true" @end="drag=false" v-model="myLandmarks">
     <itinerary-landmark class="preview-in-list"
@@ -15,7 +31,7 @@
     ></itinerary-landmark>
     </draggable>
 
-    <button v-on:click="deleteItinerary">Delete Itinerary</button>
+    
   
   </div>
 </template>
@@ -65,8 +81,19 @@ export default {
 
 <style>
 
-/* #itinerary-card {
-  background-image: linear-gradient(to bottom left,
+#it-landmark-list {
+  max-width: 70%;
+  min-width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+}
+
+#no-landmarks-in-itinerary {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  row-gap: 10px;
+   background-image: linear-gradient(to bottom left,
     rgb(255, 255, 255),
     rgba(255, 255, 255, 0.644)
   );
@@ -74,17 +101,12 @@ export default {
   margin: 5px;
   border-radius: 5px;
   width: 100%;
-  display: grid;
-  grid-auto-columns: 340px 1fr 240px;
-  grid-template-areas: "image text hours" "wide-img wide-img wide-img";
   row-gap: 15px;
-} */
+}
 
-#it-landmark-list {
-  max-width: 70%;
-  min-width: 1000px;
-  margin: auto;
-  margin-top: 10px;
+#landmarks-present {
+  display: flex;
+  justify-content: center;
 }
 
 </style>
