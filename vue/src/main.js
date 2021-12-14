@@ -3,6 +3,11 @@ import App from './App.vue'
 import router from './router/index'
 import store from './store/index'
 import axios from 'axios'
+import Swal from 'vue-sweetalert2';
+import 'sweetalert2/dist/sweetalert2.min.css';
+
+Vue.use(Swal);
+window.Swal = Swal;
 import * as VueGoogleMaps from 'vue2-google-maps'
 
 Vue.config.productionTip = false

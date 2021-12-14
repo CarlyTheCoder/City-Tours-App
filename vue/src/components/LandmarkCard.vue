@@ -24,9 +24,9 @@
             <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
           </select>
         </form>
-        <router-link v-bind:to="{name: 'home'}">
+        
            <button class="button" v-on:click="addLandmark()">Add</button>
-        </router-link>
+       
        
         <router-link v-bind:to="{ name: 'home'}">
           <button class="button">Back To Search</button>
@@ -87,6 +87,7 @@
 </template>
 
 <script>
+import Swal from 'sweetalert2';
 import itineraryService from '@/services/ItineraryService';
 import landmarkService from '@/services/LandmarkService';
 import moment from "moment";
@@ -119,10 +120,21 @@ export default {
       }
     },
     addLandmark() {
+       if (this.itineraryId == "") {
+          Swal.fire('Please select an itinerary')
+
+        }
+         if(this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
+         Swal.fire('Landmark already exist in the itinerary');
+         
+        }
       itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
+      
         if (response.status === 201) {
-          alert(this.landmark.name + " added to " + this.itineraryId);
+      
+          Swal.fire('The landmark has been added to your itinerary.')
           this.itineraryId = "";
+          this.$router.push("{name: 'home'}");
         }
       })
     },
