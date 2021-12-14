@@ -101,7 +101,7 @@ export default {
       this.$store.commit("UPDATE_LANDMARK_ORDER", this.myLandmarks)
       itineraryService.updateItinerary(this.$store.state.activeItinerary).then((response) => {
         if (response.status === 200) {
-          alert("Changes Saved")
+          Swal.fire("Your itinerary has been updated")
         }
       })
     }
