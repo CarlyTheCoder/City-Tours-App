@@ -100,6 +100,7 @@ export default {
     }
   },
   created() {
+    this.resetLikesDislikes();
     this.getLikesAndDislikes();
     this.getIsLikedAndDisliked();
     this.getItineraries();
@@ -205,11 +206,11 @@ export default {
         })
         } 
       }) 
+    },
+    resetLikesDislikes() {
+      this.$store.commit("TOGGLE_ISLIKED_FALSE");
+      this.$store.commit("TOGGLE_ISDISLIKED_FALSE");
     }
-
-
-
-
   }
 };
 
