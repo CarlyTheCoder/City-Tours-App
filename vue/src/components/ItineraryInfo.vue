@@ -28,6 +28,7 @@
     ></itinerary-landmark>
     </draggable>
 
+    <google-map :landmarks="myLandmarks"></google-map>
     
   
   </div>
@@ -39,20 +40,28 @@ import Swal from 'sweetalert2'
 import itineraryLandmark from '@/components/ItineraryLandmark'
 import itineraryService from '@/services/ItineraryService'
 import draggable from 'vuedraggable'
+import googleMap from '@/components/GoogleMap'
 export default {
   name: "itinerary-info",
   components: {
     itineraryLandmark,
     // editItinerary,
-    draggable
+    draggable,
+    googleMap
   },
   computed: {
     myLandmarks: {
         get() {
             return this.$store.state.activeItinerary.landmarks
         }
+    },
+    markers() {
+      return this.myLandmarks.forEach((landmark) => {
+        let marker = {landmark}
+        return marker
+      })
     }
-   },
+  },
   methods: {
       deleteItinerary() {
         Swal.fire({
