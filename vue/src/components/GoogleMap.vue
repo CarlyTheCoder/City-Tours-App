@@ -7,11 +7,12 @@
     </div> 
     <br> -->
     
-    <GmapMap :center='center' :zoom='12' style='width: 1000px;  height: 400px;'>
+    <GmapMap id="route-map" :center='center' :zoom='12' style='width: 1000px;  height: 400px;'>
         <DirectionsRenderer
         travelMode="DRIVING"
         :origin="startLocation"
         :destination="endLocation"
+        :waypoints="waypoints"
          />
         <GmapMarker
         :key="index"
@@ -40,6 +41,7 @@ export default {
             places: [],
             startLocation: null,
             endLocation: null,
+            waypoints: null
         }
     },
     mounted() {
@@ -98,8 +100,13 @@ export default {
             this.markers = markers;
         },
         setRoute() {
+            this.getMarkers();
             this.startLocation = this.markers[0].position;
-            this.endLocation = this.markers[1].position;
+            this.endLocation = this.markers[this.markers.length - 1].position;
+            if (this.markers.length > 2) {
+                // FIX BELOW LOGIC
+                this.waypoints = this.markers[1]
+            }
         }   
     
     }
@@ -107,5 +114,13 @@ export default {
 </script>
 
 <style>
-
+#route-map {
+  margin-top: 10px;
+  border: 1px solid transparent;
+  border-radius: 4px;
+  box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  outline: none;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
 </style>

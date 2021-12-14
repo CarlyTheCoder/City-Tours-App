@@ -18,9 +18,13 @@
           <button v-on:click="deleteItinerary" class="button">Delete Itinerary</button>
       </div>
     </div>
+
+    
+    <google-map :landmarks="this.$store.state.activeItinerary.landmarks"></google-map>
+    
    
     <p v-if="this.$store.state.showEditItineraryForm">Do stuff then hit submit to save:</p>
-    <draggable :list="myLandmarks" @start="drag=true" @end="drag=false, updateItemOrder()" v-model="myLandmarks" >
+    <draggable :list="myLandmarks" @start="drag=true" @end="drag=false" @change="updateItemOrder()" v-model="myLandmarks" >
     <itinerary-landmark class="preview-in-list"
       v-for="landmark in myLandmarks"
       v-bind:key="landmark.order"
@@ -28,9 +32,6 @@
     ></itinerary-landmark>
     </draggable>
 
-    <google-map :landmarks="myLandmarks"></google-map>
-    
-  
   </div>
 </template>
 
@@ -63,34 +64,32 @@ export default {
     }
   },
   methods: {
-      deleteItinerary() {
-        Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then((result) => {
-  if (result.isConfirmed) {
-     itineraryService.delete(this.$store.state.activeItinerary.id).then(response => {
-              if (response.status === 200) {
-             
-                  this.$router.push({name:"itineraries", params:{userId: this.$store.state.user.id}});
-                  this.getByUserId();
-              }
-          })
-    Swal.fire(
-      'Deleted!',
-      'Your file has been deleted.',
-      'success'
-    )
-  }
-})
-         
-      },
-       getByUserId() {
+    deleteItinerary() {
+      Swal.fire({
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          itineraryService.delete(this.$store.state.activeItinerary.id).then(response => {
+            if (response.status === 200) {
+                this.$router.push({name:"itineraries", params:{userId: this.$store.state.user.id}});
+                this.getByUserId();
+            }
+        })
+          Swal.fire(
+            'Deleted!',
+            'Your file has been deleted.',
+            'success'
+          )
+        }
+      })
+    },
+    getByUserId() {
       itineraryService.getByUserId(this.$route.params.userId).then((response) => {
         this.$store.commit("POPULATE_ITINERARIES", response.data);
       });
