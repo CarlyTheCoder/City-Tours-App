@@ -1,7 +1,8 @@
 <template>
 <div>
   <div id="itineraries">
-    <h2>{{this.$store.state.user.username}}'s Ititineraries</h2>
+    <h2 id="itinerary-greeting">Welcome {{this.$store.state.user.username}}!</h2>
+      <h3>Here are your ititineraries to the Motorcity</h3> 
     <div> <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
         <button class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button></div>
        
@@ -44,6 +45,15 @@ a:-webkit-any-link {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+}
+
+#itinerary-greeting {
+  margin-bottom: 0;
+  font-size: 2.3rem;
+}
+
+h3 {
+  margin-bottom: 30px;
 }
 
 </style>

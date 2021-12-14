@@ -67,7 +67,7 @@ export default {
   if (result.isConfirmed) {
      itineraryService.delete(this.$store.state.activeItinerary.id).then(response => {
               if (response.status === 200) {
-                  alert("Are your sure you want to delete this itinerary? ...too bad it's gone. Until the developers do some more stuff anyway.")
+             
                   this.$router.push({name:"itineraries", params:{userId: this.$store.state.user.id}});
                   this.getByUserId();
               }
