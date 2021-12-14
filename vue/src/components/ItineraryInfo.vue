@@ -19,7 +19,7 @@
       </div>
     </div>
    
-    <p v-if="this.$store.state.showEditItineraryForm">Do stuff then hit submit to save:</p>
+    <p v-if="this.$store.state.showEditItineraryForm"></p>
     <draggable :list="myLandmarks" @start="drag=true" @end="drag=false, updateItemOrder()" v-model="myLandmarks" >
     <itinerary-landmark class="preview-in-list"
       v-for="landmark in myLandmarks"
@@ -93,7 +93,7 @@ export default {
       this.$store.commit("UPDATE_LANDMARK_ORDER", this.myLandmarks)
       itineraryService.updateItinerary(this.$store.state.activeItinerary).then((response) => {
         if (response.status === 200) {
-          alert("Changes Saved")
+          Swal.fire("Your itinerary has been updated")
         }
       })
     }

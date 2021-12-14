@@ -125,7 +125,7 @@ export default {
 
         }
          if(this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
-         Swal.fire('Landmark already exist in the itinerary');
+         Swal.fire('This landmark already exists');
          
         }
       itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
