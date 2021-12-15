@@ -19,7 +19,6 @@
       </div>
     </div>
 
-    
     <google-map :landmarks="this.$store.state.activeItinerary.landmarks"></google-map>
     
    
@@ -50,18 +49,23 @@ export default {
     draggable,
     googleMap
   },
+  data() {
+    return {
+      showMap: false
+    }
+  },
   computed: {
     myLandmarks: {
         get() {
             return this.$store.state.activeItinerary.landmarks
         }
     },
-    markers() {
-      return this.myLandmarks.forEach((landmark) => {
-        let marker = {landmark}
-        return marker
-      })
-    }
+    // markers() {
+    //   return this.myLandmarks.forEach((landmark) => {
+    //     let marker = {landmark}
+    //     return marker
+    //   })
+    // }
   },
   methods: {
     deleteItinerary() {
@@ -104,7 +108,7 @@ export default {
           Swal.fire("Your itinerary has been updated")
         }
       })
-    }
+    },
   }
 }
 
