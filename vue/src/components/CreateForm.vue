@@ -4,8 +4,8 @@
       <input type="text" name="name" id="itinerary-name" class="input-field" v-model="itinerary.name" required>
       <label for="itinerary-trip-date">Itinerary Date:</label>
       <input type="date" name="tripDate" id="itinerary-trip-date" class="input-field" v-model="itinerary.tripDate">
-      <label for="itinerary-start" required>Starting Point:</label>  
-      <input type="number" name="startingPoint" id="itinerary-start" class="input-field" v-model="itinerary.startingPoint">
+      <!-- <label for="itinerary-start" required>Starting Point:</label>  
+      <select type="number" name="startingPoint" id="itinerary-start" class="input-field" v-model="itinerary.startingPoint"> -->
       <input type="submit" name="submit" id="Submit" class="button" required>  
   </form>
 </template>
