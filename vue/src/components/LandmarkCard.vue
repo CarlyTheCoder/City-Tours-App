@@ -76,10 +76,12 @@
     
     </div> 
 
-
-    <div id="lm-card-wide-img">
-      <img v-bind:src="landmark.imageWide">
-    </div>
+    <div id="lm-image-container">
+          <img v-bind:src="landmark.imageWide" class="lm-card-wide-img">
+         <img v-bind:src="landmark.imageWide2" class="lm-card-wide-img">
+       
+</div>
+    
 
   </div>
 </template>
@@ -244,16 +246,21 @@ export default {
   row-gap: 15px;
 }
 
-#lm-card-wide-img {
+#lm-image-container {
   grid-area: wide-img;
-   border: 2px solid;
-   border-color: #143E57;
-  border-radius: 4px;
+  display: flex;
+  justify-content: center;
+  column-gap: 10px;
 }
 
-#lm-card-wide-img img {
-  width: 100%;
+.lm-card-wide-img {
+   grid-area: wide-img;
+   border: 2px solid;
+   border-color: #143E57;
+   border-radius: 4px;
+   max-width: 49%;
 }
+
 
 #lm-card-text {
   grid-area: text;

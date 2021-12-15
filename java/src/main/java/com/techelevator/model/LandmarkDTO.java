@@ -25,6 +25,7 @@ public class LandmarkDTO {
     private Time saturdayClose;
     private String image;
     private String imageWide;
+    private String imageWide2;
     private String description;
     private int order;
 
@@ -163,6 +164,8 @@ public class LandmarkDTO {
     public void setImage(String image) {
         this.image = image;
     }
+    public String getImageWide2() { return imageWide2; }
+    public void setImageWide2(String imageWide2) { this.imageWide2 = imageWide2; }
     public String getDescription() { return description; }
     public void setDescription(String description) {
         this.description = description;

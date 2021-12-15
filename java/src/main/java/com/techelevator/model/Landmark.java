@@ -26,6 +26,7 @@ public class Landmark {
     private Time saturdayClose;
     private String image;
     private String imageWide;
+    private String imageWide2;
     private String description;
 
 
@@ -155,25 +156,21 @@ public class Landmark {
     public void setSaturdayClose(Time saturdayClose) {
         this.saturdayClose = saturdayClose;
     }
-
     public String getImage() {
         return image;
     }
-
     public String getImageWide() {
         return imageWide;
     }
-
     public void setImageWide(String imageWide) {
         this.imageWide = imageWide;
     }
-
     public void setImage(String image) {
         this.image = image;
     }
-
+    public String getImageWide2() { return imageWide2; }
+    public void setImageWide2(String imageWide2) { this.imageWide2 = imageWide2; }
     public String getDescription() { return description; }
-
     public void setDescription(String description) {
         this.description = description;
     }

@@ -42,6 +42,7 @@ CREATE TABLE landmarks (
     saturday_close time NOT NULL,
 	image varchar(200),
 	image_wide varchar(200) NOT NULL,
+	image_wide_2 varchar(200) NOT NULL,
 	description varchar(1000),
 	CONSTRAINT PK_landmark PRIMARY KEY (id)
 );

@@ -187,6 +187,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
         landmark.setSaturdayClose(result.getTime("saturday_close"));
         landmark.setImage(result.getString("image"));
         landmark.setImageWide(result.getString("image_wide"));
+        landmark.setImageWide2(result.getString("image_wide_2"));
         landmark.setDescription(result.getString("description"));
         return landmark;
     }
@@ -216,6 +217,7 @@ public class JdbcLandmarkDao implements LandmarkDao {
         landmark.setSaturdayClose(result.getTime("saturday_close"));
         landmark.setImage(result.getString("image"));
         landmark.setImageWide(result.getString("image_wide"));
+        landmark.setImageWide2(result.getString("image_wide_2"));
         landmark.setDescription(result.getString("description"));
         landmark.setOrder(result.getInt("order_position"));
         return landmark;
