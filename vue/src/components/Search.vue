@@ -10,7 +10,7 @@
             <select name="category" id="search-category" class="input-field" v-model="filter.category" v-on:change="filterLandmarks()">
                 <option value=""></option>
                 <option value="business">Business</option>
-                <option value="convention-center">Convention Center</option>
+                <option value="convention center">Convention Center</option>
                 <option value="monument">Monument</option>
                 <option value="museum">Museum</option>
                 <option value="park">Park</option>
