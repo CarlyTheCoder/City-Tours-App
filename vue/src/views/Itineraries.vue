@@ -2,7 +2,7 @@
 <div>
   <div id="itineraries">
     <h2 id="itinerary-greeting">Welcome {{this.$store.state.user.username}}!</h2>
-      <h3>Here are your ititineraries to the Motorcity</h3> 
+      <h3>Here are your itineraries to the Motorcity</h3>
     <div> <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
         <button class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button></div>
        
