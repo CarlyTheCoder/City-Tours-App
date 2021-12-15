@@ -124,7 +124,6 @@ export default {
           Swal.fire('Please select an itinerary')
 
         }
-        this.$store.commit("SET_ACTIVE_ITINERARY", this.itineraryId);
          if(this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
          Swal.fire('This landmark already exists');
          
