@@ -62,13 +62,13 @@
     
       <div class="lm-card-likes">
           <div class="like">
-            <p class="like-count">{{this.$store.state.likes}} {{this.$store.state.likes === 1 ? 'like' : 'likes' }}</p>
+            <p class="like-count">{{this.$store.state.likes}}</p>
             <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''"><i class="far fa-thumbs-up"></i></button>
           </div>
           
         
           <div class="dislike">
-        <p class="like-count">{{this.$store.state.dislikes}} {{this.$store.state.dislikes === 1 ? 'dislike' : 'dislikes' }} </p>
+        <p class="like-count">{{this.$store.state.dislikes}} </p>
         <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
       </div>
         
@@ -123,7 +123,7 @@ export default {
 
         }
          if(this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
-         Swal.fire('This landmark already exists');
+         Swal.fire('This landmark has already been added to this itinerary');
          
         }
       itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
@@ -271,6 +271,7 @@ export default {
 #lm-card-hours {
   font-size: 1em;
   margin: 0px;
+
 }
 
 #lm-card-category {
@@ -293,7 +294,6 @@ export default {
   grid-area: hours;
   border: 2px solid #143E57;
   border-radius: 4px;
-  text-align: center;
 }
 
 #lm-card-hours p {
