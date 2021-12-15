@@ -59,6 +59,7 @@ export default {
 };
 </script>
 <style>
+
 /* #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
   -webkit-font-smoothing: antialiased;
@@ -66,7 +67,8 @@ export default {
   text-align: center;
   color: #2c3e50;
   margin-top: 60px;
-} */
+} 
+
 .pac-target-input {
   padding: 10px;
   width: 100%;
@@ -75,5 +77,5 @@ export default {
   margin-left: 20px;
   padding: 10px 20px;
   background-color: greenyellow;
-}
+} */
 </style>

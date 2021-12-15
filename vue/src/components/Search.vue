@@ -18,7 +18,7 @@
             </select>  
       </div>
       <div class="search-element">
-            <label for="day">Open On:</label>
+            <label id="open-on-label" for="day">Open On:</label>
             <select name="day" id="search-day" class="input-field" v-model="filter.day" v-on:change="filterLandmarks()">
                 <option value=""></option>
                 <option value="Sunday">Sunday</option>
@@ -74,16 +74,25 @@ export default {
 <style>
 
 .search-element {
-    padding: 10px;
+    padding: 10px 5px;
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 15px;
-    font-weight: bold;
+    font-weight: bold;  
+}
+
+#open-on-label {
+    width: 110px;
 }
 
 #search-name, #search-category, #search-day {
     margin: 0;
+}
+#search {
+    max-width: 70%;
+    min-width: 1000px;
+    padding-right: 0;
 }
 
 </style>

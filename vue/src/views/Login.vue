@@ -82,6 +82,15 @@ export default {
 
 <style>
 
+html{
+   background: url(../assets/pexels-anon-702343.jpg) no-repeat center center fixed; 
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+
 #login {
   display: flex;
   flex-direction: column;
@@ -95,7 +104,7 @@ export default {
 }
 
 #login input{
-  width: 50%;
+  width: 90%;
 }
 
 #login .sr-only {
@@ -105,6 +114,7 @@ export default {
 #login-actions {
   width: 100%;
   margin-top: 10px;
+  margin-left: 10px;
   display: flex;
   flex-direction: row;
   justify-content: space-between;

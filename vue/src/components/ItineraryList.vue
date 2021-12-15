@@ -9,7 +9,7 @@
     ></itinerary-preview>
   </div>
 
-</template>
+</template> 
 
 <script>
 import itineraryPreview from "@/components/ItineraryPreview";
