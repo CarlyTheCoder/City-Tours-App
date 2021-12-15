@@ -2,7 +2,7 @@
 
   <router-link v-bind:to="{ name: 'itinerary', params: {id: itinerary.id} }">
     <div id="itinerary-preview">
-      <div>
+      <div id="itinerary-name">
           <h2> {{itinerary.name}}</h2>
           <p>Date: {{itinerary.tripDate}}</p>
       </div>
@@ -29,7 +29,9 @@ name: "itinerary-preview",
   );
   padding: 10px;
   border-radius: 5px;
-  display: flex;
+  display: grid;
+  grid-auto-columns: 300px 1fr;
+  grid-template-areas: "itinerary-name locations";
   justify-content: flex-start;
   row-gap: 15px;
   max-width: 70%;
@@ -40,6 +42,11 @@ name: "itinerary-preview",
 
 .landmark-names {
   padding-left: 120px;
+  grid-area: locations;
+}
+
+#itinerary-name {
+  grid-area: itinerary-name;
 }
 
 

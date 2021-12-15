@@ -1,11 +1,15 @@
 <template>
   <div id="this-itinerary-info">
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
-    <h4><b>Trip date:</b>  {{this.$store.state.activeItinerary.tripDate}}</h4>
+    <h4><b>Trip date:</b>  {{ formatTime(this.$store.state.activeItinerary.tripDate)}}</h4>
     <div v-if="this.$store.state.activeItinerary.landmarks.length > 0" id="landmarks-present">
       <router-link v-bind:to="{ name: 'home'}" >
         <button class="button" v-if="!this.$store.state.showEditItineraryForm">Search Landmarks</button>
       </router-link>
+      <router-link v-bind:to="{ name: 'itineraries', params: {id: this.$store.state.user.id}}" >
+        <button class="button" v-if="!this.$store.state.showEditItineraryForm">Back To Itinerary List</button>
+      </router-link>
+      
       <edit-itinerary />
       <button v-on:click="deleteItinerary" class="button" v-if="!this.$store.state.showEditItineraryForm">Delete Itinerary</button>
     </div>
@@ -15,6 +19,9 @@
         <router-link v-bind:to="{ name: 'home'}" > 
           <button class="button">Search Landmarks</button>
         </router-link> 
+        <router-link v-bind:to="{ name: 'itineraries', params: {id: this.$store.state.user.id}}" >
+        <button class="button" v-if="!this.$store.state.showEditItineraryForm">Back To Itinerary List</button>
+      </router-link>
           <button v-on:click="deleteItinerary" class="button">Delete Itinerary</button>
       </div>
     </div>
@@ -36,6 +43,7 @@
 </template>
 
 <script>
+import moment from "moment";
 import Swal from 'sweetalert2'
 // import editItinerary from '@/components/EditItinerary'
 import itineraryLandmark from '@/components/ItineraryLandmark'
@@ -64,6 +72,10 @@ export default {
     }
   },
   methods: {
+    formatTime(date) {
+      let formattedDate = moment(date.toString(), "yyyy-mm-dd").format("dddd MMMM Do, YYYY");
+      return formattedDate;
+    },
     deleteItinerary() {
       Swal.fire({
         title: 'Are you sure?',
@@ -146,5 +158,17 @@ export default {
   margin-top: 10px;
   padding-left: 0px;
 }
+
+h2, h4 {
+  text-align: center;
+}
+h4 {
+  margin-bottom: 30px;
+  margin-top: 0;
+  }
+  h2 {
+    margin-bottom: 5px;
+  }
+
 
 </style>

@@ -3,7 +3,7 @@
   <div id="app">
     <div id="site-nav">
      <div id="logo">
-       <img src="./assets/CityToursLogo.png" alt="City Tours Detroit Logo"/>
+       <img src=".\assets\logo.png" alt="City Tours Detroit Logo"/>
      </div>
     <div>
       <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
@@ -49,11 +49,12 @@ html {
   border: 1px solid rgb(34, 148, 214);
   padding: 0px 10px;
   text-align: center;
+  vertical-align: middle;
   text-decoration: none;
   display: inline-block;
   border-radius: 10px;
   margin-left: 15px;
-  height: 1.5em
+  height: 1.5rem
 }
 
 .button:hover {
