@@ -112,10 +112,15 @@ html {
   height: auto;
   width: 50%;
   max-width: 400px;
-  margin-left: 40px;
+  margin-left: 20px;
+  margin-top: 180px;
   background-image: linear-gradient(to bottom left, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.3));
 }
 
+#logo{
+  margin-left: 20px;
+  margin-top: 15px;
+}
 
 
 </style>
