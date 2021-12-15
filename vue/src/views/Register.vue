@@ -35,6 +35,7 @@
       />
       <div id="register-actions">
         <button class="button" type="submit" >Create Account</button>
+        <br>
         <router-link :to="{ name: 'login' }" >Have an account?</router-link>
       </div>
     </form>
@@ -108,7 +109,7 @@ export default {
 }
 
 #register input{
-  width: 50%;
+  width: 90%;
 }
 
 #register .sr-only {
@@ -121,6 +122,7 @@ export default {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
+  margin-right: 10px;
 }
 
 #register-actions .button {

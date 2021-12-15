@@ -131,8 +131,8 @@ export default {
         if (response.status === 201) {
       
           Swal.fire('The landmark has been added to your itinerary.')
+          this.$router.push({name: 'itinerary', params: {id: this.itineraryId}});
           this.itineraryId = "";
-          this.$router.push("{name: 'home'}");
         }
       })
     },
