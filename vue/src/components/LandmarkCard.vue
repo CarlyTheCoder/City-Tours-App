@@ -63,21 +63,19 @@
       <div class="lm-card-likes">
           <div class="like">
             <p class="like-count">{{this.$store.state.likes}} {{this.$store.state.likes === 1 ? 'like' : 'likes' }}</p>
-            <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''">Like</button>
+            <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''"><i class="far fa-thumbs-up"></i></button>
           </div>
           
         
           <div class="dislike">
         <p class="like-count">{{this.$store.state.dislikes}} {{this.$store.state.dislikes === 1 ? 'dislike' : 'dislikes' }} </p>
-        <button id="dislikeButton" class="thumbButton button" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''">Dislike</button>
+        <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
       </div>
         
       </div>
-     
     
     </div> 
 
-    
 
     <div id="lm-card-wide-img">
       <img v-bind:src="landmark.imageWide">
@@ -248,6 +246,9 @@ export default {
 
 #lm-card-wide-img {
   grid-area: wide-img;
+   border: 2px solid;
+   border-color: #143E57;
+  border-radius: 4px;
 }
 
 #lm-card-wide-img img {
@@ -280,6 +281,8 @@ export default {
 #lm-card-image {
   grid-area: image;
   width: 315px;
+  border: 2px solid #143E57;
+  border-radius: 4px;
 }
 
 #lm-card-info {
@@ -288,6 +291,9 @@ export default {
 
 #lm-card-hours {
   grid-area: hours;
+  border: 2px solid #143E57;
+  border-radius: 4px;
+  text-align: center;
 }
 
 #lm-card-hours p {

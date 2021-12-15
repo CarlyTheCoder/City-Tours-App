@@ -41,6 +41,14 @@ export default {
   display: flex;
   justify-content: space-around;
   margin: auto;
+  margin-bottom: 25px;
+  background-color: white;
+  border: 1.5px solid #143E57;
+  border-radius: 6px;
+  box-shadow: 
+        0px 2px 10px rgba(0,0,0,0.2), 
+        0px 10px 20px rgba(0,0,0,0.2), 
+        0px 30px 60px 1px rgba(0,0,0,0.25);
 }
 
 </style>

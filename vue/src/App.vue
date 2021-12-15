@@ -2,8 +2,8 @@
 
   <div id="app">
     <div id="site-nav">
-     <div>
-       <h1 id="site-title">Detroit City Tours</h1>
+     <div id="logo">
+       <img src="./assets/CityToursLogo.png" alt="City Tours Detroit Logo"/>
      </div>
     <div>
       <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
@@ -22,12 +22,15 @@
 <style>
 
 html { 
-  background: url(assets/pexels-anon-702343.jpg) no-repeat center center fixed; 
+  /* background: url(assets/pexels-anon-702343.jpg) no-repeat center center fixed; */
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
-  box-sizing: border-box;
+   
+  background: no-repeat center center fixed;
+  background-image: linear-gradient(#3299e76e, #073452f6); 
+  box-sizing: border-box; 
 }
 
 #app {
@@ -43,7 +46,7 @@ html {
   background-color: white;
   font-weight: bold;
   color: black;
-  border: 1px solid rgb(41, 133, 156);
+  border: 1px solid rgb(34, 148, 214);
   padding: 0px 10px;
   text-align: center;
   text-decoration: none;
@@ -112,5 +115,7 @@ html {
   margin-left: 40px;
   background-image: linear-gradient(to bottom left, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.3));
 }
+
+
 
 </style>

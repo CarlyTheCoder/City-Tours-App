@@ -74,11 +74,12 @@ export default {
 <style>
 
 .search-element {
-    padding: 5px;
+    padding: 10px;
     display: flex;
     flex-direction: row;
     align-items: center;
     column-gap: 15px;
+    font-weight: bold;
 }
 
 #search-name, #search-category, #search-day {

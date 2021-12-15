@@ -116,6 +116,8 @@ export default {
 #lm-preview-image {
   grid-area: image;
   width: 315px;
+   border: 2px solid black;
+  border-radius: 4px;
 }
 
 #lm-preview-info {
@@ -124,6 +126,8 @@ export default {
 
 #lm-preview-hours {
   grid-area: hours;
+  border: 1px solid black;
+  border-radius: 4px;
 }
 
 #lm-preview-hours p {
