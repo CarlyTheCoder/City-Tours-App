@@ -20,7 +20,7 @@
     </div>
 
     
-    <google-map :landmarks="this.$store.state.activeItinerary.landmarks"></google-map>
+    <google-map id="google-map" :landmarks="this.$store.state.activeItinerary.landmarks"></google-map>
     
    
     <p v-if="this.$store.state.showEditItineraryForm">Do stuff then hit submit to save:</p>
@@ -138,6 +138,13 @@ export default {
 #landmarks-present {
   display: flex;
   justify-content: center;
+}
+#google-map{
+  max-width: 70%;
+  min-width: 1000px;
+  margin: auto;
+  margin-top: 10px;
+  padding-left: 0px;
 }
 
 </style>
