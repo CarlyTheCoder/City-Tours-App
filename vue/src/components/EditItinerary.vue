@@ -41,7 +41,7 @@ export default {
      hideEditForm(){
          this.$store.state.showEditItineraryForm=false;
      }
- },
+ }, 
 
 }
 </script>

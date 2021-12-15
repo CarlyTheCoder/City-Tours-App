@@ -120,9 +120,16 @@ export default {
     addLandmark() {
        if (this.itineraryId == "") {
           Swal.fire('Please select an itinerary')
+
+        }
+         if(this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
+         Swal.fire('This landmark already exists');
+         
         }
       itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
+      
         if (response.status === 201) {
+      
           Swal.fire('The landmark has been added to your itinerary.')
           this.itineraryId = "";
           this.$router.push("{name: 'home'}");
