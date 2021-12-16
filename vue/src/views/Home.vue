@@ -42,7 +42,10 @@ export default {
   justify-content: space-around;
   margin: auto;
   margin-bottom: 25px;
-  background-color: white;
+  background-image: linear-gradient(to bottom left,
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.8)
+    );
   border: 1.5px solid #143E57;
   border-radius: 6px;
   box-shadow: 

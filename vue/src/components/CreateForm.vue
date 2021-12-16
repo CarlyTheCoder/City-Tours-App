@@ -1,12 +1,15 @@
 <template>
   <form id="itinerary-form" v-on:submit.prevent="createItinerary(), hideCreateForm()">
-      <label for="itinerary-name">Name:</label>
-      <input type="text" name="name" id="itinerary-name" class="input-field" v-model="itinerary.name" required>
-      <label for="itinerary-trip-date">Itinerary Date:</label>
-      <input type="date" name="tripDate" id="itinerary-trip-date" class="input-field" v-model="itinerary.tripDate">
-      <!-- <label for="itinerary-start" required>Starting Point:</label>   -->
-      <!-- <input type="number" name="startingPoint" id="itinerary-start" class="input-field" v-model="itinerary.startingPoint"> -->
-      <input type="submit" name="submit" id="Submit" class="button" required>  
+      <div class="input-area">
+        <label for="itinerary-name"><b>Name:</b></label>
+        <input type="text" name="name" id="itinerary-name" class="input-field" v-model="itinerary.name" required>
+      </div>
+      <div class="input-area">
+        <label for="itinerary-trip-date"><b>Itinerary Date:</b></label>
+        <input type="date" name="tripDate" id="itinerary-trip-date" class="input-field" v-model="itinerary.tripDate">
+      </div>
+
+      <input type="submit" name="submit" id="create-submit" class="button" required>  
   </form>
 </template>
 
@@ -49,5 +52,10 @@ export default {
 </script>
 
 <style>
+
+#create-submit {
+margin-left: 0;
+text-align: center;
+}
 
 </style>

@@ -3,7 +3,7 @@
   <div id="this-itinerary-info">
     <!-- <edit-itinerary v-show="this.$store.state.showEditItineraryForm" /> -->
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
-    <h4><b>Trip date:</b>  {{this.$store.state.activeItinerary.tripDate}}</h4>
+    <h3><b>Trip date:</b>  {{formatDate(this.$store.state.activeItinerary.tripDate)}}</h3>
     <div v-if="this.$store.state.activeItinerary.landmarks.length > 0" id="landmarks-present">
       <router-link v-bind:to="{ name: 'home'}" >
         <button class="button">Search Landmarks</button>
@@ -30,6 +30,11 @@
     </div>
 
     <google-map id="google-map" :landmarks="this.$store.state.activeItinerary.landmarks"></google-map>
+
+    <div id="drag-drop-comment">
+        <h4>Drag & Drop landmarks to change the order in your intinerary: </h4>
+    </div>
+    
     
     <draggable :list="myLandmarks" @start="drag=true" @end="drag=false" @change="updateItemOrder()" v-model="myLandmarks" >
     <itinerary-landmark class="preview-in-list"
@@ -71,8 +76,8 @@ export default {
     }
   },
   methods: {
-    formatTime(date) {
-      let formattedDate = moment(date.toString(), "yyyy-mm-dd").format("dddd MMMM Do, YYYY");
+    formatDate(date) {
+      let formattedDate = moment(date.toString(), "YYYY-MM-DD").format("dddd MMMM Do, YYYY");
       return formattedDate;
     },
     deleteItinerary() {
@@ -142,8 +147,8 @@ export default {
     rgb(255, 255, 255),
     rgba(255, 255, 255, 0.644)
   );
-  padding: 10px;
-  margin: 5px;
+  padding: 10px 0;
+  margin: 5px auto;
   border-radius: 5px;
   width: 100%;
   row-gap: 15px;
@@ -161,16 +166,44 @@ export default {
   padding-left: 0px;
 }
 
-h2, h4 {
+#drag-drop-comment {
+  width: 60%;
+  margin: 20px auto;
+  border: 1.5px solid #143E57;
+  border-radius: 6px;
+  background-image: linear-gradient(to bottom left,
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.8)
+    );
+  padding: 10px;
+  border-radius: 6px;
+  box-shadow: 
+          0px 2px 10px rgba(0,0,0,0.2), 
+          0px 10px 20px rgba(0,0,0,0.2), 
+          0px 30px 60px 1px rgba(0,0,0,0.25);
+}
+
+#drag-drop-comment h4 {
+  margin: 0;
   text-align: center;
 }
-h4 {
+
+#this-itinerary-info h2, #this-itinerary-info h3 {
+  text-align: center;
+}
+
+
+#this-itinerary-info h3 {
   margin-bottom: 30px;
   margin-top: 0;
-  }
-  h2 {
-    margin-bottom: 5px;
-  }
+}
+
+#this-itinerary-info h2 {
+  font-size: 2.3rem;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  text-shadow: 1px 1px 2px #afafafb4;
+}
 
 
 </style>

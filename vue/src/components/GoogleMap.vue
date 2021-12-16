@@ -3,17 +3,21 @@
     <!-- <button @click="getMarkers">Get Markers</button> -->
       <br>
     <div id="route-select">
-        <select id="start" class="button" v-model="landmarkA">
-            <option value="" class="default-option">Starting Location</option>
-            <option v-for="landmark in landmarks" v-bind:key="landmark.id" :value="landmark">{{landmark.name}}</option>
-        </select>
-        <select id="stop" class="button" v-model="landmarkB">
-            <option value="" class="default-option">Destination</option>
-            <option v-for="landmark in landmarks" v-bind:key="landmark.id" :value="landmark">{{landmark.name}}</option>
-        </select>
-        <button @click="setRoute">Show Route</button>
+        <div id="selectors">
+            <label for="start"><b>Starting Point: </b></label>
+            <select id="start" class="button" v-model="landmarkA">
+                <option value="" class="default-option">Starting Location</option>
+                <option v-for="landmark in landmarks" v-bind:key="landmark.id" :value="landmark">{{landmark.name}}</option>
+            </select>
+            <label for="stop"><b>Destination: </b></label>
+            <select id="stop" class="button" v-model="landmarkB">
+                <option value="" class="default-option">Destination</option>
+                <option v-for="landmark in landmarks" v-bind:key="landmark.id" :value="landmark">{{landmark.name}}</option>
+            </select>
+        </div>
+        <button @click="setRoute" class="button">Show Route</button>
     </div>
-    
+
     <GmapMap id="route-map" :center='center' :zoom='13' style='width: 1000px;  height: 400px;'>
         <DirectionsRenderer
         travelMode="DRIVING"
@@ -110,8 +114,29 @@ export default {
 
 <style>
 
+#route-select {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    background-image: linear-gradient(to bottom left,
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.349)
+    );
+    padding: 10px;
+    border: 1.5px solid #143E57;
+    border-radius: 6px;
+    box-shadow: 
+            0px 2px 10px rgba(0,0,0,0.2), 
+            0px 10px 20px rgba(0,0,0,0.2), 
+            0px 30px 60px 1px rgba(0,0,0,0.25);
+}
+
 #route-select .default-option {
     color: lightgray;
+}
+
+#route-select select {
+    margin-right: 20px;
 }
 
 #route-map {
@@ -123,4 +148,6 @@ export default {
     outline: none;
     box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 }
+
+
 </style>

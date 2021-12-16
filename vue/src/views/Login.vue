@@ -2,7 +2,8 @@
 
   <div class="account-container">
     <form id="login" class="form-signin" @submit.prevent="login">
-      <h1>Please Sign In</h1>
+      <h1>Welcome to Detroit City Tours!</h1>
+      <h3>Please sign in to plan your trip:</h3>
       <div
         class="alert alert-danger"
         role="alert"
@@ -99,8 +100,15 @@ html{
 }
 
 #login h1 {
-  margin: 10px 0 10px 0;
   font-size: 28px;
+  margin: 10px auto;
+  text-shadow: 1px 1px 2px #afafafb4;
+}
+
+#login h3 {
+  margin: auto;
+  margin-bottom: 10px;
+  text-shadow: 1px 1px 2px #afafafb4;
 }
 
 #login input{

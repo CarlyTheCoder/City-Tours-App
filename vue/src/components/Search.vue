@@ -14,6 +14,8 @@
                 <option value="monument">Monument</option>
                 <option value="museum">Museum</option>
                 <option value="park">Park</option>
+                <option value="performance hall">Performance Hall</option>
+                <option value="restaurant">Restaurant</option>
                 <option value="stadium">Stadium</option>
             </select>  
       </div>

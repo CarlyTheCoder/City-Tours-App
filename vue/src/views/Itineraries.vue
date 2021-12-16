@@ -6,7 +6,7 @@
     <div> <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
         <button class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button></div>
        
-          <create-form v-if="this.$store.state.showCreateForm" ></create-form>
+          <create-form id="new-itinerary-form" v-if="this.$store.state.showCreateForm"></create-form>
           <itinerary-list id="filtered-itinerary-list"></itinerary-list>
       </div>
 </div>
@@ -54,6 +54,23 @@ a:-webkit-any-link {
 
 h3 {
   margin-bottom: 30px;
+}
+
+#new-itinerary-form {
+  width: 40%;
+  border: 1.5px solid #143E57;
+  border-radius: 6px;
+  background-image: linear-gradient(to bottom left,
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.8)
+    );
+  padding: 20px 40px 20px 30px;
+  margin: 20px auto;
+  border-radius: 6px;
+  box-shadow: 
+          0px 2px 10px rgba(0,0,0,0.2), 
+          0px 10px 20px rgba(0,0,0,0.2), 
+          0px 30px 60px 1px rgba(0,0,0,0.25);
 }
 
 </style>

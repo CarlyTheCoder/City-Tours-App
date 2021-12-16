@@ -7,7 +7,7 @@
 
     <div id="lm-preview-info">
       <h1 id="lm-preview-title">{{ landmark.name }}</h1>
-      <h3 id="lm-preview-category">Category: {{ landmark.category }}</h3>
+      <h3 id="lm-preview-category">{{ landmark.category }}</h3>
       <router-link v-bind:to="{ name: 'landmark', params: {id: landmark.id} }">
         <button class="button">View Details</button>
       </router-link>

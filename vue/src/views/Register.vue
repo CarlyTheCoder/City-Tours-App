@@ -104,8 +104,9 @@ export default {
 }
 
 #register h1 {
-  margin: 10px 0 10px 0;
+  margin: 10px auto;
   font-size: 28px;
+  text-shadow: 1px 1px 2px #afafafb4;
 }
 
 #register input{

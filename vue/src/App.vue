@@ -54,7 +54,8 @@ html {
   display: inline-block;
   border-radius: 10px;
   margin-left: 15px;
-  height: 1.5rem
+  height: 1.5rem;
+  box-shadow: 1px 1px 4px #adadad;
 }
 
 .button:hover {
@@ -90,6 +91,7 @@ html {
   border: 1px solid #29638a86;
   border-radius: 5px;
   background-color: white;
+  box-shadow: 1px 1px 4px #adadad;
 }
 
 .input-field:hover {
@@ -113,9 +115,11 @@ html {
   height: auto;
   width: 50%;
   max-width: 400px;
-  margin-left: 20px;
-  margin-top: 180px;
-  background-image: linear-gradient(to bottom left, rgba(255, 255, 255, 0.65), rgba(255, 255, 255, 0.3));
+  margin: auto auto;
+  background-image: linear-gradient(to bottom left,
+    rgb(255, 255, 255),
+    rgba(255, 255, 255, 0.8)
+    );
 }
 
 #logo{
