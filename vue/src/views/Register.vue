@@ -1,5 +1,5 @@
 <template>
-
+ 
   <div class="account-container">
     <form id="register" class="form-register" @submit.prevent="register">
       <h1>Create Account</h1>

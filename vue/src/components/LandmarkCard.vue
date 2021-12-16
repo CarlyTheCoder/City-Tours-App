@@ -1,18 +1,30 @@
 <template>
 
   <div id="landmark-card">
-    <div>
-      <img id="lm-card-image" v-bind:src="landmark.image" alt="" />
-    </div>
+
     <div id="lm-card-text">
       <div id="lm-card-name">
         <h2 id="lm-card-title">{{ landmark.name }}</h2>
           
-
       </div>
       <div id="lm-card-info">
+        <div>
         <p id="lm-card-category"><b>Category: </b>{{ landmark.category }}</p>
         <p id="lm-card-address"><b>Address: </b> {{ landmark.address }}</p>
+        </div>
+        <div class="lm-card-likes">
+          <p ID="like-this"> Like this?</p>
+          <div class="like">
+            <p class="like-count">{{this.$store.state.likes}}</p>
+            <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''"><i class="far fa-thumbs-up"></i></button>
+          </div>
+          
+          <div class="dislike">
+        <p class="like-count">{{this.$store.state.dislikes}} </p>
+        <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
+      </div>
+        
+    </div> 
       </div>
       <div id="lm-card-description">
         <p>{{ landmark.description }}</p>
@@ -58,23 +70,9 @@
       <p>
         <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
       </p>
-        
+    </div>
     
-      <div class="lm-card-likes">
-          <div class="like">
-            <p class="like-count">{{this.$store.state.likes}}</p>
-            <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''"><i class="far fa-thumbs-up"></i></button>
-          </div>
-          
-        
-          <div class="dislike">
-        <p class="like-count">{{this.$store.state.dislikes}} </p>
-        <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
-      </div>
-        
-      </div>
-    
-    </div> 
+     
 
     <div id="lm-image-container">
           <img v-bind:src="landmark.imageWide" class="lm-card-wide-img">
@@ -241,9 +239,10 @@ export default {
   border-radius: 5px;
   width: 100%;
   display: grid;
-  grid-auto-columns: 340px 1fr 240px;
-  grid-template-areas: "image text hours" "wide-img wide-img wide-img";
+  grid-auto-columns: 1fr  240px;
+  grid-template-areas: "text hours" " wide-img wide-img";
   row-gap: 15px;
+
 }
 
 #lm-image-container {
@@ -295,6 +294,10 @@ export default {
 
 #lm-card-info {
   padding: 5px 0 0 0;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  
 }
 
 #lm-card-hours {
@@ -333,6 +336,7 @@ export default {
   display: inline-block;
   cursor: pointer;
   margin: 10px;
+  
 }
 
 .dislike:hover,
@@ -363,11 +367,29 @@ div.like, div.dislike {
 
 .lm-card-likes {
   display: flex;
+  align-items: flex-end;
+  
 }
 
 #likeButton, #dislikeButton {
   margin-left: 0px;
+  margin-bottom: 3.9px;
+
 }
+.like-count{
+  margin-top: 0px;
+  padding-top: 0px;
+  text-align: center;
+}
+#like-this{
+  text-align: center;
+  font-weight: bold;
+
+}
+#lm-card-description p{
+  margin-top: 0%;
+}
+
 
 
 
