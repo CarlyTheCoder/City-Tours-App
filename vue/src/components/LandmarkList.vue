@@ -19,18 +19,16 @@ export default {
   components: {
     landmarkPreview,
   },
-
   created() {
     this.getAllLandmarks();
   },
-
   methods: {
     getAllLandmarks() {
       landmarkService.getAll().then((response) => {
         this.$store.commit("POPULATE_LANDMARKS", response.data);
       });
-    },
-  },
+    }
+  }
 };
 
 </script>
@@ -43,7 +41,5 @@ export default {
   align-items: center;
   justify-content: center;
 }
-
-
 
 </style>

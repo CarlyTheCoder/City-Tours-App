@@ -1,4 +1,5 @@
 <template>
+
   <form id="itinerary-form" v-on:submit.prevent="createItinerary(), hideCreateForm()">
       <div class="input-area">
         <label for="itinerary-name"><b>Name:</b></label>
@@ -8,12 +9,13 @@
         <label for="itinerary-trip-date"><b>Itinerary Date:</b></label>
         <input type="date" name="tripDate" id="itinerary-trip-date" class="input-field" v-model="itinerary.tripDate">
       </div>
-
       <input type="submit" name="submit" id="create-submit" class="button" required>  
   </form>
+
 </template>
 
 <script>
+
 import Swal from 'sweetalert2';
 import itineraryService from '@/services/ItineraryService';
 export default {
@@ -42,20 +44,21 @@ export default {
         hideCreateForm() {
         this.$store.state.showCreateForm = false;
         },
-         getByUserId() {
-        itineraryService.getByUserId(this.$route.params.userId).then((response) => {
-        this.$store.commit("POPULATE_ITINERARIES", response.data);
+        getByUserId() {
+            itineraryService.getByUserId(this.$route.params.userId).then((response) => {
+            this.$store.commit("POPULATE_ITINERARIES", response.data);
             });
         }
     }
 }
+
 </script>
 
 <style>
 
 #create-submit {
-margin-left: 0;
-text-align: center;
+    margin-left: 0;
+    text-align: center;
 }
 
 </style>

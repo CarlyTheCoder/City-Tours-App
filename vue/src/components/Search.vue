@@ -82,7 +82,7 @@ export default {
     display: flex;
     flex-direction: row;
     align-items: center;
-    column-gap: 15px;
+    column-gap: 5px;
     font-weight: bold;  
 }
 
@@ -93,6 +93,11 @@ export default {
 #search-name, #search-category, #search-day {
     margin: 0;
 }
+
+#search-category {
+    width: 150px
+}
+
 #search {
     max-width: 70%;
     min-width: 1000px;

@@ -1,7 +1,6 @@
 <template>
 
   <div id="this-itinerary-info">
-    <!-- <edit-itinerary v-show="this.$store.state.showEditItineraryForm" /> -->
     <h2>{{this.$store.state.activeItinerary.name}}</h2>
     <h3><b>Trip date:</b>  {{formatDate(this.$store.state.activeItinerary.tripDate)}}</h3>
     <div v-if="this.$store.state.activeItinerary.landmarks.length > 0" id="landmarks-present">
@@ -11,10 +10,8 @@
       <router-link v-bind:to="{ name: 'itineraries', params: {id: this.$store.state.user.id}}" >
         <button class="button">Back To Itinerary List</button>
       </router-link>
-      <!-- <button class="button" @click="toggleEditForm" >Edit Info</button> -->
       <button v-on:click="deleteItinerary" class="button" >Delete Itinerary</button>
     </div>
-
     <div v-else id="no-landmarks-in-itinerary">
       <h2>Search landmarks to add to your itinerary!</h2>
       <div>
@@ -22,35 +19,30 @@
           <button class="button">Search Landmarks</button>
         </router-link> 
         <router-link v-bind:to="{ name: 'itineraries', params: {id: this.$store.state.user.id}}" >
-        <button class="button" v-if="!this.$store.state.showEditItineraryForm">Back To Itinerary List</button>
-      </router-link>
-        <!-- <button class="button" @click="toggleEditForm" >Edit Info</button> -->
+          <button class="button" v-if="!this.$store.state.showEditItineraryForm">Back To Itinerary List</button>
+        </router-link>
         <button v-on:click="deleteItinerary" class="button">Delete Itinerary</button>
       </div>
     </div>
-
     <google-map id="google-map" :landmarks="this.$store.state.activeItinerary.landmarks"></google-map>
-
     <div id="drag-drop-comment">
-        <h4>Drag & Drop landmarks to change the order in your intinerary: </h4>
+      <h4>Drag & Drop landmarks to change the order in your intinerary: </h4>
     </div>
-    
-    
     <draggable :list="myLandmarks" @start="drag=true" @end="drag=false" @change="updateItemOrder()" v-model="myLandmarks" >
     <itinerary-landmark class="preview-in-list"
       v-for="landmark in myLandmarks"
       v-bind:key="landmark.order"
-      :landmark="landmark"
-    ></itinerary-landmark>
+      :landmark="landmark">
+    </itinerary-landmark>
     </draggable>
-
   </div>
+
 </template>
 
 <script>
+
 import moment from "moment";
 import Swal from 'sweetalert2'
-// import editItinerary from '@/components/EditItinerary'
 import itineraryLandmark from '@/components/ItineraryLandmark'
 import itineraryService from '@/services/ItineraryService'
 import draggable from 'vuedraggable'
@@ -59,7 +51,6 @@ export default {
   name: "itinerary-info",
   components: {
     itineraryLandmark,
-    // editItinerary,
     draggable,
     googleMap
   },
@@ -70,9 +61,9 @@ export default {
   },
   computed: {
     myLandmarks: {
-        get() {
-            return this.$store.state.activeItinerary.landmarks
-        }
+      get() {
+          return this.$store.state.activeItinerary.landmarks
+      }
     }
   },
   methods: {
@@ -96,7 +87,7 @@ export default {
                 this.$router.push({name:"itineraries", params:{userId: this.$store.state.user.id}});
                 this.getByUserId();
             }
-        })
+          })
           Swal.fire(
             'Deleted!',
             'Your file has been deleted.',
@@ -105,26 +96,21 @@ export default {
         }
       })
     },
-    // getByUserId() {
-    //   itineraryService.getByUserId(this.$route.params.userId).then((response) => {
-    //     this.$store.commit("POPULATE_ITINERARIES", response.data);
-    //   });
-    // },
     updateItemOrder() {
       this.myLandmarks.forEach((landmark, index) => {
         landmark.order = index + 1;
       });
-      this.$store.commit("UPDATE_LANDMARK_ORDER", this.myLandmarks)
+      this.$store.commit("UPDATE_LANDMARK_ORDER", this.myLandmarks);
       itineraryService.updateItinerary(this.$store.state.activeItinerary).then((response) => {
         if (response.status === 200) {
           Swal.fire("Your itinerary has been updated")
         }
       })
     },
-    toggleEditForm(){
+    toggleEditForm() {
       this.$store.commit('TOGGLE_EDIT_ITINERARY_FORM');
     }
-  },
+  }
 }
 
 </script>
@@ -143,7 +129,7 @@ export default {
   flex-direction: column;
   align-items: center;
   row-gap: 10px;
-   background-image: linear-gradient(to bottom left,
+  background-image: linear-gradient(to bottom left,
     rgb(255, 255, 255),
     rgba(255, 255, 255, 0.644)
   );
@@ -158,7 +144,8 @@ export default {
   display: flex;
   justify-content: center;
 }
-#google-map{
+
+#google-map {
   max-width: 70%;
   min-width: 1000px;
   margin: auto;
@@ -174,13 +161,13 @@ export default {
   background-image: linear-gradient(to bottom left,
     rgb(255, 255, 255),
     rgba(255, 255, 255, 0.8)
-    );
+  );
   padding: 10px;
   border-radius: 6px;
   box-shadow: 
-          0px 2px 10px rgba(0,0,0,0.2), 
-          0px 10px 20px rgba(0,0,0,0.2), 
-          0px 30px 60px 1px rgba(0,0,0,0.25);
+    0px 2px 10px rgba(0,0,0,0.2), 
+    0px 10px 20px rgba(0,0,0,0.2), 
+    0px 30px 60px 1px rgba(0,0,0,0.25);
 }
 
 #drag-drop-comment h4 {
@@ -191,7 +178,6 @@ export default {
 #this-itinerary-info h2, #this-itinerary-info h3 {
   text-align: center;
 }
-
 
 #this-itinerary-info h3 {
   margin-bottom: 30px;
@@ -204,6 +190,5 @@ export default {
   margin-bottom: 5px;
   text-shadow: 1px 1px 2px #afafafb4;
 }
-
 
 </style>

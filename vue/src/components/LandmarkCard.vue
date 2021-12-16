@@ -1,18 +1,15 @@
 <template>
 
   <div id="landmark-card">
-
     <div id="lm-card-text">
       <div id="lm-card-name">
         <h2 id="lm-card-title">{{ landmark.name }}</h2>
-          
       </div>
       <div id="lm-card-info">
         <div>
         <p id="lm-card-category"><b>Category: </b>{{ landmark.category }}</p>
         <p id="lm-card-address"><b>Address: </b> {{ landmark.address }}</p>
         </div>
-         
       </div>
       <div id="lm-card-description">
         <p>{{ landmark.description }}</p>
@@ -34,7 +31,6 @@
             <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''"><i class="far fa-thumbs-up"></i></button>
             <p class="like-count">{{this.$store.state.likes}}</p>
           </div>
-          
           <div class="dislike">
             <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
             <p class="like-count">{{this.$store.state.dislikes}} </p>
@@ -42,40 +38,22 @@
         </div>
       </div>
     </div>
-
     <div id="lm-card-hours">
       <p class="lm-card-time"><b>Hours: </b></p>
-      <p>
-        <b>Sunday:</b> {{ formatTime(landmark.sundayOpen, landmark.sundayClose) }} 
-      </p>
-      <p>
-        <b>Monday:</b> {{ formatTime(landmark.mondayOpen, landmark.mondayClose) }}
-      </p>
-      <p>
-        <b>Tuesday:</b> {{ formatTime(landmark.tuesdayOpen, landmark.tuesdayClose) }}
-      </p>
-      <p>
-        <b>Wednesday:</b> {{ formatTime(landmark.wednesdayOpen, landmark.wednesdayClose) }}
-      </p>
-      <p>
-        <b>Thursday:</b> {{ formatTime(landmark.thursdayOpen, landmark.thursdayClose) }}
-      </p>
-      <p>
-        <b>Friday:</b> {{ formatTime(landmark.fridayOpen, landmark.fridayClose) }}
-      </p>
-      <p>
-        <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
-      </p>
+      <p><b>Sunday: </b>{{ formatTime(landmark.sundayOpen, landmark.sundayClose) }}</p>
+      <p><b>Monday: </b>{{ formatTime(landmark.mondayOpen, landmark.mondayClose) }}</p>
+      <p><b>Tuesday: </b>{{ formatTime(landmark.tuesdayOpen, landmark.tuesdayClose) }}</p>
+      <p><b>Wednesday: </b>{{ formatTime(landmark.wednesdayOpen, landmark.wednesdayClose) }}</p>
+      <p><b>Thursday: </b>{{ formatTime(landmark.thursdayOpen, landmark.thursdayClose) }}</p>
+      <p><b>Friday: </b>{{ formatTime(landmark.fridayOpen, landmark.fridayClose) }}</p>
+      <p><b>Saturday: </b>{{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}</p>
     </div>
-    
-     
-
     <div id="lm-image-container">
-        <img v-bind:src="landmark.imageWide" class="lm-card-wide-img">
-        <img v-bind:src="landmark.imageWide2" class="lm-card-wide-img">
+      <img v-bind:src="landmark.imageWide" class="lm-card-wide-img">
+      <img v-bind:src="landmark.imageWide2" class="lm-card-wide-img">
     </div>
-    
   </div>
+
 </template>
 
 <script>
@@ -102,7 +80,6 @@ export default {
     formatTime(hourA, hourB) {
       let timeA = moment(hourA.toString(), "hh:mm:ss").format("h:mma");
       let timeB = moment(hourB.toString(), "hh:mm:ss").format("h:mma");
-
       if (hourA === "00:00:00" && hourB === "23:59:00") {
         return "Open 24 hrs";
       } else if (hourA === "00:00:00" && hourB === "00:00:00") {
@@ -112,19 +89,15 @@ export default {
       }
     },
     addLandmark() {
-       if (this.itineraryId == "") {
-          Swal.fire('Please select an itinerary')
-
-        }
-         if(this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
-         Swal.fire("This landmark has already been added to your itinerary");
-         
-        }
+      if (this.itineraryId == "") {
+        Swal.fire('Please select an itinerary');
+      }
+        if(this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
+        Swal.fire("This landmark has already been added to your itinerary");
+      }
       itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
-      
         if (response.status === 201) {
-      
-          Swal.fire('The landmark has been added to your itinerary.')
+          Swal.fire('The landmark has been added to your itinerary.');
           this.$router.push({name: 'itinerary', params: {id: this.itineraryId}});
           this.itineraryId = "";
         }
@@ -132,7 +105,7 @@ export default {
     },
     getItineraries() {
       itineraryService.getByUserId(this.$store.state.user.id).then((response) => {
-      this.itineraries = response.data
+        this.itineraries = response.data
       })
     },
     getLikesAndDislikes() {
@@ -167,21 +140,21 @@ export default {
         } 
         if (this.$store.state.isDisliked) {
           landmarkService.deleteDislike(this.$route.params.id, this.$store.state.user.id).then((response) => {
-          if (response.status === 200) {
-          this.$store.commit("DELETE_DISLIKE");
-          this.$store.commit("TOGGLE_ISDISLIKED_FALSE");
-        }
-        })
+            if (response.status === 200) {
+              this.$store.commit("DELETE_DISLIKE");
+              this.$store.commit("TOGGLE_ISDISLIKED_FALSE");
+            }
+          })
         }
       })
       .catch((error) => {
         if (error.response) {
-        landmarkService.deleteLike(this.$route.params.id, this.$store.state.user.id).then((response) => {
-          if (response.status === 200) {
-          this.$store.commit("DELETE_LIKE");
-          this.$store.commit("TOGGLE_ISLIKED_FALSE");
-        }
-        })
+          landmarkService.deleteLike(this.$route.params.id, this.$store.state.user.id).then((response) => {
+            if (response.status === 200) {
+              this.$store.commit("DELETE_LIKE");
+              this.$store.commit("TOGGLE_ISLIKED_FALSE");
+            }
+          })
         } 
       }) 
     },
@@ -193,21 +166,21 @@ export default {
         }
         if (this.$store.state.isLiked) {
           landmarkService.deleteLike(this.$route.params.id, this.$store.state.user.id).then((response) => {
-          if (response.status === 200) {
-          this.$store.commit("DELETE_LIKE");
-          this.$store.commit("TOGGLE_ISLIKED_FALSE");
-        }
-        })
+            if (response.status === 200) {
+              this.$store.commit("DELETE_LIKE");
+              this.$store.commit("TOGGLE_ISLIKED_FALSE");
+            }
+          })
         }
       })
       .catch((error) => {
         if (error.response) {
-        landmarkService.deleteDislike(this.$route.params.id, this.$store.state.user.id).then((response) => {
-          if (response.status === 200) {
-          this.$store.commit("DELETE_DISLIKE");
-          this.$store.commit("TOGGLE_ISDISLIKED_FALSE");
-        }
-        })
+          landmarkService.deleteDislike(this.$route.params.id, this.$store.state.user.id).then((response) => {
+            if (response.status === 200) {
+              this.$store.commit("DELETE_DISLIKE");
+              this.$store.commit("TOGGLE_ISDISLIKED_FALSE");
+            }
+          })
         } 
       }) 
     },
@@ -217,7 +190,6 @@ export default {
     }
   }
 };
-
 
 </script>
 
@@ -236,7 +208,6 @@ export default {
   grid-auto-columns: 1fr  240px;
   grid-template-areas: "text hours" " wide-img wide-img";
   row-gap: 10px;
-
 }
 
 #image-likes {
@@ -277,8 +248,7 @@ export default {
   margin: 0px;
 }
 
-#likeButton:hover,
-#dislikeButton:hover {
+#likeButton:hover, #dislikeButton:hover {
   color: #2EBDD1;
   transition: all .2s ease-in-out;
   transform: scale(1.1);
@@ -331,7 +301,6 @@ div.like, div.dislike {
   display: flex;
   flex-direction: row;
   justify-content: space-between;
-  
 }
 
 #lm-card-hours {
@@ -400,6 +369,5 @@ div.like, div.dislike {
 #landmark-card h2 {
   text-shadow: 1px 1px 2px #afafafb4;
 }
-
 
 </style>

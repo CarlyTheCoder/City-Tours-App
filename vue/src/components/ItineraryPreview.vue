@@ -16,16 +16,15 @@
           <button class="button">Search landmarks</button>
         </div>
       </div>
-      
-     
     </div>
   </router-link>
 
 </template>
 
 <script>
+
 export default {
-name: "itinerary-preview",
+  name: "itinerary-preview",
   props: ["itinerary"],
   computed: {
     landmarkCount() {
@@ -36,9 +35,11 @@ name: "itinerary-preview",
     }
   }
 }
+
 </script>
 
 <style>
+
 #itinerary-preview {
   background-image: linear-gradient(to bottom left,
     rgb(255, 255, 255),
@@ -85,7 +86,6 @@ name: "itinerary-preview",
 #itin-preview-right button {
   margin-bottom: 20px;
 }
-
 
 #first-landmark-img {
   height: 150px;

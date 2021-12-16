@@ -1,10 +1,9 @@
 <template>
-  <div id="itinerary-landmark">
 
+  <div id="itinerary-landmark">
     <div>
       <img id="itl-image" v-bind:src="landmark.image" alt="" />
     </div>
-
     <div id="itl-info">
       <h2 id="itl-title">{{ landmark.name }}</h2>
       <p id="itl-category"><b>Category: </b>{{ landmark.category }}</p>
@@ -16,14 +15,15 @@
         <button class="button" @click="removeLandmarkFromItinerary()">Remove</button>
       </div>
     </div>
-
   </div>
+
 </template>
 
 <script>
-import Swal from 'sweetalert2';
+
+import Swal from 'sweetalert2'
 import itineraryService from '@/services/ItineraryService'
-import moment from "moment";
+import moment from "moment"
 export default {
   name: "itinerary-landmark",
   props: ["landmark"],
@@ -31,7 +31,6 @@ export default {
     formatTime(hourA, hourB) {
       let timeA = moment(hourA.toString(), "hh:mm:ss").format("h:mma");
       let timeB = moment(hourB.toString(), "hh:mm:ss").format("h:mma");
-
       if (hourA === "00:00:00" && hourB === "23:59:00") {
         return "Open 24 hrs";
       } else if (hourA === "00:00:00" && hourB === "00:00:00") {
@@ -42,35 +41,34 @@ export default {
     },
     removeLandmarkFromItinerary() {
       Swal.fire({
-  title: 'Are you sure?',
-  text: "You won't be able to revert this!",
-  icon: 'warning',
-  showCancelButton: true,
-  confirmButtonColor: '#3085d6',
-  cancelButtonColor: '#d33',
-  confirmButtonText: 'Yes, delete it!'
-}).then((result) => {
-  if (result.isConfirmed) {
-    itineraryService.deleteLandmarkFromItinerary(this.$route.params.id, this.landmark.id).then((response) => {
+        title: 'Are you sure?',
+        text: "You won't be able to revert this!",
+        icon: 'warning',
+        showCancelButton: true,
+        confirmButtonColor: '#3085d6',
+        cancelButtonColor: '#d33',
+        confirmButtonText: 'Yes, delete it!'
+      }).then((result) => {
+        if (result.isConfirmed) {
+          itineraryService.deleteLandmarkFromItinerary(this.$route.params.id, this.landmark.id).then((response) => {
             if (response.status === 200) {
-                this.refreshItineraries();
+              this.refreshItineraries();
             }
-        })
-    Swal.fire(
-      'Deleted!',
-      'The landmark was removed',
-      'success'
-    )
-  }
-})
-        
+          })
+          Swal.fire(
+            'Deleted!',
+            'The landmark was removed',
+            'success'
+          )
+        }
+      })  
     },
     refreshItineraries() {
       itineraryService.getById(this.$route.params.id).then((response) => {
         this.$store.commit("SET_ACTIVE_ITINERARY", response.data);
       });
     }
-  },
+  }
 };
 
 </script>
@@ -141,6 +139,5 @@ export default {
   margin: 0;
   box-shadow: 1px 1px 6px #bbbbbb;
 }
-
 
 </style>

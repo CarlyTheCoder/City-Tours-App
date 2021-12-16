@@ -1,10 +1,9 @@
 <template>
+  
   <div id="landmark-preview">
-
     <div>
       <img id="lm-preview-image" v-bind:src="landmark.image" alt="" />
     </div>
-
     <div id="lm-preview-info">
       <h1 id="lm-preview-title">{{ landmark.name }}</h1>
       <h3 id="lm-preview-category">{{ landmark.category }}</h3>
@@ -12,8 +11,8 @@
         <button class="button">View Details</button>
       </router-link>
     </div>
-
   </div>
+
 </template>
 
 <script>
@@ -26,7 +25,6 @@ export default {
     formatTime(hourA, hourB) {
       let timeA = moment(hourA.toString(), "hh:mm:ss").format("h:mma");
       let timeB = moment(hourB.toString(), "hh:mm:ss").format("h:mma");
-
       if (hourA === "00:00:00" && hourB === "23:59:00") {
         return "Open 24 hrs";
       } else if (hourA === "00:00:00" && hourB === "00:00:00") {
@@ -34,8 +32,8 @@ export default {
       } else {
         return timeA + " to " + timeB;
       }
-    },
-  },
+    }
+  }
 };
 
 </script>
@@ -99,6 +97,5 @@ export default {
   margin: 0;
   box-shadow: 1px 1px 6px #bbbbbb;
 }
-
 
 </style>
