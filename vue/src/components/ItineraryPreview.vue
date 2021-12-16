@@ -2,13 +2,9 @@
 
   <router-link v-bind:to="{ name: 'itinerary', params: {id: itinerary.id} }">
     <div id="itinerary-preview">
-      <div id="itinerary-name">
-          <h2> {{itinerary.name}}</h2>
-          <p>Date: {{itinerary.tripDate}}</p>
-      </div>
-      <div class="landmark-names">
-        <p v-for="landmark in itinerary.landmarks" v-bind:key="landmark.id">{{landmark.name}}</p>
-      </div>
+      <h2> {{itinerary.name}}</h2>
+      <p>Date: {{itinerary.tripDate}}</p>
+      <p>Number of stops: {{landmarkCount}}</p>
     </div>
   </router-link>
 
@@ -18,6 +14,11 @@
 export default {
 name: "itinerary-preview",
   props: ["itinerary"],
+  computed: {
+    landmarkCount() {
+      return this.itinerary.landmarks.length;
+    }
+  }
 }
 </script>
 
@@ -29,27 +30,13 @@ name: "itinerary-preview",
   );
   padding: 10px;
   border-radius: 5px;
-  display: grid;
-  grid-auto-columns: 300px 1fr;
-  grid-template-areas: "itinerary-name locations";
   justify-content: flex-start;
   row-gap: 15px;
   max-width: 70%;
-  min-width: 1000px;
+  min-width: 300px;
   margin: auto;
   margin-top: 10px;
 }
-
-.landmark-names {
-  padding-left: 120px;
-  grid-area: locations;
-}
-
-#itinerary-name {
-  grid-area: itinerary-name;
-}
-
-
 
 #itinerary-preview:hover {
   background-image: linear-gradient(to bottom left,
@@ -61,23 +48,6 @@ name: "itinerary-preview",
 #itinerary-preview h2 {
   font-size: 2rem;
   margin: 5px 0;
-}
-
-#itinerary-preview-landmark-preview {
-display: flex;
-flex-direction: row;
-align-items: center;
-justify-content: space-between;
-}
-
-#itinerary-preview-landmark-preview h3 {
-text-align: center;
-margin: 0 0 0 50px;
-font-size: 2.2rem;
-}
-
-#itinerary-preview-landmark-preview img {
-  max-width: 50%;
 }
 
 </style>

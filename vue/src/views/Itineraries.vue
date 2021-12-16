@@ -2,11 +2,11 @@
 <div>
   <div id="itineraries">
     <h2 id="itinerary-greeting">Welcome {{this.$store.state.user.username}}!</h2>
-      <h3>Here are your itineraries to the Motorcity</h3>
+      <h3>Your itineraries to the Motor City:</h3>
     <div> <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
         <button class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button></div>
        
-         <create-form v-if="this.$store.state.showCreateForm" ></create-form>
+          <create-form v-if="this.$store.state.showCreateForm" ></create-form>
           <itinerary-list id="filtered-itinerary-list"></itinerary-list>
       </div>
 </div>

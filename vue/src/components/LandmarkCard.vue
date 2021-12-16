@@ -12,32 +12,34 @@
         <p id="lm-card-category"><b>Category: </b>{{ landmark.category }}</p>
         <p id="lm-card-address"><b>Address: </b> {{ landmark.address }}</p>
         </div>
-        <div class="lm-card-likes">
-          <p ID="like-this"> Like this?</p>
-          <div class="like">
-            <p class="like-count">{{this.$store.state.likes}}</p>
-            <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''"><i class="far fa-thumbs-up"></i></button>
-          </div>
-          
-          <div class="dislike">
-        <p class="like-count">{{this.$store.state.dislikes}} </p>
-        <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
-      </div>
-        
-    </div> 
+         
       </div>
       <div id="lm-card-description">
         <p>{{ landmark.description }}</p>
       </div>
-      <div class="lm-card-buttons">
-        <select name="itinerary" id="itinerary-select" class="button" v-model="itineraryId">
-          <option value="">Add to my Itinerary</option>
-          <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
-        </select>
-        <button class="button" v-on:click="addLandmark()">Add</button>
-        <router-link v-bind:to="{ name: 'home'}">
-          <button class="button">Back To Search</button>
-        </router-link>
+      <div id="lm-card-buttons">
+        <div id="misc-buttons">
+          <select name="itinerary" id="itinerary-select" class="button" v-model="itineraryId">
+            <option value="">Add to my Itinerary</option>
+            <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
+          </select>
+          <button class="button" v-on:click="addLandmark()">Add</button>
+          <router-link v-bind:to="{ name: 'home'}">
+            <button class="button">Back To Search</button>
+          </router-link>
+        </div>
+        <div id="lm-card-likes">
+          <p id="like-this"> Like this?</p>
+          <div class="like">
+            <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''"><i class="far fa-thumbs-up"></i></button>
+            <p class="like-count">{{this.$store.state.likes}}</p>
+          </div>
+          
+          <div class="dislike">
+            <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
+            <p class="like-count">{{this.$store.state.dislikes}} </p>
+          </div>
+        </div>
       </div>
     </div>
 
@@ -233,7 +235,7 @@ export default {
   display: grid;
   grid-auto-columns: 1fr  240px;
   grid-template-areas: "text hours" " wide-img wide-img";
-  row-gap: 15px;
+  row-gap: 10px;
 
 }
 
@@ -244,31 +246,35 @@ export default {
 
 #lm-card-likes {
   display: flex;
+  flex-direction: row;
   justify-content: center;
+  align-items: flex-start;
+  column-gap: 20px;
+  margin-right: 65px
 }
 
 #likeButton, #dislikeButton {
-  margin-left: 0px;
+  margin-left: 0;
   box-shadow: 1px 1px 4px #adadad;
+}
+
+#like-this{
+  text-align: center;
+  font-weight: bold;
+  margin: 0;
 }
 
 .like-count {
   text-align: center;
-}
-
-.rating {
-  display: inline-block;
-  width: 100%;
-  margin-top: 40px;
-  padding-top: 40px;
-  text-align: center;
+  margin-block-start: 0.5em;
+  margin-block-end: 0;
 }
 
 .like,
 .dislike {
   display: inline-block;
   cursor: pointer;
-  margin: 10px;
+  margin: 0px;
 }
 
 #likeButton:hover,
@@ -305,7 +311,7 @@ div.like, div.dislike {
 #lm-card-title {
   padding: 0px;
   margin: 0;
-  font-size: 1.8em;
+  font-size: 2.2em;
 }
 
 #lm-card-category {
@@ -338,7 +344,7 @@ div.like, div.dislike {
   font-size: 1em;
   margin: 0px;
   height: 240px;
-  box-shadow: 1px 1px 4px #dddddd;
+  box-shadow: 1px 1px 3px #143e577e;
 }
 
 #lm-card-hours p {
@@ -351,67 +357,49 @@ div.like, div.dislike {
   margin-top: 0;
 }
 
-.lm-card-buttons {
+#lm-card-buttons {
   display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   align-items: flex-start;
   margin: 0px;
-
 }
 
-.rating {
-  display: inline-block;
-  width: 100%;
-  margin-top: 40px;
-  padding-top: 40px;
-  text-align: center;
+#itinerary-select {
+  margin-left: 0;
 }
 
-.like,
-.dislike {
-  display: inline-block;
-  cursor: pointer;
-  margin: 10px;
-  
-}
-
-.dislike:hover,
-.like:hover {
-  color: #2EBDD1;
-  transition: all .2s ease-in-out;
-  transform: scale(1.1);
-}
-
-.lm-card-buttons button, .lm-card-buttons select {
+#lm-card-buttons button, #lm-card-buttons select {
   box-shadow: 1px 1px 4px #adadad;
 }
 
 #lm-image-container {
   grid-area: wide-img;
   display: flex;
-  align-items: flex-end;
-  
+  justify-content: space-evenly;
+  column-gap: 10px;
+  margin: 10px 0;
 }
 
-#likeButton, #dislikeButton {
-  margin-left: 0px;
-  margin-bottom: 3.9px;
+.lm-card-wide-img {
+  grid-area: wide-img;
+  border-radius: 4px;
+  max-width: 45%;
+  box-shadow: 1px 1px 4px #494949;
+}
 
-}
-.like-count{
-  margin-top: 0px;
-  padding-top: 0px;
-  text-align: center;
-}
-#like-this{
-  text-align: center;
-  font-weight: bold;
-
-}
 #lm-card-description p{
-  margin-top: 0%;
+  margin-top: 0;
+  margin-bottom: 1.5em
 }
 
+#landmark-card b {
+  text-shadow: 1px 1px 2px #afafafb4;
+}
 
+#landmark-card h2 {
+  text-shadow: 1px 1px 2px #afafafb4;
+}
 
 
 </style>
