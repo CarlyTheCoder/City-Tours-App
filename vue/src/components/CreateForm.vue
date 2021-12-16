@@ -33,8 +33,6 @@ export default {
                 if (response.status === 201) {
                     Swal.fire('Itinerary created')
                     this.getByUserId();
-
-                    
                 }
             })
         },

@@ -44,8 +44,6 @@ export default {
   justify-content: center;
 }
 
-.card-in-list {
-  margin-bottom: 5px;
-}
+
 
 </style>

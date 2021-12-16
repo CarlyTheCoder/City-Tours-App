@@ -1,17 +1,11 @@
 <template>
   <div id="edit-itinerary">
-      <div>
-         <button class="button" v-on:click="toggleEditForm" v-if="this.$store.state.showEditItineraryForm">Cancel</button>
-        <button class="button" v-on:click="toggleEditForm" v-else>Edit Itinerary</button>
-        </div>
-        <form v-if="this.$store.state.showEditItineraryForm" v-on:submit.prevent="updateItinerary(), hideEditForm()" id="edit-form"> 
-           <label for="edit-name"> Name: </label>
+        <form id="edit-form"> 
+           <label for="edit-name">Name: </label>
            <input type="text" name="edit-name" id="edit-name" v-model="itinerary.name">
            <label for="edit-date">Date: </label>
            <input type="date" name="edit-date" id="edit-date" v-model="itinerary.tripDate">
-           <label for="edit-starting-location"> Starting point: </label>
-           <input type="text" name="edit-starting-location" id="edit-starting-location" v-model="itinerary.startingPoint">
-           <input type="submit" class="button">
+           <button @click="updateItinerary">Save Changes</button>
          </form>
   </div>
 </template>
@@ -20,27 +14,36 @@
 import itineraryService from '@/services/ItineraryService';
 export default {
     name:"edit-itinerary",
-    props: ["itinerary"],
+    data() {
+      return {
+        itinerary: {}
+      }
+    },
     created() {
-      const thisItinerary = this.$store.state.activeItinerary
-      this.itinerary = thisItinerary;
+      this.getItinerary();
     },
  methods:{
-    toggleEditForm(){
-      this.$store.commit('TOGGLE_EDIT_ITINERARY_FORM');
-    },
-    updateItinerary(){
-    itineraryService.updateItinerary(this.itinerary);
-    itineraryService.getByUserId(this.$store.state.user.id).then((response)=>{
-        if(response.status==200){
-            this.$store.state.itineraries=response.data;
-        }
+   getItinerary() {
+     this.itinerary = this.$store.state.activeItinerary
+   },
+    updateItinerary() {
+    itineraryService.updateItinerary(this.itinerary).then((response) => {
+      if (response.status === 200) {
+        this.$store.commit("UPDATE_ITINERARY", this.itinerary);
+        this.getItinerary();
+        this.toggleEditForm()
+      }
     });
-
-     },
-     hideEditForm(){
-         this.$store.state.showEditItineraryForm=false;
-     }
+    // itineraryService.getByUserId(this.$store.state.user.id).then((response)=>{
+    //     if(response.status==200){
+    //         this.$store.state.itineraries=response.data;
+    //     }
+    //   });
+    },
+    toggleEditForm(){
+      this.itinerary = {}
+      this.$store.commit('TOGGLE_EDIT_ITINERARY_FORM');
+    }
  }, 
 
 }

@@ -1,88 +1,54 @@
 <template>
 
   <div id="landmark-card">
-    <div>
+    <div id="image-likes">
       <img id="lm-card-image" v-bind:src="landmark.image" alt="" />
-    </div>
-    <div id="lm-card-text">
-      <div id="lm-card-name">
-        <h2 id="lm-card-title">{{ landmark.name }}</h2>
-          
-
-      </div>
-      <div id="lm-card-info">
-        <p id="lm-card-category"><b>Category: </b>{{ landmark.category }}</p>
-        <p id="lm-card-address"><b>Address: </b> {{ landmark.address }}</p>
-      </div>
-      <div id="lm-card-description">
-        <p>{{ landmark.description }}</p>
-      </div>
-      <div class="lm-card-buttons">
-        <form>
-          <select name="itinerary" id="itinerary-select" class="button" v-model="itineraryId">
-            <option value="">Add to my Itinerary</option>
-            <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
-          </select>
-        </form>
-        
-           <button class="button" v-on:click="addLandmark()">Add</button>
-       
-       
-        <router-link v-bind:to="{ name: 'home'}">
-          <button class="button">Back To Search</button>
-        </router-link>
-      </div>
-    
-      
-    </div>
-    <div id="lm-card-hours">
-      <p class="lm-card-time"><b>Hours: </b></p>
-      <p>
-        <b>Sunday:</b> {{ formatTime(landmark.sundayOpen, landmark.sundayClose) }} 
-      </p>
-      <p>
-        <b>Monday:</b> {{ formatTime(landmark.mondayOpen, landmark.mondayClose) }}
-      </p>
-      <p>
-        <b>Tuesday:</b> {{ formatTime(landmark.tuesdayOpen, landmark.tuesdayClose) }}
-      </p>
-      <p>
-        <b>Wednesday:</b> {{ formatTime(landmark.wednesdayOpen, landmark.wednesdayClose) }}
-      </p>
-      <p>
-        <b>Thursday:</b> {{ formatTime(landmark.thursdayOpen, landmark.thursdayClose) }}
-      </p>
-      <p>
-        <b>Friday:</b> {{ formatTime(landmark.fridayOpen, landmark.fridayClose) }}
-      </p>
-      <p>
-        <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
-      </p>
-        
-    
-      <div class="lm-card-likes">
+      <div id="lm-card-likes">
           <div class="like">
             <p class="like-count">{{this.$store.state.likes}}</p>
             <button id="likeButton" class="thumbButton button" @click.prevent="like()" v-bind:class="(this.$store.state.isLiked)?'isLiked':''"><i class="far fa-thumbs-up"></i></button>
           </div>
-          
-        
           <div class="dislike">
-        <p class="like-count">{{this.$store.state.dislikes}} </p>
-        <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
+            <p class="like-count">{{this.$store.state.dislikes}} </p>
+            <button class="thumbButton button" id="dislikeButton" @click.prevent="dislike()" v-bind:class="(this.$store.state.isDisliked)?'isDisliked':''"><i class="far fa-thumbs-down"></i></button>
+          </div>
       </div>
-        
-      </div>
+    </div>
+
+    <div id="lm-card-info">
+      <h2 id="lm-card-title">{{ landmark.name }}</h2>
+      <p id="lm-card-category"><b>Category: </b>{{ landmark.category }}</p>
+      <p id="lm-card-address"><b>Address: </b> {{ landmark.address }}</p>
+      <p>{{ landmark.description }}</p>
     
+      <div class="lm-card-buttons">
+        <select name="itinerary" id="itinerary-select" class="button" v-model="itineraryId">
+          <option value="">Add to my Itinerary</option>
+          <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
+        </select>
+        <button class="button" v-on:click="addLandmark()">Add</button>
+        <router-link v-bind:to="{ name: 'home'}">
+          <button class="button">Back To Search</button>
+        </router-link>
+      </div>
+    </div>
+
+    <div id="lm-card-hours">
+      <p class="lm-card-time"><b>Hours: </b></p>
+      <p><b>Sunday: </b>{{formatTime(landmark.sundayOpen, landmark.sundayClose)}}</p>
+      <p><b>Monday: </b>{{formatTime(landmark.mondayOpen, landmark.mondayClose)}}</p>
+      <p><b>Tuesday: </b>{{formatTime(landmark.tuesdayOpen, landmark.tuesdayClose)}}</p>
+      <p><b>Wednesday: </b>{{formatTime(landmark.wednesdayOpen, landmark.wednesdayClose)}}</p>
+      <p><b>Thursday: </b>{{formatTime(landmark.thursdayOpen, landmark.thursdayClose) }}</p>
+      <p><b>Friday: </b>{{formatTime(landmark.fridayOpen, landmark.fridayClose) }}</p>
+      <p><b>Saturday: </b>{{formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}</p>
     </div> 
 
     <div id="lm-image-container">
-          <img v-bind:src="landmark.imageWide" class="lm-card-wide-img">
-         <img v-bind:src="landmark.imageWide2" class="lm-card-wide-img">
-       
-</div>
+        <img v-bind:src="landmark.imageWide" class="lm-card-wide-img">
+        <img v-bind:src="landmark.imageWide2" class="lm-card-wide-img">
+    </div>
     
-
   </div>
 </template>
 
@@ -236,8 +202,8 @@ export default {
     rgb(255, 255, 255),
     rgba(255, 255, 255, 0.644)
   );
-  padding: 10px;
-  margin: 5px;
+  padding: 20px 20px 10px 20px;
+  margin: 5px auto;
   border-radius: 5px;
   width: 100%;
   display: grid;
@@ -246,78 +212,23 @@ export default {
   row-gap: 15px;
 }
 
-#lm-image-container {
-  grid-area: wide-img;
-  display: flex;
-  justify-content: center;
-  column-gap: 10px;
-}
-
-.lm-card-wide-img {
-   grid-area: wide-img;
-   border: 2px solid;
-   border-color: #143E57;
-   border-radius: 4px;
-   max-width: 49%;
-}
-
-
-#lm-card-text {
-  grid-area: text;
+#image-likes {
   display: flex;
   flex-direction: column;
-  padding-right: 20px;
 }
 
-#lm-card-title {
-  padding: 0px;
-  margin: 0;
-  font-size: 1.8em;
-}
-
-#lm-card-hours {
-  font-size: 1em;
-  margin: 0px;
-
-}
-
-#lm-card-category {
-  padding: 0;
-  margin-top: 5px;
-}
-
-#lm-card-image {
-  grid-area: image;
-  width: 315px;
-  border: 2px solid #143E57;
-  border-radius: 4px;
-}
-
-#lm-card-info {
-  padding: 5px 0 0 0;
-}
-
-#lm-card-hours {
-  grid-area: hours;
-  border: 2px solid #143E57;
-  border-radius: 4px;
-}
-
-#lm-card-hours p {
-  padding: 0;
-  margin: 8px;
-}
-
-.lm-card-time {
-  font-size: 1.5em;
-  margin-top: 0;
-}
-
-.lm-card-buttons {
+#lm-card-likes {
   display: flex;
-  align-items: flex-start;
-  margin: 0px;
+  justify-content: center;
+}
 
+#likeButton, #dislikeButton {
+  margin-left: 0px;
+  box-shadow: 1px 1px 4px #adadad;
+}
+
+.like-count {
+  text-align: center;
 }
 
 .rating {
@@ -335,11 +246,12 @@ export default {
   margin: 10px;
 }
 
-.dislike:hover,
-.like:hover {
+#likeButton:hover,
+#dislikeButton:hover {
   color: #2EBDD1;
   transition: all .2s ease-in-out;
   transform: scale(1.1);
+  box-shadow: 1px 1px 4px #adadad;
 }
 
 .active {
@@ -358,15 +270,78 @@ div.like, div.dislike {
   display: flex;
   flex-direction: column;
   justify-content: flex-start;
-  
 }
 
-.lm-card-likes {
+#lm-card-info {
+  grid-area: text;
+  padding: 5px 0 0 0;
+}
+
+#lm-card-title {
+  padding: 0px;
+  margin: 0;
+  font-size: 1.8em;
+}
+
+#lm-card-category {
+  text-transform: capitalize;
+  padding: 0;
+  margin-top: 5px;
+}
+
+#lm-card-image {
+  grid-area: image;
+  width: 315px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #494949;
+}
+
+#lm-card-hours {
+  grid-area: hours;
   display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  border: 2px solid #143E57;
+  border-radius: 4px;
+  font-size: 1em;
+  margin: 0px;
+  height: 240px;
+  box-shadow: 1px 1px 4px #dddddd;
 }
 
-#likeButton, #dislikeButton {
-  margin-left: 0px;
+#lm-card-hours p {
+  text-align: center;
+  margin: 0;
+}
+
+.lm-card-time {
+  font-size: 1.5em;
+  margin-top: 0;
+}
+
+.lm-card-buttons {
+  display: flex;
+  align-items: flex-start;
+  margin: 0px;
+}
+
+.lm-card-buttons button, .lm-card-buttons select {
+  box-shadow: 1px 1px 4px #adadad;
+}
+
+#lm-image-container {
+  grid-area: wide-img;
+  display: flex;
+  justify-content: space-evenly;
+  column-gap: 10px;
+  margin: 10px 0;
+}
+
+.lm-card-wide-img {
+  grid-area: wide-img;
+  border-radius: 4px;
+  max-width: 45%;
+  box-shadow: 1px 1px 4px #494949;
 }
 
 
