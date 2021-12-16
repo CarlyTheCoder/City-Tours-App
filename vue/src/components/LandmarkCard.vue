@@ -30,23 +30,17 @@
         <p>{{ landmark.description }}</p>
       </div>
       <div class="lm-card-buttons">
-        <form>
-          <select name="itinerary" id="itinerary-select" class="button" v-model="itineraryId">
-            <option value="">Add to my Itinerary</option>
-            <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
-          </select>
-        </form>
-        
-           <button class="button" v-on:click="addLandmark()">Add</button>
-       
-       
+        <select name="itinerary" id="itinerary-select" class="button" v-model="itineraryId">
+          <option value="">Add to my Itinerary</option>
+          <option v-for="itinerary in itineraries" v-bind:key="itinerary.id" :value="itinerary.id"> {{itinerary.name}} </option>
+        </select>
+        <button class="button" v-on:click="addLandmark()">Add</button>
         <router-link v-bind:to="{ name: 'home'}">
           <button class="button">Back To Search</button>
         </router-link>
       </div>
-    
-      
     </div>
+
     <div id="lm-card-hours">
       <p class="lm-card-time"><b>Hours: </b></p>
       <p>
@@ -75,12 +69,10 @@
      
 
     <div id="lm-image-container">
-          <img v-bind:src="landmark.imageWide" class="lm-card-wide-img">
-         <img v-bind:src="landmark.imageWide2" class="lm-card-wide-img">
-       
-</div>
+        <img v-bind:src="landmark.imageWide" class="lm-card-wide-img">
+        <img v-bind:src="landmark.imageWide2" class="lm-card-wide-img">
+    </div>
     
-
   </div>
 </template>
 
@@ -234,8 +226,8 @@ export default {
     rgb(255, 255, 255),
     rgba(255, 255, 255, 0.644)
   );
-  padding: 10px;
-  margin: 5px;
+  padding: 20px 20px 10px 20px;
+  margin: 5px auto;
   border-radius: 5px;
   width: 100%;
   display: grid;
@@ -245,27 +237,69 @@ export default {
 
 }
 
-#lm-image-container {
-  grid-area: wide-img;
-  display: flex;
-  justify-content: center;
-  column-gap: 10px;
-}
-
-.lm-card-wide-img {
-   grid-area: wide-img;
-   border: 2px solid;
-   border-color: #143E57;
-   border-radius: 4px;
-   max-width: 49%;
-}
-
-
-#lm-card-text {
-  grid-area: text;
+#image-likes {
   display: flex;
   flex-direction: column;
-  padding-right: 20px;
+}
+
+#lm-card-likes {
+  display: flex;
+  justify-content: center;
+}
+
+#likeButton, #dislikeButton {
+  margin-left: 0px;
+  box-shadow: 1px 1px 4px #adadad;
+}
+
+.like-count {
+  text-align: center;
+}
+
+.rating {
+  display: inline-block;
+  width: 100%;
+  margin-top: 40px;
+  padding-top: 40px;
+  text-align: center;
+}
+
+.like,
+.dislike {
+  display: inline-block;
+  cursor: pointer;
+  margin: 10px;
+}
+
+#likeButton:hover,
+#dislikeButton:hover {
+  color: #2EBDD1;
+  transition: all .2s ease-in-out;
+  transform: scale(1.1);
+  box-shadow: 1px 1px 4px #adadad;
+}
+
+.active {
+  color: #2EBDD1;
+}
+
+.isLiked {
+  background-color: rgb(169, 185, 255);
+}
+
+.isDisliked {
+  background-color: rgb(255, 117, 117);
+}
+
+div.like, div.dislike {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+}
+
+#lm-card-info {
+  grid-area: text;
+  padding: 5px 0 0 0;
 }
 
 #lm-card-title {
@@ -274,13 +308,8 @@ export default {
   font-size: 1.8em;
 }
 
-#lm-card-hours {
-  font-size: 1em;
-  margin: 0px;
-
-}
-
 #lm-card-category {
+  text-transform: capitalize;
   padding: 0;
   margin-top: 5px;
 }
@@ -288,7 +317,6 @@ export default {
 #lm-card-image {
   grid-area: image;
   width: 315px;
-  border: 2px solid #143E57;
   border-radius: 4px;
 }
 
@@ -302,13 +330,20 @@ export default {
 
 #lm-card-hours {
   grid-area: hours;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
   border: 2px solid #143E57;
   border-radius: 4px;
+  font-size: 1em;
+  margin: 0px;
+  height: 240px;
+  box-shadow: 1px 1px 4px #dddddd;
 }
 
 #lm-card-hours p {
-  padding: 0;
-  margin: 8px;
+  text-align: center;
+  margin: 0;
 }
 
 .lm-card-time {
@@ -346,26 +381,12 @@ export default {
   transform: scale(1.1);
 }
 
-.active {
-  color: #2EBDD1;
+.lm-card-buttons button, .lm-card-buttons select {
+  box-shadow: 1px 1px 4px #adadad;
 }
 
-.isLiked {
-  background-color: rgb(169, 185, 255);
-}
-
-.isDisliked {
-  background-color: rgb(255, 117, 117);
-}
-
-div.like, div.dislike {
-  display: flex;
-  flex-direction: column;
-  justify-content: flex-start;
-  
-}
-
-.lm-card-likes {
+#lm-image-container {
+  grid-area: wide-img;
   display: flex;
   align-items: flex-end;
   

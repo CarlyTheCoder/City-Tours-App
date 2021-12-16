@@ -119,6 +119,10 @@ export default new Vuex.Store({
      state.showEditItineraryForm=!state.showEditItineraryForm;
     },
 
+    HIDE_EDIT_ITINERARY_FORM(state){
+      state.showEditItineraryForm= false;
+     },
+
     UPDATE_LANDMARK_ORDER(state, landmarks) {
       state.activeItinerary.landmarks = landmarks;
     }

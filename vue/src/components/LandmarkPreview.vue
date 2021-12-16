@@ -1,53 +1,19 @@
 <template>
-
   <div id="landmark-preview">
+
     <div>
       <img id="lm-preview-image" v-bind:src="landmark.image" alt="" />
     </div>
 
-    <div id="lm-preview-text">
-      <div id="lm-preview-name">
-        <h2 id="lm-preview-title">{{ landmark.name }}</h2>
-      </div>
-
-      <div id="lm-preview-info">
-        <p id="lm-preview-category"><b>Category: </b>{{ landmark.category }}</p>
-        <p id="lm-preview-address"><b>Address: </b> {{ landmark.address }}</p>
-      </div>
-      <div id="lm-preview-description">
-        <p>{{ landmark.description }}</p>
-      </div>
+    <div id="lm-preview-info">
+      <h1 id="lm-preview-title">{{ landmark.name }}</h1>
+      <h3 id="lm-preview-category">Category: {{ landmark.category }}</h3>
       <router-link v-bind:to="{ name: 'landmark', params: {id: landmark.id} }">
         <button class="button">View Details</button>
       </router-link>
     </div>
 
-    <div id="lm-preview-hours">
-      <p class="lm-preview-time"><b>Hours: </b></p>
-      <p>
-        <b>Sunday:</b> {{ formatTime(landmark.sundayOpen, landmark.sundayClose) }} 
-      </p>
-      <p>
-        <b>Monday:</b> {{ formatTime(landmark.mondayOpen, landmark.mondayClose) }}
-      </p>
-      <p>
-        <b>Tuesday:</b> {{ formatTime(landmark.tuesdayOpen, landmark.tuesdayClose) }}
-      </p>
-      <p>
-        <b>Wednesday:</b> {{ formatTime(landmark.wednesdayOpen, landmark.wednesdayClose) }}
-      </p>
-      <p>
-        <b>Thursday:</b> {{ formatTime(landmark.thursdayOpen, landmark.thursdayClose) }}
-      </p>
-      <p>
-        <b>Friday:</b> {{ formatTime(landmark.fridayOpen, landmark.fridayClose) }}
-      </p>
-      <p>
-        <b>Saturday:</b> {{ formatTime(landmark.saturdayOpen, landmark.saturdayClose) }}
-      </p>
-    </div>
   </div>
-
 </template>
 
 <script>
@@ -79,22 +45,31 @@ export default {
 #landmark-preview {
   background-image: linear-gradient(to bottom left,
     rgb(255, 255, 255),
-    rgba(255, 255, 255, 0.644)
+    rgba(255, 255, 255, 0.8)
   );
   padding: 10px;
-  margin: 5px;
+  margin: 10px auto;
   border-radius: 5px;
-  width: 100%;
+  width: 60%;
   display: grid;
-  grid-auto-columns: 340px 1fr 240px;
-  grid-template-areas: "image text hours";
+  grid-template-columns: 250px 1fr;
+  grid-template-areas: "image text";
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.473);
 }
 
-#lm-preview-text {
+#lm-preview-image {
+  grid-area: image;
+  width: 225px;
+  border-radius: 4px;
+  box-shadow: 1px 1px 4px #bbbbbb;
+}
+
+#lm-preview-info {
   grid-area: text;
   display: flex;
   flex-direction: column;
-  padding-right: 20px;
+  align-items: center;
+  justify-content: space-evenly;
 }
 
 #lm-preview-title {
@@ -103,41 +78,27 @@ export default {
   font-size: 1.8em;
 }
 
-#lm-preview-hours {
-  font-size: 1em;
-  margin: 0px;
-}
-
 #lm-preview-category {
   padding: 0;
   margin-top: 5px;
 }
 
-#lm-preview-image {
-  grid-area: image;
-  width: 315px;
-   border: 2px solid black;
-  border-radius: 4px;
+#lm-preview-info h1 {
+  font-size: 2.2em;
+  text-align: center;
+  text-shadow: 1px 1px 4px #bbbbbb;
 }
 
-#lm-preview-info {
-  padding: 5px 0 0 0;
+#lm-preview-info h3 {
+  margin: 0;
+  text-shadow: 0px 2px 6px #bbbbbb;
+  text-transform: capitalize;
 }
 
-#lm-preview-hours {
-  grid-area: hours;
-  border: 1px solid black;
-  border-radius: 4px;
+#lm-preview-info button {
+  margin: 0;
+  box-shadow: 1px 1px 6px #bbbbbb;
 }
 
-#lm-preview-hours p {
-  padding: 0;
-  margin: 8px;
-}
-
-.lm-preview-time {
-  font-size: 1.5em;
-  margin-top: 0;
-}
 
 </style>
