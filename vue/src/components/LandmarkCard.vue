@@ -92,9 +92,9 @@ export default {
       if (this.itineraryId == "") {
         Swal.fire('Please select an itinerary');
       }
-        if(this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
-        Swal.fire("This landmark has already been added to your itinerary");
-      }
+      // if (this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
+      // Swal.fire("This landmark has already been added to your itinerary");
+      // }
       itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
         if (response.status === 201) {
           Swal.fire('The landmark has been added to your itinerary.');
@@ -312,6 +312,7 @@ div.like, div.dislike {
   border-radius: 4px;
   font-size: 1em;
   margin: 0px;
+  margin-left: 10px;
   height: 240px;
   box-shadow: 1px 1px 3px #143e577e;
 }

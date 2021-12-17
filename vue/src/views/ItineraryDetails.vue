@@ -9,7 +9,8 @@
 </template>
 
 <script>
-import itineraryInfo from '@/components/ItineraryInfo'
+
+import itineraryInfo from '@/components/ItineraryInfo';
 import itineraryService from '@/services/ItineraryService';
 export default {
     components: {

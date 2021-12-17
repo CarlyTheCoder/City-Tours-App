@@ -2,22 +2,23 @@
 
   <div id="app">
     <div id="site-nav">
-     <div id="logo">
-       <img src=".\assets\logo.png" alt="City Tours Detroit Logo"/>
-     </div>
-    <div>
-      <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
-      <router-link class="button" v-bind:to="{name: 'itineraries', params: {userId: this.$store.state.user.id}}">My Itineraries</router-link>
-      <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
-      
+      <div id="logo">
+        <img src=".\assets\logo.png" alt="City Tours Detroit Logo"/>
+      </div>
+      <div>
+        <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
+        <router-link class="button" v-bind:to="{name: 'itineraries', params: {userId: this.$store.state.user.id}}">My Itineraries</router-link>
+        <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      </div>
     </div>
-    </div>
-      <router-view id="main-view" />
-    </div>
+    <router-view id="main-view" />
+  </div>
 
 </template>
 
-<script></script>
+<script>
+
+</script>
 
 <style>
 
@@ -106,7 +107,7 @@ html {
   border: 2px solid #29638ac5
 }
 
-.account-container{
+.account-container {
   border-style: solid;
   border-width: 3px;
   border-radius: 10px;
@@ -122,10 +123,9 @@ html {
     );
 }
 
-#logo{
+#logo {
   margin-left: 20px;
   margin-top: 15px;
 }
-
 
 </style>

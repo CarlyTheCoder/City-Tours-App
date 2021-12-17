@@ -10,7 +10,7 @@
 
 <script>
 
-import landmarkCard from '@/components/LandmarkCard'
+import landmarkCard from '@/components/LandmarkCard';
 import landmarkService from '@/services/LandmarkService';
 export default {
     components: {
@@ -31,7 +31,6 @@ export default {
             })
         }
     }
-     
 }
 
 </script>

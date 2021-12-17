@@ -4,16 +4,8 @@
     <form id="login" class="form-signin" @submit.prevent="login">
       <h1>Welcome to Detroit City Tours!</h1>
       <h3>Please sign in to plan your trip:</h3>
-      <div
-        class="alert alert-danger"
-        role="alert"
-        v-if="invalidCredentials"
-      >Invalid username and password!</div>
-      <div
-        class="alert alert-success"
-        role="alert"
-        v-if="this.$route.query.registration"
-      >Thank you for registering, please sign in.</div>
+      <div class="alert alert-danger" role="alert" v-if="invalidCredentials">Invalid username and password!</div>
+      <div class="alert alert-success" role="alert" v-if="this.$route.query.registration">Thank you for registering, please sign in.</div>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -60,21 +52,21 @@ export default {
   methods: {
     login() {
       authService
-        .login(this.user)
-        .then(response => {
-          if (response.status == 200) {
-            this.$store.commit("SET_AUTH_TOKEN", response.data.token);
-            this.$store.commit("SET_USER", response.data.user);
-            this.$router.push("/");
-          }
-        })
-        .catch(error => {
-          const response = error.response;
+      .login(this.user)
+      .then(response => {
+        if (response.status == 200) {
+          this.$store.commit("SET_AUTH_TOKEN", response.data.token);
+          this.$store.commit("SET_USER", response.data.user);
+          this.$router.push("/");
+        }
+      })
+      .catch(error => {
+        const response = error.response;
 
-          if (response.status === 401) {
-            this.invalidCredentials = true;
-          }
-        });
+        if (response.status === 401) {
+          this.invalidCredentials = true;
+        }
+      });
     }
   }
 };
