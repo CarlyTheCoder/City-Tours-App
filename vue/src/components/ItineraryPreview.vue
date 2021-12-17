@@ -13,7 +13,10 @@
         </div>
         <div v-else id="no-landmarks">
           <p>You don't have any landmarks on your itinerary yet!</p>
-          <button class="button">Search landmarks</button>
+          <router-link v-bind:to="{ name: 'home'}">
+            <button class="button">Search landmarks</button>
+          </router-link>
+          
         </div>
       </div>
     </div>
