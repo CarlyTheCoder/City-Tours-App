@@ -101,7 +101,7 @@ export default {
 #search {
     max-width: 70%;
     min-width: 1000px;
-    padding-right: 0;
+    padding: 10px;
 }
 
 </style>

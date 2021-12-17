@@ -1,15 +1,18 @@
 <template>
+
 <div>
   <div id="itineraries">
     <h2 id="itinerary-greeting">Welcome {{this.$store.state.user.username}}!</h2>
-      <h3>Your itineraries to the Motor City:</h3>
-    <div> <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
-        <button class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button></div>
-       
-          <create-form id="new-itinerary-form" v-if="this.$store.state.showCreateForm"></create-form>
-          <itinerary-list id="filtered-itinerary-list"></itinerary-list>
-      </div>
+    <h3>Your Detroit Itineraries:</h3>
+    <div> 
+      <button class="button" v-on:click="toggleCreateForm" v-if="this.$store.state.showCreateForm">Cancel</button>
+      <button id="new-itinerary-button" class="button" v-on:click="toggleCreateForm" v-else>Create New Itinerary</button>
+    </div>
+    <create-form id="new-itinerary-form" v-if="this.$store.state.showCreateForm"></create-form>
+    <itinerary-list id="filtered-itinerary-list"></itinerary-list>
+  </div>
 </div>
+
 </template>
 
 <script>
@@ -17,16 +20,16 @@
 import itineraryList from '@/components/ItineraryList';
 import createForm from '@/components/CreateForm'
 export default {
-    name: "itineraries",
-    components: {
-        itineraryList,
-        createForm
-    },
-    methods: {
-      toggleCreateForm() {
-        this.$store.state.showCreateForm = ! this.$store.state.showCreateForm;
-      }
+  name: "itineraries",
+  components: {
+    itineraryList,
+    createForm
+  },
+  methods: {
+    toggleCreateForm() {
+      this.$store.state.showCreateForm = ! this.$store.state.showCreateForm;
     }
+  }
 }
 
 </script>
@@ -71,6 +74,10 @@ h3 {
           0px 2px 10px rgba(0,0,0,0.2), 
           0px 10px 20px rgba(0,0,0,0.2), 
           0px 30px 60px 1px rgba(0,0,0,0.25);
+}
+
+#new-itinerary-button {
+  margin-bottom: 20px
 }
 
 </style>

@@ -3,9 +3,7 @@
   <div class="account-container">
     <form id="register" class="form-register" @submit.prevent="register">
       <h1>Create Account</h1>
-      <div class="alert alert-danger" role="alert" v-if="registrationErrors">
-        {{ registrationErrorMsg }}
-      </div>
+      <div class="alert alert-danger" role="alert" v-if="registrationErrors">{{ registrationErrorMsg }}</div>
       <label for="username" class="sr-only">Username</label>
       <input
         type="text"
@@ -88,8 +86,8 @@ export default {
     clearErrors() {
       this.registrationErrors = false;
       this.registrationErrorMsg = 'There were problems registering this user.';
-    },
-  },
+    }
+  }
 };
 
 </script>

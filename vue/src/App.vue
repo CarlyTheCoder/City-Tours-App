@@ -2,6 +2,7 @@
 
   <div id="app">
     <div id="site-nav">
+<<<<<<< HEAD
      <div id="logo">
        <img src=".\assets\logo.001.jpeg" alt="City Tours Detroit Logo"/>
      </div>
@@ -13,11 +14,25 @@
     </div>
     </div>
       <router-view id="main-view" />
+=======
+      <div id="logo">
+        <img src=".\assets\logo.png" alt="City Tours Detroit Logo"/>
+      </div>
+      <div>
+        <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
+        <router-link class="button" v-bind:to="{name: 'itineraries', params: {userId: this.$store.state.user.id}}">My Itineraries</router-link>
+        <router-link class="button" v-bind:to="{ name: 'logout' }" v-if="$store.state.token != ''">Logout</router-link>
+      </div>
+>>>>>>> 69c01973f51c83c6b0bff89e45a0aef6238c031f
     </div>
+    <router-view id="main-view" />
+  </div>
 
 </template>
 
-<script></script>
+<script>
+
+</script>
 
 <style>
 
@@ -106,7 +121,7 @@ html {
   border: 2px solid #29638ac5
 }
 
-.account-container{
+.account-container {
   border-style: solid;
   border-width: 3px;
   border-radius: 10px;
@@ -122,15 +137,18 @@ html {
     );
 }
 
-#logo{
+#logo {
   margin-left: 20px;
   margin-top: 15px;
 }
 
+<<<<<<< HEAD
 #logo img {
   width: 150px;
   border-radius: 5px;
 }
 
 
+=======
+>>>>>>> 69c01973f51c83c6b0bff89e45a0aef6238c031f
 </style>

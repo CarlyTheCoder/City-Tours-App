@@ -13,10 +13,9 @@
         </div>
         <div v-else id="no-landmarks">
           <p>You don't have any landmarks on your itinerary yet!</p>
-          <router-link v-bind:to="{ name: 'home'}">
-            <button class="button">Search landmarks</button>
+          <router-link v-bind:to="{ name: 'homegit add'}">
+          <button class="button">Search landmarks</button>
           </router-link>
-          
         </div>
       </div>
     </div>
@@ -58,6 +57,7 @@ export default {
   margin-top: 10px;
   display: flex;
   justify-content: space-between;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.473);
 }
 
 #itinerary-preview:hover {
@@ -102,6 +102,10 @@ export default {
   justify-content: center;
   align-items: center;
   margin-right: 60px;
+}
+
+#no-landmarks p {
+  text-align: center
 }
 
 </style>
