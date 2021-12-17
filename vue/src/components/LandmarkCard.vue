@@ -92,9 +92,9 @@ export default {
       if (this.itineraryId == "") {
         Swal.fire('Please select an itinerary');
       }
-      // if (this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
-      // Swal.fire("This landmark has already been added to your itinerary");
-      // }
+      if (this.$store.state.activeItinerary.landmarks.some(landmark=>landmark.id===this.landmark.id)){
+      Swal.fire("This landmark has already been added to your itinerary");
+      }
       itineraryService.addLandmark(this.itineraryId, this.landmark.id).then((response) => {
         if (response.status === 201) {
           Swal.fire('The landmark has been added to your itinerary.');
