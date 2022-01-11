@@ -3,7 +3,7 @@
   <div id="app">
     <div id="site-nav">
      <div id="logo">
-       <img src=".\assets\logo.001.jpeg" alt="City Tours Detroit Logo"/>
+       <!--<img src=".\assets\logo.001.jpeg" alt="City Tours Detroit Logo"/> -->
      </div>
     <div>
       <router-link class="button" v-bind:to="{ name: 'home' }">Home</router-link>
